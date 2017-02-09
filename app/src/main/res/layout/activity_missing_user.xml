@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/img_background_signin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_layout"
+        android:paddingTop="8dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/skull"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/img_misadventure_skull"
+            android:layout_marginTop="70dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/misadv_text"
+            android:layout_below="@+id/skull"
+            android:layout_marginTop="33dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="We were unable to connect to your Bungie.net account via PlayStation/Xbox. Please try again."
+            android:textSize="18sp"
+            android:textColor="@color/trimble_white"/>
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/back"-->
+            <!--android:src="@drawable/icon_back_arrow"-->
+            <!--android:layout_alignParentStart="true"/>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/trimbe_white"-->
+            <!--android:text="MISADVENTURE"-->
+            <!--android:textSize="14sp"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:fontFamily="sans-serif"-->
+            <!--android:textStyle="bold"/>-->
+    <!--</RelativeLayout>-->
+
+    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="64dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="73dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/traveller_bdg"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:src="@drawable/img_logo_badge"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginTop="55dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_above="@+id/login_accnt"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_centerHorizontal="true"/>&ndash;&gt;-->
+
+    <!--<android.support.v7.widget.CardView-->
+        <!--xmlns:conversation="http://schemas.android.com/apk/res-auto"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/bungie_btn"-->
+        <!--android:layout_below="@+id/top_layout"-->
+        <!--android:layout_marginRight="14dp"-->
+        <!--android:layout_marginLeft="14dp"-->
+        <!--android:layout_marginTop="14dp"-->
+        <!--conversation:cardCornerRadius="2dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--conversation:cardBackgroundColor="@color/fifty_black">-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/card_layout">-->
+                <!--<ImageView-->
+                    <!--android:layout_width="25dp"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:id="@+id/psn_icon"-->
+                    <!--android:src="@drawable/img_icon_id"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginStart="17dp"-->
+                    <!--android:layout_marginTop="22dp"/>-->
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/id_text"-->
+                    <!--android:layout_toRightOf="@+id/psn_icon"-->
+                    <!--android:fontFamily="sans-serif"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="18dp"-->
+                    <!--android:textColor="@color/trimbe_white"-->
+                    <!--android:textSize="18sp"/>-->
+            <!--</RelativeLayout>-->
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/errorid_text"-->
+                <!--android:text="We couldn’t find a Bungie.net profile linked to the ID you entered."-->
+                <!--android:textColor="#ff0000"-->
+                <!--android:textSize="16sp"-->
+                <!--android:layout_below="@+id/card_layout"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginLeft="18dp"-->
+                <!--android:layout_marginRight="18dp"-->
+                <!--android:paddingBottom="12dp"/>-->
+        <!--</RelativeLayout>-->
+    <!--</android.support.v7.widget.CardView>-->
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/follow_steps_text"-->
+        <!--android:text="FOLLOW THESE STEPS TO TROUBLESHOOT:"-->
+        <!--android:textColor="@color/activity_light_color"-->
+        <!--android:textSize="16sp"-->
+        <!--android:fontFamily="sans-serif"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="13dp"-->
+        <!--android:layout_below="@+id/bungie_btn"-->
+        <!--android:layout_marginTop="28dp"/>-->
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/help_text"-->
+        <!--android:layout_marginLeft="18dp"-->
+        <!--android:layout_marginRight="18dp"-->
+        <!--android:layout_below="@+id/follow_steps_text"-->
+        <!--android:layout_marginTop="15dp">-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/star2"-->
+            <!--android:text="\u2726"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textColor="@color/activity_light_color"-->
+            <!--android:layout_alignParentTop="true"/>-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/star2_text"-->
+            <!--android:text="Check that you typed your gamertag correctly."-->
+            <!--android:textColor="@color/trimbe_white"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_toRightOf="@+id/star2"-->
+            <!--android:layout_marginLeft="12dp"-->
+            <!--android:layout_alignParentTop="true"/>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/star3"-->
+            <!--android:text="\u2726"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textColor="@color/activity_light_color"-->
+            <!--android:layout_below="@+id/star2_text"-->
+            <!--android:layout_marginTop="16dp"/>-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/star3_text"-->
+            <!--android:text="Ensure that your Bungie.net profile is public. You can view this from: Settings > Accounts and Linking > “Display on public profile” is checked"-->
+            <!--android:textColor="@color/trimbe_white"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_toRightOf="@+id/star3"-->
+            <!--android:layout_below="@+id/star2_text"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:layout_marginLeft="14dp"/>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/user_missing_email"-->
+            <!--android:autoLink="email"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:textColorLink="@color/app_theme_color"-->
+            <!--android:textColor="@color/trimbe_white"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_below="@+id/star3_text"/>-->
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/contact_us_btn"
+        android:background="#0086d0"
+        android:text="CONTACT US"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="60dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"/>
+</RelativeLayout>

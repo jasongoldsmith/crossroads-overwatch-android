@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.crossroadsapp.overwatch.AddFinalActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/img_background_signin"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/img_top_hero_c_p"
+        android:id="@+id/background"
+        android:layout_alignParentTop="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/back_btn"
+        android:src="@drawable/icon_back_arrow"
+        android:layout_marginTop="22dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_fragment_layout"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="113dp">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/event_icon1"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/event_icon1"
+                android:id="@+id/act_subtype"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/level_layout"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_below="@id/act_subtype"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/level_text"
+                    android:gravity="center"
+                    android:textColor="@color/trimble_white"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/light"
+                    android:layout_toRightOf="@+id/level_text"
+                    android:textSize="12sp"
+                    android:textColor="@color/activity_light_color"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/modifier_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/modifier_layout2"
+                android:paddingTop="10dp">
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/modifier_layout2"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/modifier_layout3"
+                android:paddingTop="10dp">
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/modifier_layout3"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/level_layout"
+                android:paddingTop="10dp">
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/create_new_event_activity_layout"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/create_new_event_activity"
+                android:background="@color/create_new_event_green"
+                android:text="@string/add"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:clickable="false"
+                android:gravity="center"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/top_fragment_layout"
+            android:id="@+id/dropdown_layout">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/final_create_event_firstcard"
+                android:background="@color/traveller_login_email_input_bg"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_marginBottom="10dp">
+
+                <Spinner
+                    android:id="@+id/event_creation_subtype"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/traveller_login_email_input_bg"
+                    android:gravity="center"
+                    android:overlapAnchor="false"
+                    android:popupElevation="0dp"
+                    android:popupBackground="@android:color/transparent"/>
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:id="@+id/firstcard_img"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="13dp"
+                    android:src="@drawable/icon_checkpoint"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/act_subtype_text"
+                    android:layout_toRightOf="@+id/firstcard_img"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:text="Missing event name"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:layout_centerInParent="true"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/subtype_downarw"
+                    android:src="@drawable/icon_arrow_dwn"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="15dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/event_creation_checkpoint_layout"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_below="@id/final_create_event_firstcard">
+
+                <Spinner
+                    android:id="@+id/event_creation_checkpoint"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/traveller_login_email_input_bg"
+                    android:gravity="center"
+                    android:overlapAnchor="false"
+                    android:popupElevation="0dp"
+                    android:popupBackground="@android:color/transparent"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/checkmark"
+                    android:src="@drawable/icon_groups"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="14dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ad_checkpoint_text"
+                    android:textColor="@color/trimble_white"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/checkmark"
+                    android:layout_marginLeft="13dp"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/checkpoint_downarw"
+                    android:src="@drawable/icon_arrow_dwn"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="15dp"/>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="33dp"
+                android:id="@+id/date_time_layout"
+                android:layout_below="@id/event_creation_checkpoint_layout">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/traveller_login_email_input_bg"
+                    android:layout_weight="1"
+                    android:id="@+id/date">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/date_default"
+                        android:id="@+id/date_text"
+                        android:textColor="@android:color/white"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="14dp"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_arrow_dwn"
+                        android:padding="15dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/time"
+                    android:layout_weight="1"
+                    android:layout_toRightOf="@+id/date"
+                    android:background="@color/traveller_login_email_input_bg"
+                    android:layout_marginLeft="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/time_text"
+                        android:text="@string/time_default"
+                        android:textColor="@android:color/white"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_arrow_dwn"
+                        android:padding="15dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/event_creation_detail_layout"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_below="@id/date_time_layout">
+
+                <Spinner
+                    android:id="@+id/event_creation_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/traveller_login_email_input_bg"
+                    android:gravity="center"
+                    android:overlapAnchor="false"
+                    android:popupElevation="0dp"
+                    android:popupBackground="@android:color/transparent"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/detail_image"
+                    android:src="@drawable/icon_details"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="18dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ad_detail_text"
+                    android:textColor="@color/trimble_white"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:text="Details (Optional)"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/detail_image"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tag_downarw"
+                    android:src="@drawable/icon_arrow_dwn"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="15dp"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    <include layout="@layout/activity_base"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        xmlns:conversation="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_card"
+        android:layout_marginTop="1dp"
+        conversation:cardBackgroundColor="@color/event_detail_fireteam_cardbackground"
+        conversation:cardElevation="0dp"
+        conversation:cardUseCompatPadding="false" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="54dp">
+
+            <co.crossroadsapp.overwatch.utils.CircularImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/event_detail_player_profile"
+                android:src="@drawable/img_profile_blank"
+                app:border="true"
+                app:borderColor="#979797"
+                app:circularBorderWidth="1dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="17dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/leader_ear"
+                android:visibility="gone"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/img_dog_ear"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_name"
+                android:text="MISSING String"
+                android:textSize="14sp"
+                android:textColor="@color/sign_in_color"
+                android:layout_toRightOf="@+id/event_detail_player_profile"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/event_detail_message"
+                android:src="@drawable/icon_chat_detailscreen"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/invite_icon"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_invite"
+                android:paddingRight="12dp"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:layout_width="4dp"
+                android:layout_height="match_parent"
+                android:id="@+id/invited_bar"
+                android:src="@color/app_theme_color"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/invite_text"
+                android:textSize="14sp"
+                android:textColor="@color/trimble_white"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="14dp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

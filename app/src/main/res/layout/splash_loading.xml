@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/splash_layout"
+    android:background="@mipmap/img_background_signin">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/traveller_bdg"
+        android:src="@mipmap/img_c_r_brand"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="159dp"/>
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="10sp"-->
+        <!--android:text="Loading..."-->
+        <!--android:layout_below="@+id/traveller_bdg"-->
+        <!--android:layout_marginTop="25dp"-->
+        <!--android:layout_centerHorizontal="true"/>-->
+
+    <ProgressBar
+        android:id="@+id/pbHeaderProgress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:layout_below="@+id/traveller_bdg"
+        android:layout_centerHorizontal="true">
+    </ProgressBar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/copyright_text"
+        android:textSize="12sp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/copyright_string"/>
+
+    <include layout="@layout/activity_base" />
+
+</RelativeLayout>

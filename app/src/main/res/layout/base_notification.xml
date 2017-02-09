@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <co.crossroadsapp.overwatch.SwipeFrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <co.crossroadsapp.destiny.SwipeDeck
+            android:id="@+id/swipe_deck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="6dp"
+            swipedeck:card_spacing="16dp"
+            swipedeck:render_above="true"
+            swipedeck:rotation_degrees="0"
+            />
+
+    </co.crossroadsapp.overwatch.SwipeFrameLayout>
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:clipChildren="false">-->
+
+<!--<link.fls.swipestack.SwipeStack-->
+    <!--android:id="@+id/swipe_deck"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:padding="3dp"-->
+    <!--app:stack_size="2"-->
+    <!--app:stack_rotation="0"-->
+    <!--app:stack_spacing="6dp"/>-->
+
+<!--</FrameLayout>-->

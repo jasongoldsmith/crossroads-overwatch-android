@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/img_background_signin"
+    android:fitsSystemWindows="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/img_b_g_s_i_g_n_i_n_2" />
+
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/icon_back_arrow" />
+
+            <TextView
+                android:id="@+id/log_in_to_crossroads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/traveller_login_margin_top"
+                android:gravity="center_horizontal"
+                android:text="@string/log_in_to_crossroads"
+                android:textAllCaps="true"
+                android:textColor="@color/trimble_white"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/email_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/log_in_to_crossroads"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:inputType="textAutoCorrect|textCapSentences|textEmailAddress"
+                android:imeOptions="actionDone"
+                android:background="@color/traveller_login_email_input_bg"
+                android:drawableStart="@mipmap/img_icon_email"
+                android:drawablePadding="17dp"
+                android:maxLines="1"
+                android:gravity="center_vertical"
+                android:hint="@string/enter_email_address"
+                android:paddingBottom="22dp"
+                android:paddingEnd="0dp"
+                android:paddingStart="15dp"
+                android:paddingTop="22dp"
+                android:textColor="@color/trimble_white"
+                android:textColorHint="@color/traveller_login_hint_color"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email_input"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="3dp"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:background="@color/traveller_login_email_input_bg"
+                android:drawableStart="@mipmap/img_icon_password"
+                android:drawablePadding="17dp"
+                android:gravity="center_vertical"
+                android:hint="@string/enter_password"
+                android:inputType="textAutoCorrect|textCapSentences|textPassword"
+                android:paddingBottom="22dp"
+                android:paddingEnd="0dp"
+                android:paddingStart="15dp"
+                android:paddingTop="22dp"
+                android:textColor="@color/trimble_white"
+                android:textColorHint="@color/traveller_login_hint_color"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/change_password_to_letters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/password_input"
+                android:layout_alignRight="@+id/password_input"
+                android:layout_alignTop="@+id/password_input"
+                android:src="@mipmap/group_527" />
+
+            <TextView
+                android:id="@+id/forgot_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/password_input"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/forgot_login"
+                android:textColor="@color/trimble_white" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/sign_in_btn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/sign_in_color"
+        android:gravity="center"
+        android:text="@string/log_in"
+        android:textAllCaps="true"
+        android:textColor="@color/trimble_white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/img_background_signin"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/img_top_hero"/>
+    <ImageView
+        android:id="@+id/icon_gamemode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon_gamemode"
+        android:layout_marginTop="@dimen/icon_gamemode_margin_top" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/back_btn"
+        android:src="@drawable/icon_back_arrow"
+        android:layout_marginTop="22dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_text"
+        android:text="@string/choose_game_mode"
+        android:textSize="20dp"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:layout_below="@+id/icon_gamemode"
+        android:textColor="@color/trimble_white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/game_mode_margin_top"/>
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_text"
+        android:layout_marginTop="@dimen/game_mode_option_margin_top"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:id="@+id/quick_play_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/game_mode_button_bg"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/trimble_white"
+            android:drawableLeft="@mipmap/icon_quickplay"
+            android:drawableStart="@mipmap/icon_quickplay"
+            android:drawablePadding="15dp"
+            android:text="@string/quick_play_text"
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/arcade_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/game_mode_button_bg"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/trimble_white"
+            android:drawableLeft="@mipmap/icon_arcade"
+            android:drawableStart="@mipmap/icon_arcade"
+            android:drawablePadding="15dp"
+            android:text="@string/arcade_text"
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/competitive_play_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/game_mode_button_bg"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/trimble_white"
+            android:drawableLeft="@mipmap/icon_compet_play"
+            android:drawableStart="@mipmap/icon_compet_play"
+            android:drawablePadding="15dp"
+            android:text="@string/competitive_play_text"
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/play_vs_al_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/game_mode_button_bg"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/trimble_white"
+            android:drawableLeft="@mipmap/icon_vs_a_i"
+            android:drawableStart="@mipmap/icon_vs_a_i"
+            android:drawablePadding="15dp"
+            android:text="@string/play_vs_al_text"
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/custom_game_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/game_mode_button_bg"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/trimble_white"
+            android:drawableLeft="@mipmap/icon_custom_game"
+            android:drawableStart="@mipmap/icon_custom_game"
+            android:drawablePadding="15dp"
+            android:text="@string/custom_game_text"
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/activity_base" />
+</RelativeLayout>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/img_background_signin"
+        android:scaleType="fitXY"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/relativeLayout">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/travel_badge_console"
+            android:src="@mipmap/img_b_g_top_hero"
+            android:layout_alignParentTop="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/console_accnt"
+            android:layout_below="@+id/travel_badge_console"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/trimble_white"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="44dp"
+            android:text="@string/choose_console"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/spinner_layout"
+        android:background="@color/freelancer_background"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/relativeLayout">
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/spinner"
+            android:background="@color/freelancer_background"
+            android:gravity="center"
+            android:popupElevation="0dp"
+            android:popupBackground="@android:color/transparent" />
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:id="@+id/console_img"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="14dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_arrow_dwn"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="15dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/gamertag_layout"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#4f000000"
+        android:layout_below="@+id/spinner_layout">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/psn_icon"
+            android:src="@drawable/img_icon_id"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="22dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/console_name"
+            android:layout_toRightOf="@+id/psn_icon"
+            android:fontFamily="sans-serif"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="13dp"
+            android:textSize="10sp"
+            android:text="PLAYSTATION ID"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/console_id"
+            android:textCursorDrawable="@drawable/cursor_draw"
+            android:hint="ENTER YOUR PlayStation ID"
+            android:textColor="@android:color/white"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
+            android:background="@null"
+            android:textSize="14sp"
+            android:layout_toRightOf="@+id/psn_icon"
+            android:layout_below="@+id/console_name"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/privacy_terms"
+        android:textColorLink="@color/app_theme_color"
+        android:layout_above="@+id/next_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+        android:textColor="@color/trimble_white"
+        android:textSize="12sp"
+        android:text="@string/terms_conditions"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gamertag_layout"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/trimble_white"
+        android:textSize="12sp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/console_selection_text"
+        android:id="@+id/textView" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/next_btn"
+        android:background="@color/bubble_color"
+        android:text="NEXT"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"/>
+
+    <WebView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/web"
+        android:visibility="gone">
+    </WebView>
+
+    <include layout="@layout/activity_base" />
+
+</RelativeLayout>

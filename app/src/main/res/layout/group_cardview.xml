@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        xmlns:conversation="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/group_card_hgt"
+        android:id="@+id/groups"
+        android:layout_marginTop="6dp"
+        conversation:cardBackgroundColor="@android:color/transparent"
+        conversation:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/logout_btn_background"
+            android:id="@+id/group_mainlayout">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/group_image"
+                android:src="@drawable/img_nogroups"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:id="@+id/group_name"
+                android:includeFontPadding="false"
+                android:textColor="@color/trimble_white"
+                android:layout_toRightOf="@+id/group_image"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="11dp"
+                android:text="Your Bungie Group Here"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/group_members"
+                android:includeFontPadding="false"
+                android:textSize="12sp"
+                android:textColor="@color/orbit_text_color"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/group_image"
+                android:layout_below="@+id/group_name"
+                android:layout_marginLeft="11dp"
+                android:text="0 in Orbit"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/group_events"
+                android:includeFontPadding="false"
+                android:textSize="12sp"
+                android:textColor="@color/orbit_text_color"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/group_image"
+                android:layout_below="@+id/group_members"
+                android:layout_marginLeft="11dp"
+                android:text="0 Activities" />
+
+            <!--<CheckBox style="@android:style/Widget.CompoundButton.RadioButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/group_radio_btn"-->
+                <!--android:buttonTint="@color/app_theme_color"-->
+                <!--android:layout_alignParentEnd="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginRight="14dp"/>-->
+            <ToggleButton
+                android:id="@+id/mute_toggle"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/check"
+                android:checked="true"
+                android:textOn=""
+                android:textOff=""
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="9dp"/>
+        </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/group_card_hgt"
+        android:background="@color/group_drawer_background"
+        android:layout_marginTop="6dp"
+        android:alpha="0.5"
+        android:visibility="gone"
+        android:id="@+id/grp_overlay"/>
+
+    </RelativeLayout>
+

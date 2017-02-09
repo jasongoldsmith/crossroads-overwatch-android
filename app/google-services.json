@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "117357038130",
+    "firebase_url": "https://overwatch-19527.firebaseio.com",
+    "project_id": "overwatch-19527",
+    "storage_bucket": "overwatch-19527.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117357038130:android:6befda19bbd3621e",
+        "android_client_info": {
+          "package_name": "co.crossroadsapp.overwatch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117357038130-0njgmh4cfnqnkteorvs7t8a3mue8do8d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.crossroadsapp.overwatch",
+            "certificate_hash": "E78577D1F04B27F26BEA37CD1AB2F9579C163D26"
+          }
+        },
+        {
+          "client_id": "117357038130-1onqahd15bgp169r1ipjv2dg8fi8me6h.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "117357038130-aa56fb533p4esq3kujdtviemlagli8j3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg55SK_iW-GC3p1r7fVroqpdhb6jbnqTo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

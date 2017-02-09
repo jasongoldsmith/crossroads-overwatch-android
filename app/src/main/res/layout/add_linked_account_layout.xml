@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/img_background_signin"
+    android:fitsSystemWindows="false">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/img_b_g_s_i_g_n_i_n_2"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/icon_back_arrow" />
+
+            <TextView
+                android:id="@+id/choose_platform_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/traveller_choose_platform_title_margin_top"
+                android:gravity="center_horizontal"
+                android:text="@string/add_linked_account"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="@color/trimble_white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/choose_platform_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/choose_platform_title"
+                android:layout_marginTop="@dimen/traveller_choose_platform_subtitle_margin_top"
+                android:gravity="center_horizontal"
+                android:text="@string/link_another_overwatch_account_to_crossroads"
+                android:textColor="@color/trimble_white"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/add_linked_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/choose_platform_subtitle"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/traveller_login_email_input_bg"
+                android:gravity="center_vertical"
+                android:overlapAnchor="false"
+                android:popupBackground="@android:color/transparent"
+                android:popupElevation="0dp"
+                android:textColor="@color/trimble_white"
+                android:textSize="20sp" />
+
+            <FrameLayout
+                android:id="@+id/input_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/add_linked_spinner">
+
+                <EditText
+                    android:id="@+id/battle_tag_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/traveller_login_email_input_bg"
+                    android:drawableStart="@mipmap/img_icon_i_d"
+                    android:drawablePadding="17dp"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:hint="@string/enter_gamertag"
+                    android:paddingBottom="22dp"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="15dp"
+                    android:paddingTop="22dp"
+                    android:textColor="@color/trimble_white"
+                    android:textColorHint="@color/traveller_login_hint_color"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/sign_with_battlenet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/login_color"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:paddingBottom="22dp"
+                    android:paddingTop="22dp"
+                    android:text="@string/sign_in_with_battle_net"
+                    android:textColor="@color/trimble_white" />
+            </FrameLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/link_to_crossroads"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/sign_in_color"
+        android:gravity="center"
+        android:text="@string/link_to_crossroads"
+        android:textAllCaps="true"
+        android:textColor="@color/trimble_white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

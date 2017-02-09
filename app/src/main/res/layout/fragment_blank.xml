@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rv_layout">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textColor="@color/trimble_white"
+        android:textSize="12sp"
+        android:padding="15dp"
+        android:id="@+id/clan_tag_text"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bright_sky_blue"
+        android:layout_below ="@+id/clan_tag_text"
+        android:id="@+id/fireteam_banner"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_notification"
+            android:id="@+id/banner_ghost_icon"
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentStart="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fireteam_ready"
+            android:id="@+id/banner_header"
+            android:layout_toRightOf="@+id/banner_ghost_icon"
+            android:layout_marginLeft="22dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="13dp"
+            android:textSize="14sp"
+            android:textColor="@color/trimble_white"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/banner_msg"
+            android:layout_toRightOf="@+id/banner_ghost_icon"
+            android:layout_below="@+id/banner_header"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="9dp"
+            android:textSize="14sp"
+            android:textColor="@color/trimble_white"/>
+    </RelativeLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below ="@+id/clan_tag_text">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/event_view"
+            android:background="@android:color/transparent"
+            android:paddingTop="6dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="6dp"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout_eventdetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below ="@+id/fireteam_banner">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/eventdetail_view"
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:indeterminateDrawable="@drawable/progress" >
+    </ProgressBar>
+</RelativeLayout>

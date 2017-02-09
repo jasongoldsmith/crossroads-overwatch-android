@@ -1,0 +1,161 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/img_background_signin">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/img_b_g_top_hero" />
+
+    <ImageView
+        android:id="@+id/traveller_bdg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="129dp"
+        android:src="@mipmap/img_c_r_brand" />
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:id="@+id/signin"-->
+    <!--android:background="#0086d0"-->
+    <!--android:text="@string/signin"-->
+    <!--android:fontFamily="sans-serif"-->
+    <!--android:textStyle="bold"-->
+    <!--android:textColor="@android:color/white"-->
+    <!--android:textSize="14sp"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:gravity="center"/>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/horizontal_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/signin"
+        android:layout_below="@+id/guardian_text_layout"
+        android:background="@android:color/transparent"
+        android:clipToPadding="false"
+        android:paddingBottom="10dp"
+        android:paddingLeft="2dp"
+        android:paddingTop="10dp" />
+
+    <RelativeLayout
+        android:id="@+id/guardian_text_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/traveller_bdg"
+        android:layout_marginTop="29dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/player_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:paddingRight="3dp"
+            android:textColor="@color/activity_light_color"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/gaurdian_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/player_count"
+            android:text="@string/gaurdian_for_help"
+            android:textColor="@color/trimble_white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/privacy_terms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/horizontal_recycler_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/terms_conditions"
+        android:textColor="@color/trimble_white"
+        android:textColorLink="@color/app_theme_color"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+        android:id="@+id/top_header"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#1c2b33"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp"
+            android:text="CROSSROADS"
+            android:textColor="@color/trimble_white"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/main_backbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingRight="10dp"
+            android:paddingTop="34dp"
+            android:src="@drawable/icon_back_arrow" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/home_view_signup_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/sign_battle_text"
+        android:textColor="@color/trimble_white" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/home_view_signup_login"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_view_signup_login_height">
+
+        <TextView
+            android:id="@+id/login_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@color/login_color"
+            android:gravity="center"
+            android:text="@string/log_in"
+            android:textAllCaps="true"
+            android:textColor="@color/trimble_white"
+            android:textSize="16dp" />
+
+
+        <TextView
+            android:id="@+id/sign_up_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@color/sign_in_color"
+            android:gravity="center"
+            android:text="@string/sign_up_text"
+            android:textAllCaps="true"
+            android:textColor="@color/trimble_white"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <include layout="@layout/activity_base" />
+
+</RelativeLayout>

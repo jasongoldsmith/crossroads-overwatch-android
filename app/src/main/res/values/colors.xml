@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+
+    <color name="view_pager_background">#000</color>
+    <color name="grayish_semi_transperant">#80444444</color>
+    <color name="home_title_top">#93F5FF</color>
+
+    <!-- Conversation colors  -->
+    <color name="message_background">#eeeeee</color>
+    <color name="grp_name">#4A707B</color>
+    <color name="grp_name_subtext">#6DA2B1</color>
+
+    <color name="grp_name_text">#4A707B</color>
+
+    <color name="sending_text">#434C4F</color>
+    <color name="inforbar_sourcetext">#93F5FF</color>
+
+    <color name="status_bar_color">#363e40</color>
+
+    <color name="home_new_msg">#02A6D6</color>
+
+    <color name="invited_player_text">#bebebe</color>
+
+    <color name="bubble_color">#647378</color>
+
+    <color name="theme_color">#FF00AE</color>
+    <color name="semi_transparent_chip">#80FF00AE</color>
+
+    <color name="hinttext_color">#80ffffff</color>
+
+    <drawable name="semi_transperant_overlay">#aa000000</drawable>
+    <color name="trimble_black">#000000</color>
+    <color name="edittext_background">#4f000000</color>
+    <color name="fifty_black">#80000000</color>
+    <color name="hiden_text_bg">#434c4f</color>
+    <color name="seventy_percent_couch_mark_bg">#b3000000</color>
+    <color name="tour_skip_text_color">#3ea5d7</color>
+    <color name="edit_text">#6DA2B1</color>
+    <color name="profile_logout">#6DA2B1</color>
+    <color name="edit_clip_text">#00b6e7</color>
+    <color name="edit_clip_layout_bg">#eceff1</color>
+    <color name="related_title_bg">#4c5659</color>
+    <color name="related_videos_list_bg">#434c4f</color>
+    <color name="related_video_divider_color">#738388</color>
+    <color name="event_user_image_background">#365d65</color>
+    <color name="create_new_event_green">#60b800</color>
+    <color name="signin_pressed">#529d00</color>
+    <color name="orbit_text_color">#989898</color>
+
+    <color name="activity_light_color">#ffc600</color>
+    <color name="freelancer_background">#035166</color>
+
+    <color name="app_theme_color">#0086d0</color>
+
+    <color name="colorPrimaryLocal">#3F51B5</color>
+
+    <color name="consoleAddColor">#003847</color>
+
+    <color name="logout_btn_background">#131f23</color>
+
+    <color name="createnewevent_topbar">#19282c</color>
+    <color name="group_drawer_background">#233a3e</color>
+    <color name="copyright_text">#adc7ce</color>
+    <color name="player_circ_img_border">#979797</color>
+
+    <color name="user_profile_border_playstation">#013b98</color>
+    <color name="user_profile_border_xbox">#4dc222</color>
+
+    <color name="tag_text">#9ba8ad</color>
+    <color name="tag_background">#203236</color>
+
+    <color name="event_detail_fireteam_cardbackground">#8040555b</color>
+    <color name="eventdetail_clan">#1d3137</color>
+    <color name="comment_text_color">#819ea8</color>
+    <color name="comment_typing_text">#353f4e</color>
+
+    <color name="player_left_comment">#bfbfbf</color>
+    <color name="invite_background">#314b51</color>
+    <color name="invite_edittext_hint">#9a9a9a</color>
+
+
+    <color name="sign_in_color">#ffc300</color>
+    <color name="login_color">#fa9400</color>
+    <color name="join_btn_color">#fa9400</color>
+    <color name="feed_marigold">#ffc300</color>
+    <color name="trimble_white">#ffffffff</color>
+    <color name="game_mode_button_bg">#a035415b</color>
+    <color name="traveller_login_hint_color">#bcc5e1</color>
+    <color name="traveller_login_email_input_bg">#35415b</color>
+    <color name="choose_platform_color">#52648b</color>
+    <color name="profile_name_color">#2e3b56</color>
+    <color name="bright_sky_blue">#00c2ff</color>
+    <color name="link_color">#bcc5e1</color>
+</resources>

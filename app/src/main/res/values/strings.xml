@@ -1,0 +1,203 @@
+<resources>
+    <string name="app_name">Crossroads Overwatch</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="spinner_title">Checkpoint</string>
+    <string name="ok_btn">OK</string>
+    <string name="cancel_btn">CANCEL</string>
+    <string name="download_btn">Download</string>
+    <string name="later_btn">Later</string>
+
+    <!--create new event strings-->
+    <string name="date_default">Date - Today</string>
+    <string name="time_default">Time - Now</string>
+
+    <string name="leave_event">LEAVE</string>
+    <string name="join_event">JOIN</string>
+    <string name="message_all">MESSAGE ALL</string>
+
+    <string name="logout">Log Out</string>
+    <string name="logout_popup_msg">Are you sure you want to log out?</string>
+    <string name="report_crash">Contact Us</string>
+
+    <!-- Create event card text strings-->
+    <string name="featured">Featured</string>
+    <string name="raids">Raids</string>
+    <string name="arena">Arena</string>
+    <string name="crucible">Crucible</string>
+    <string name="strikes">Strikes</string>
+    <string name="patrol">Patrol</string>
+
+    <!-- error message strings -->
+    <string name="username_short">Your username must have at least 3 characters.</string>
+    <string name="username_missing">Please enter your gamertag.</string>
+    <string name="password_short">Your password must have at least 5 characters.</string>
+    <string name="password_missing">Please enter a password.</string>
+    <string name="login_fails">The username and password do not match. Please try again.</string>
+    <string name="signup_fails">Account creation failed.</string>
+    <string name="generic_error">Request failed. Please wait a few seconds and refresh.</string>
+    <string name="empty_chat">Please enter a message.</string>
+    <string name="undefined_server_error">Undefined server error. Please wait a few seconds and refresh.</string>
+    <string name="server_error">Server request failed. Please wait a few seconds and refresh.</string>
+    <string name="server_error_tryagain">Server request failed. Please wait a few seconds and try again.</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+    <string name="feedback_text">Need help with something? Want to send us feedback? Let us know!</string>
+    <string name="forgotlogin_text">Forgot your login? We will send instructions to your Bungie account with how to reset it.</string>
+    <string name="verify_accnt_toptext">Welcome !</string>
+    <string name="verify_accnt_bottomtext">Welcome to Crossroads, Destiny Fireteam Finder! Check your <![CDATA[<a href="http://www.bungie.net">Bungie.net</a>]]> inbox for a verification message. It will also appear in your Destiny companion app. </string>
+    <string name="verify_accnt_bottomtext_xbox">Welcome to Crossroads, Destiny Fireteam Finder! Check your <![CDATA[<a href="http://www.bungie.net">Bungie.net</a>]]> inbox for a verification message. It will also appear in your Destiny companion app. </string>
+    <string name="title_activity_group">GroupActivity</string>
+    <string name="group_top_text">Which group would you like to play with?"</string>
+    <string name="region">Region</string>
+    <string name="group_other_text">YOUR BUNGIE.NET GROUPS: (SELECT ONE)</string>
+    <string name="change_password">Change Password</string>
+    <string name="nogroup_text">It looks like you are not a member of any groups. Feel free to freelance with us or head to <![CDATA[<a href="http://www.bungie.net">Bungie.net</a>]]> to join a group and fully experience the Crossroads for Destiny app.</string>
+    <string name="copyright_string">&#169; Catalyst Foundry 2016</string>
+
+    <string name="terms_conditions">By signing in, I have read and agree to the Crossroads <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]> and <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>. &#169; Catalyst Foundry 2016</string>
+    <string name="terms_string"><u>Terms of Service</u>  |</string>
+    <string name="privacy_string">  <u>Privacy Policy</u> </string>
+    <string name="license_string"> |  <u>Licenses</u></string>
+    <string name="verify_logout_text">Sign in with a different account?</string>
+    <string name="message_missing_tryagain">If you have not received a message within 10 minutes, <![CDATA[<u><font color=#0086d0>send the message again</u>]]>. If the problem persists, contact us at <![CDATA[<font color=#0086d0>support@crossroadsapp.co]]></string>
+    <string name="choose_console">CHOOSE YOUR CONSOLE</string>
+
+    <string name="console_prompt">PLAYSTATION 4</string>
+    <string name="username_text">CROSSROADS USERNAME</string>
+    <string name="username_hint">Enter Id</string>
+    <string name="playstation_hint">Enter PlayStation Gamertag</string>
+    <string name="xbox_hint">Enter Xbox Gamertag</string>
+
+    <string name="add_activity">FIND A TEAM</string>
+    <string name="add">FIND A TEAM</string>
+    <string name="support_link"> support@crossroadsapp.co</string>
+    <string name="contact_us">CONTACT US</string>
+    <string name="password_hint">Enter password</string>
+    <string name="create_crossroads_accnt">CREATE NEW CROSSROADS ACCOUNT</string>
+    <string name="animation_speed">400</string>
+
+    <string name="fireteam_ready">YOUR FIRETEAM IS READY</string>
+
+    <!--<plurals name="grp_member">-->
+    <!--<item quantity="one"> &#160;Member</item>-->
+    <!--<item quantity="other"> &#160;Members</item>-->
+    <!--</plurals>-->
+
+    <string name="grp_member">%1$d in Queue</string>
+
+    <plurals name="grp_event">
+        <item quantity="one">%1$d Activity</item>
+        <item quantity="other">%1$d Activities</item>
+    </plurals>
+
+    <string-array name="console_arrays">
+        <item>PLAYSTATION 4</item>
+        <item>PLAYSTATION 3</item>
+        <item>XBOXONE</item>
+        <item>XBOX360</item>
+    </string-array>
+    <string name="title_activity_update_console">UpdateConsoleActivity</string>
+
+    <string name="deeplink_full_err">The maximum amount of players has been reached for this activity. Would you like to add one of your own?</string>
+    <string name="dialog_message">Our Terms of Service and Privacy Policy have changed.\n  By tapping the “OK” button, you agree to the updated <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]> and <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>.</string>
+    <string name="dialog_message_privacy">Our Privacy Policy has changed.\n  By tapping the “OK” button, you agree to the updated <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>.</string>
+    <string name="dialog_message_terms">Our Terms of Service have changed.\n  By tapping the “OK” button, you agree to the updated <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]>.</string>
+    <string name="dialog_title">Update</string>
+    <string name="console_selection_text">More than one console? You can add it later!</string>
+    <string name="title_activity_add_final">AddFinalActivity</string>
+
+    <string name="facebook_app_id">855221411276321</string>
+
+    <string name="mix_panel_token_old">23f27698695b0137adfef97f173b9f91</string>
+    <string name="mix_panel_token"> 36578d79d8accf79418b0b42b410aa17</string> <!--bb632ab8cea71f50d51a013d97a673ef</string>-->
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="comment_hint">Type your comment</string>
+    <string name="gaurdian_for_help">heroes searching for teams:</string>
+    <string name="signin">SIGN IN</string>
+    <string name="reset_pswd">RESET PASSWORD</string>
+    <string name="reset_pswd_test">Instructions on how to reset your password will be sent to your Bungie account.</string>
+    <string name="unverified_bungie_text">Check your messages on <![CDATA[<a href="http://www.bungie.net">Bungie.net</a>]]> for a verification link.</string>
+    <string name="user_missing_text">If you are still having login issues, email us at <![CDATA[<a href="mailto:support@crossroadsapp.com">support@crossroadsapp.com</a>]]> or contact us directly.</string>
+    <string name="report_issue_header">REPORT ISSUE</string>
+    <string name="report_issue">Is this comment problematic? Reporting it will hide it from everyone. Let us know more at support@crossroadsapp.co</string>
+    <string name="report_submitted_header">REPORT SUBMITTED</string>
+    <string name="report_submitted">We are on the case and will work to address your issue as soon as possible.</string>
+    <string name="report_issue_next">Looks like you’ve sent several reports recently. This probably needs our attention! Please tell us more about the issue.</string>
+    <string name="invalid_email">Please enter a valid email address.</string>
+
+    <plurals name="minutes_time">
+        <item quantity="one">%d minute ago</item>
+        <item quantity="other">%d minutes ago</item>
+    </plurals>
+
+    <plurals name="hours_time">
+        <item quantity="one">%d hour ago</item>
+        <item quantity="other">%d hours ago</item>
+    </plurals>
+
+    <plurals name="days_time">
+        <item quantity="one">%d day ago</item>
+        <item quantity="other">%d days ago</item>
+    </plurals>
+
+    <string name="banner_member_msg"> a friend request or message for a party invite.</string>
+    <string name="banner_leader_msg">Expect friend requests or messages from your Fireteam. You can start a party and invite everyone.</string>
+    <string name="invite">INVITE</string>
+    <string name="full_invitee">The maximum number of players for your Fireteam has been reached. Each invited player will have a reserved spot on your Fireteam.</string>
+    <string name="incomplete_invite">Inviting players will send a message from you to them on Bungie.net.</string>
+    <string name="invite_frnd">Invite Friends</string>
+    <string name="legacy_error">In line with Rise of Iron, we now only support next-gen consoles. When you’ve upgraded your console, please come back and join us!</string>
+
+
+    <string name="sign_up_text">sign up</string>
+    <string name="sign_battle_text">© Catalyst Foundry 2017</string>
+    <string name="choose_game_mode">choose game mode</string>
+    <string name="quick_play_text">Quick Play</string>
+    <string name="arcade_text">Arcade</string>
+    <string name="competitive_play_text">Competitive Play</string>
+    <string name="play_vs_al_text">Play vs. AI</string>
+    <string name="custom_game_text">Custom Game</string>
+    <string name="loading">Loading...</string>
+    <string name="sign_up_for_crossroads">SIGN UP FOR CROSSROADS</string>
+    <string name="enter_email_address">Enter email address</string>
+    <string name="log_in_to_crossroads">LOG IN TO CROSSROADS</string>
+    <string name="sing_up_to_crossroads">SIGN UP TO CROSSROADS</string>
+    <string name="forgot_login">Forgot Login?</string>
+    <string name="enter_password">Enter password</string>
+    <string name="log_in">log in</string>
+    <string name="sign_up_terms_privacy">By clicking the “Next” button below, I have read and agree to the Crossroads <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]> and <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>.</string>
+    <string name="next">next</string>
+    <string name="choose_your_platform">choose your platform</string>
+    <string name="link_your_overwatch_account_to_crossroads_you_ll_only_have_to_do_this_once">Link your Overwatch account to Crossroads \n(you’ll only have to do this once)</string>
+    <string name="more_than_one_platform_or_console">More than one platform or console? You can add it later!</string>
+    <string name="enter_battle_tag">Enter Battle Tag</string>
+    <string name="enter_gamertag">Enter Gamertag</string>
+    <string name="join_crossroads">join crossroads</string>
+    <string name="already_taken">already taken</string>
+    <string name="gamertag_entered"><![CDATA[<Gamertag entered>]]></string>
+    <string name="account_already_exists_message"><![CDATA[An account already exists for that %1$s. Please check for any typos. \n\n\n If you believe someone is using your account name, let us know using the contact form below!]]></string>
+    <string name="send">send</string>
+    <string name="enter_email_address_required">Enter email address (required)</string>
+    <string name="what_would_you_like_to_tell_us">What would you like to tell us?</string>
+    <string name="sign_in_with_battle_net">SIGN IN WITH BATTLE.NET</string>
+    <string name="add_linked_account">add linked account</string>
+    <string name="link_another_overwatch_account_to_crossroads">Link another Overwatch account to Crossroads \n(you’ll only have to do this once)</string>
+    <string name="link_to_crossroads">link to crossroads</string>
+    <string name="we_will_send_a_reset_password">We will send a reset password link to your email address. If you forgot the email address you signed up with, please contact us at <font color='#ffc300'>support@crossroadsapp.co</font></string>
+    <string name="email_password_reset">EMAIL PASSWORD RESET</string>
+
+    <string-array name="platform_array_keys">
+        <item>PC</item>
+        <item>PlayStation 4</item>
+        <item>Xbox One</item>
+    </string-array>
+
+    <string-array name="platform_array_values">
+        <item>pc</item>
+        <item>ps4</item>
+        <item>xboxone</item>
+    </string-array>
+</resources>

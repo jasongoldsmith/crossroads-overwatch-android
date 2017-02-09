@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        xmlns:conversation="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventdetail_commentcard"
+        android:layout_marginTop="1dp"
+        conversation:cardBackgroundColor="@color/event_detail_fireteam_cardbackground"
+        conversation:cardElevation="0dp"
+        conversation:cardUseCompatPadding="false" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <co.crossroadsapp.overwatch.utils.CircularImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/event_detail_comment_player_profile"
+                android:src="@drawable/img_profile_blank"
+                app:border="true"
+                app:borderColor="#979797"
+                app:circularBorderWidth="1dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="17dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/leader_comment_ear"
+                android:visibility="gone"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/img_dog_ear"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_name_comment"
+                android:visibility="gone"
+                android:textSize="14sp"
+                android:layout_alignParentTop="true"
+                android:textColor="@color/activity_light_color"
+                android:layout_toRightOf="@+id/event_detail_comment_player_profile"
+                android:layout_marginLeft="14dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/comment_text"
+                android:textSize="14sp"
+                android:textColor="@color/trimble_white"
+                android:layout_toRightOf="@+id/event_detail_comment_player_profile"
+                android:layout_below="@+id/player_name_comment"
+                android:layout_marginLeft="14dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="14dp"
+                android:paddingRight="21dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/comment_time"
+                android:text="4 minutes ago"
+                android:textSize="12sp"
+                android:textColor="@color/comment_text_color"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="14dp"
+                android:paddingTop="11dp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
