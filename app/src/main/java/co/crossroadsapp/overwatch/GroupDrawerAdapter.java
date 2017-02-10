@@ -245,13 +245,6 @@ public class GroupDrawerAdapter {
     }
 
     public void update(Object data) {
-        //localGroupList = (ArrayList<GroupData>) data;
-        /*ArrayList<GroupData> ll = (ArrayList<GroupData>) data;
-        localGroupList = new ArrayList<GroupData>();
-        for (int i = 0; i < ll.size(); i++) {
-            localGroupList.add(ll.get(i));
-        }*/
-
         GroupData gd = null;
         List<GroupData> tmp = (ArrayList<GroupData>) data;
         localGroupList = new ArrayList<>();
@@ -282,19 +275,6 @@ public class GroupDrawerAdapter {
         } else {
             mRecyclerView.setVisibility(View.GONE);
         }
-
-
-        /*localGroupList = new ArrayList<>((ArrayList<GroupData>) data);
-        GroupData gd = setSelectedGroup();
-        getSelectedGrp(localGroupList);
-        //checkSignleGrpView();
-        if (localGroupList.size() > 0) {
-            mRecyclerView.setVisibility(View.VISIBLE);
-            mAdapter.addItem(localGroupList);
-        } else {
-            mRecyclerView.setVisibility(View.GONE);
-        }
-        mAdapter.notifyDataSetChanged();*/
     }
 
     private void getSelectedGrp(ArrayList<GroupData> localGroupList) {

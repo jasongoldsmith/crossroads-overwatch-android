@@ -13,9 +13,6 @@ import android.widget.RelativeLayout;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import co.crossroadsapp.overwatch.data.InvitationLoginData;
-import co.crossroadsapp.overwatch.data.UserData;
-import co.crossroadsapp.overwatch.network.LoginNetwork;
-import co.crossroadsapp.overwatch.network.OverwatchFetchUserProfileNetwork;
 import co.crossroadsapp.overwatch.network.TrackingNetwork;
 import co.crossroadsapp.overwatch.utils.Constants;
 import co.crossroadsapp.overwatch.utils.Util;
@@ -24,7 +21,6 @@ import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
