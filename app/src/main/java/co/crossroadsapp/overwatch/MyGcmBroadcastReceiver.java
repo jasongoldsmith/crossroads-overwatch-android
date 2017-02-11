@@ -67,9 +67,9 @@ public class MyGcmBroadcastReceiver extends BroadcastReceiver {
                 PendingIntent resultIntent = PendingIntent.getActivity(context, Constants.INTENT_ID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
                 if(alert!=null) {
-                    mBuilder.setAutoCancel(true).setSmallIcon(R.drawable.img_traveler_badge_icon).setContentIntent(resultIntent).setContentTitle(context.getResources().getString(R.string.app_name)).setStyle(new NotificationCompat.BigTextStyle().bigText(alert)).setContentText(alert);
+                    mBuilder.setAutoCancel(true).setSmallIcon(R.mipmap.ic_launcher).setContentIntent(resultIntent).setContentTitle(context.getResources().getString(R.string.app_name)).setStyle(new NotificationCompat.BigTextStyle().bigText(alert)).setContentText(alert);
                 }else{
-                    mBuilder.setSmallIcon(R.drawable.img_traveler_badge_icon).setContentIntent(resultIntent).setContentText("New Message Received").setContentTitle(context.getResources().getString(R.string.app_name));
+                    mBuilder.setSmallIcon(R.mipmap.ic_launcher).setContentIntent(resultIntent).setContentText("New Message Received").setContentTitle(context.getResources().getString(R.string.app_name));
                 }
                 NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
                 mNotificationManager.notify(UUID.randomUUID().hashCode(), mBuilder.build());

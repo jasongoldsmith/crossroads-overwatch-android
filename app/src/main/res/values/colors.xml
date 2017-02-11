@@ -55,7 +55,7 @@
     <color name="activity_light_color">#ffc600</color>
     <color name="freelancer_background">#035166</color>
 
-    <color name="app_theme_color">#0086d0</color>
+    <color name="app_theme_color">#00c2ff</color>
 
     <color name="colorPrimaryLocal">#3F51B5</color>
 
@@ -75,7 +75,7 @@
     <color name="tag_background">#203236</color>
 
     <color name="event_detail_fireteam_cardbackground">#8040555b</color>
-    <color name="eventdetail_clan">#1d3137</color>
+    <color name="eventdetail_clan">#35415b</color>
     <color name="comment_text_color">#819ea8</color>
     <color name="comment_typing_text">#353f4e</color>
 
@@ -88,10 +88,12 @@
     <color name="login_color">#fa9400</color>
     <color name="join_btn_color">#fa9400</color>
     <color name="feed_marigold">#ffc300</color>
+    <color name="current_email">#feb809</color>
     <color name="trimble_white">#ffffffff</color>
     <color name="game_mode_button_bg">#a035415b</color>
     <color name="traveller_login_hint_color">#bcc5e1</color>
     <color name="traveller_login_email_input_bg">#35415b</color>
+    <color name="traveller_login_email_input_bg_fifty">#8035415b</color>
     <color name="choose_platform_color">#52648b</color>
     <color name="profile_name_color">#2e3b56</color>
     <color name="bright_sky_blue">#00c2ff</color>

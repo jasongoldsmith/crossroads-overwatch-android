@@ -23,6 +23,7 @@ public class ForgotPasswordNetwork extends Observable {
     private String url = "api/v1/auth/request/resetPassword";
     private String changePswrdUrl = "api/v1/a/user/updatePassword";
     private ControlManager mManager;
+    private String changeEmailUrl = "api/v1/a/user/updateEmail";
 
     public ForgotPasswordNetwork(Context c) {
         mContext = c;
@@ -54,6 +55,25 @@ public class ForgotPasswordNetwork extends Observable {
     public void doChangePassword(RequestParams params) throws JSONException {
         if (Util.isNetworkAvailable(mContext)) {
             ntwrk.post(changePswrdUrl, params, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    setChanged();
+                    notifyObservers();
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                    mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
+                }
+            });
+        }else {
+            Util.createNoNetworkDialogue(mContext);
+        }
+    }
+
+    public void doChangeEmail(RequestParams params) throws JSONException {
+        if (Util.isNetworkAvailable(mContext)) {
+            ntwrk.post(changeEmailUrl, params, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     setChanged();

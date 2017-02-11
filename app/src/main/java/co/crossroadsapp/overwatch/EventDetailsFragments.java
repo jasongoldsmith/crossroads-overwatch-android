@@ -307,8 +307,10 @@ public class EventDetailsFragments extends Fragment {
                             currPlayerId = playerLocal.get(position).getPlayerId();
                         }
                         holder.message.setVisibility(View.GONE);
-
                         holder.leader_tag.setVisibility(View.GONE);
+                        if(position==0) {
+                            holder.leader_tag.setVisibility(View.VISIBLE);
+                        }
 
                         if (playerLocal.get(position).getPsnId() != null && playerLocal.get(position).getUserId() != null) {
                             String name = playerLocal.get(position).getPsnId();
@@ -327,9 +329,9 @@ public class EventDetailsFragments extends Fragment {
                             }
                             holder.playerName.setText(name);
 
-                            if (decideLeaderTag(position, playerLocal.get(position).getPsnId())) {
-                                holder.leader_tag.setVisibility(View.VISIBLE);
-                            }
+//                            if (decideLeaderTag(position, playerLocal.get(position).getPsnId())) {
+//                                holder.leader_tag.setVisibility(View.VISIBLE);
+//                            }
 
                             if (playerLocal.get(position).getInvitedBy() != null) {
                                 holder.invitedColorBar.setVisibility(View.VISIBLE);

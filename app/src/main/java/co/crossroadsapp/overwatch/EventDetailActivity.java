@@ -387,7 +387,7 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
         inviteLeaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showGenericError("CAN’T MAKE IT?", "If you turn down this invite, another Guardian will take your spot. Are you sure you want to leave?", "YES, I WANT TO LEAVE", "No, I want to stay", Constants.GENERAL_LEAVE, null, false);
+                showGenericError("CAN’T MAKE IT?", "If you turn down this invite, another Agent will take your spot. Are you sure you want to leave?", "YES, I WANT TO LEAVE", "No, I want to stay", Constants.GENERAL_LEAVE, null, false);
                 //leaveEvent();
             }
         });
@@ -814,11 +814,11 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
                     deepLinkMsg = getDeepLinkConsoleType() + ": I need " + reqPlayer + " more for " + actName + " in the " + grpName + " group";
                 }
             } else {
-                deepLinkTitle = "Searching for Guardians";
+                deepLinkTitle = "Searching for Agents";
                 if (currEvent.getLaunchEventStatus().equalsIgnoreCase("upcoming")) {
-                    deepLinkMsg = console + ": This fireteam needs " + reqPlayer + " more for " + actName + " on " + upcomingDate + " in the " + grpName + " group";
+                    deepLinkMsg = console + ": This team needs " + reqPlayer + " more for " + actName + " on " + upcomingDate + " in the " + grpName + " group";
                 }else {
-                    deepLinkMsg = console + ": This fireteam needs " + reqPlayer + " more for " + actName + " in the " + grpName + " group";
+                    deepLinkMsg = console + ": This team needs " + reqPlayer + " more for " + actName + " in the " + grpName + " group";
                 }
             }
 

@@ -121,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/create_new_event_activity"
-                android:background="@color/create_new_event_green"
+                android:background="@color/login_color"
                 android:text="@string/add"
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
@@ -142,7 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/final_create_event_firstcard"
-                android:background="@color/traveller_login_email_input_bg"
+                android:background="@drawable/game_mode_button_bg"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="33dp"
                 android:layout_marginRight="33dp"
@@ -152,18 +152,18 @@
                     android:id="@+id/event_creation_subtype"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/traveller_login_email_input_bg"
+                    android:background="@drawable/game_mode_button_bg"
                     android:gravity="center"
                     android:overlapAnchor="false"
                     android:popupElevation="0dp"
                     android:popupBackground="@android:color/transparent"/>
 
                 <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/firstcard_img"
                     android:layout_alignParentLeft="true"
-                    android:layout_margin="13dp"
+                    android:layout_margin="15dp"
                     android:src="@drawable/icon_checkpoint"
                     android:layout_centerVertical="true"/>
                 <TextView
@@ -200,7 +200,7 @@
                     android:id="@+id/event_creation_checkpoint"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/traveller_login_email_input_bg"
+                    android:background="@drawable/game_mode_button_bg"
                     android:gravity="center"
                     android:overlapAnchor="false"
                     android:popupElevation="0dp"
@@ -212,9 +212,8 @@
                     android:id="@+id/checkmark"
                     android:src="@drawable/icon_groups"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="14dp"
-                    android:layout_centerVertical="true"
-                    android:scaleType="fitXY"/>
+                    android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -251,7 +250,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@color/traveller_login_email_input_bg"
+                    android:background="@drawable/game_mode_button_bg"
                     android:layout_weight="1"
                     android:id="@+id/date">
                     <TextView
@@ -280,7 +279,7 @@
                     android:id="@+id/time"
                     android:layout_weight="1"
                     android:layout_toRightOf="@+id/date"
-                    android:background="@color/traveller_login_email_input_bg"
+                    android:background="@drawable/game_mode_button_bg"
                     android:layout_marginLeft="8dp">
                     <TextView
                         android:layout_width="wrap_content"
@@ -318,7 +317,7 @@
                     android:id="@+id/event_creation_detail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/traveller_login_email_input_bg"
+                    android:background="@drawable/game_mode_button_bg"
                     android:gravity="center"
                     android:overlapAnchor="false"
                     android:popupElevation="0dp"

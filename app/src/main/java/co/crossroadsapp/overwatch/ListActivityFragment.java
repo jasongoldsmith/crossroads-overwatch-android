@@ -149,6 +149,8 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
     private ImageView down_arw_img;
     private TextView consoleText;
     private Bundle b;
+    private TextView changePassword;
+    private TextView changeEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -386,6 +388,9 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
         // Set adapter for console selector
         setUpConsoleSpinner();
 
+        changePassword = (TextView) findViewById(R.id.change_password);
+        changeEmail = (TextView) findViewById(R.id.change_email);
+
 //        adapterConsole = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, consoleItems) {
 //
 //            int FONT_STYLE = Typeface.BOLD;
@@ -419,6 +424,24 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
 //        adapterConsole.setDropDownViewResource(R.layout.empty_layout);
 //        dropdown.setAdapter(adapterConsole);
 //        adapterConsole.notifyDataSetChanged();
+
+        changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent regIntent = new Intent(getApplicationContext(),
+                        ChangePassword.class);
+                startActivity(regIntent);
+            }
+        });
+
+        changeEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent regIntent = new Intent(getApplicationContext(),
+                        ChangeEmail.class);
+                startActivity(regIntent);
+            }
+        });
 
         inviteFrnds.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1375,12 +1398,12 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
     };
 
     public void setgrpIcon(String groupImageUrl) {
-        if (appIcon != null) {
-            if (groupImageUrl != null) {
-                Util.picassoLoadIcon(this, appIcon, groupImageUrl, R.dimen.group_icon_list_hgt, R.dimen.group_icon_list_width, R.drawable.img_logo_badge_group);
-                appIcon.invalidate();
-            }
-        }
+//        if (appIcon != null) {
+//            if (groupImageUrl != null) {
+//                Util.picassoLoadIcon(this, appIcon, groupImageUrl, R.dimen.group_icon_list_hgt, R.dimen.group_icon_list_width, R.drawable.img_logo_badge_group);
+//                appIcon.invalidate();
+//            }
+//        }
     }
 
     @Override

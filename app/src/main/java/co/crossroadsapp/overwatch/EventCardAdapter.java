@@ -424,7 +424,8 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     holder.event_card_mainLayout.invalidate();
                     holder.checkpointText.invalidate();
                     holder.eventDate.invalidate();
-                    Util.picassoLoadIcon(mContext, holder.eventIcon, url, R.dimen.activity_icon_hgt, R.dimen.activity_icon_width, R.mipmap.icon_notification);
+                    Util.picassoLoadImageWithoutMeasurement(mContext, holder.eventIcon, url, R.mipmap.icon_notification);
+                    //Util.picassoLoadIcon(mContext, holder.eventIcon, url, R.dimen.activity_icon_hgt, R.dimen.activity_icon_width, R.mipmap.icon_notification);
                 }
                 break;
             case 2:

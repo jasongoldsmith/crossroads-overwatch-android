@@ -1188,4 +1188,14 @@ public class ControlManager implements Observer {
         eventRelationshipNtwrk.addObserver(this);
         eventRelationshipNtwrk.postEventPlayerRelation(requestParams, Constants.CANCEL_PLAYER_URL);
     }
+
+    public void postChangeEmail(ChangeEmail activity, RequestParams params) {
+        try {
+            forgotPasswordNetwork = new ForgotPasswordNetwork(activity);
+            forgotPasswordNetwork.addObserver(activity);
+            forgotPasswordNetwork.doChangeEmail(params);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

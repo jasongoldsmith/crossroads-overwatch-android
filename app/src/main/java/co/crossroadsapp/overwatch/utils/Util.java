@@ -641,8 +641,8 @@ public class Util {
         if (mContext != null) {
             GradientDrawable gd = new GradientDrawable();
             gd.setCornerRadius(5);
-            gd.setStroke(2, 0xFF203236);
-            gd.setColor(mContext.getResources().getColor(R.color.tag_background));
+            gd.setStroke(2, 0xFF52648b);
+            gd.setColor(mContext.getResources().getColor(R.color.choose_platform_color));
             textView.setBackgroundDrawable(gd);
         }
     }
