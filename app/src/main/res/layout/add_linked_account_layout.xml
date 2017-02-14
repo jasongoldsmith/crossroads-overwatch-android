@@ -38,6 +38,7 @@
                 android:gravity="center_horizontal"
                 android:text="@string/add_linked_account"
                 android:textAllCaps="true"
+                android:fontFamily="sans-serif"
                 android:textStyle="bold"
                 android:textColor="@color/trimble_white"
                 android:textSize="18sp" />
@@ -82,12 +83,13 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="3dp"
-                    android:background="@color/traveller_login_email_input_bg"
+                    android:background="@drawable/edittext_corner_bg"
                     android:drawableStart="@mipmap/img_icon_i_d"
                     android:drawablePadding="17dp"
                     android:gravity="center_vertical"
-                    android:textStyle="bold"
                     android:hint="@string/enter_gamertag"
+                    android:imeOptions="actionDone"
+                    android:nextFocusDown="@+id/link_to_crossroads"
                     android:paddingBottom="22dp"
                     android:paddingEnd="0dp"
                     android:paddingStart="15dp"
@@ -119,12 +121,14 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/sign_in_color"
+        android:background="@color/login_color"
         android:gravity="center"
         android:text="@string/link_to_crossroads"
         android:textAllCaps="true"
         android:textColor="@color/trimble_white"
         android:textSize="16sp"
         android:textStyle="bold" />
+
+    <include layout="@layout/general_error_ui" />
 
 </RelativeLayout>

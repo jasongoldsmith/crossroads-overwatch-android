@@ -11,6 +11,7 @@ import java.util.Observer;
 
 import co.crossroadsapp.overwatch.ControlManager;
 import co.crossroadsapp.overwatch.R;
+import co.crossroadsapp.overwatch.core.BattletagAlreadyTakenException;
 import co.crossroadsapp.overwatch.core.OverwatchLoginException;
 import co.crossroadsapp.overwatch.core.TrimbleException;
 import co.crossroadsapp.overwatch.data.UserData;
@@ -60,6 +61,9 @@ public class PreChooseGameTagFragment extends Fragment implements Observer {
                 }
             }
         } else {
+//            if(arg instanceof OverwatchLoginException) {
+//                ((BattletagAlreadyTakenException) arg).getMessage()
+//            }
             Activity act = getActivity();
             if (act == null || act.isFinishing()) {
                 return;

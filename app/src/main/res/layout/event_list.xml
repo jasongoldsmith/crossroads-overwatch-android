@@ -29,22 +29,20 @@
             android:background="@mipmap/img_header_bg"
             android:layout_alignParentTop="true">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/img_header_bg"
-                android:layout_alignParentTop="true"
-                android:adjustViewBounds="true"/>
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@mipmap/img_header_bg"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:adjustViewBounds="true"/>-->
 
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/badge_icon"
-                android:background="@drawable/group_image_shape"
-                android:src="@drawable/img_logo_badge_group"
-                android:layout_marginTop="30dp"
+                android:src="@drawable/icon_region_menu"
+                android:layout_marginTop="26dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="48dp"
                 android:layout_alignParentEnd="true"/>
 
             <co.crossroadsapp.overwatch.utils.CircularImageView
@@ -53,7 +51,7 @@
                 android:id="@+id/userProfile"
                 android:src="@drawable/default_profile"
                 android:layout_marginStart="11dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="33dp"
                 android:layout_alignParentStart="true"
                 app:border="true"
                 app:borderColor="@color/trimble_white"
@@ -226,8 +224,7 @@
                 android:layout_height="96dp"
                 android:gravity="center"
                 android:id="@+id/user_profile_layout"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="81dp"
+                android:layout_marginTop="88dp"
                 android:layout_centerHorizontal="true">
                 <co.crossroadsapp.overwatch.utils.CircularImageView
                     android:layout_width="96dp"
@@ -251,7 +248,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/profile_name_color"
-                android:textSize="22sp"
+                android:textSize="16sp"
+                android:layout_marginTop="18dp"
                 android:textStyle="bold"
                 android:layout_below="@+id/user_profile_layout"
                 android:layout_gravity="bottom"
@@ -271,7 +269,7 @@
                 android:id="@+id/console_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/traveller_login_email_input_bg"
+                android:background="@drawable/game_mode_button_bg"
                 android:gravity="center"
                 android:overlapAnchor="false"
                 android:popupElevation="0dp"
@@ -308,17 +306,49 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:id="@+id/crash_btn"
             android:layout_below="@+id/multi_console_layout"
-            android:layout_marginTop="20dp"
+            android:id="@+id/change_password"
             android:layout_centerHorizontal="true"
-            android:text="@string/report_crash"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/game_mode_button_bg"
+            android:text="@string/change_password"
             android:textSize="14sp"
             android:textColor="@android:color/white"
             android:layout_marginRight="37dp"
             android:layout_marginLeft="37dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:id="@+id/change_email"
+            android:layout_centerHorizontal="true"
+            android:text="@string/change_email"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="37dp"
+            android:layout_marginLeft="37dp"
+            android:layout_below="@+id/change_password"
             android:gravity="center"
-            android:background="@color/traveller_login_email_input_bg"/>
+            android:background="@drawable/game_mode_button_bg"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:id="@+id/crash_btn"
+            android:layout_below="@+id/change_email"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/report_crash"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="37dp"
+            android:layout_marginLeft="37dp"
+            android:gravity="center"
+            android:background="@drawable/game_mode_button_bg"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -333,14 +363,15 @@
             android:textColor="@android:color/white"
             android:layout_marginRight="37dp"
             android:layout_marginLeft="37dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:id="@+id/logout_btn"
             android:layout_below="@+id/invite"
-            android:background="@color/traveller_login_email_input_bg"
+            android:background="@drawable/game_mode_button_bg"
             android:text="@string/logout"
             android:textSize="14sp"
             android:textColor="@android:color/white"
@@ -476,7 +507,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="11dp"
-                        android:text="Group name missing"/>
+                        android:text="Region name missing"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -579,7 +610,7 @@
                     android:layout_above="@+id/empty_grp_text"
                     android:id="@+id/empty_grp_text1"
                     android:gravity="center"
-                    android:text="To play with other groups and update your profile, please verify your account."
+                    android:text="To play with other regions and update your profile, please verify your account."
                     android:layout_marginBottom="25dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginRight="10dp"
@@ -593,7 +624,7 @@
                     android:gravity="center"
                     android:fontFamily="sans-serif"
                     android:textStyle="bold"
-                    android:text="VERIFY YOURSELF, GUARDIAN"
+                    android:text="VERIFY YOURSELF, AGENT"
                     android:layout_marginBottom="16dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginRight="10dp"

@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.utils.Constants;
 import co.crossroadsapp.overwatch.utils.Util;
@@ -182,7 +183,7 @@ public class UpdateConsoleActivity extends BaseActivity implements AdapterView.O
 
     public void showError(String err) {
         hideProgressBar();
-        setErrText(err);
+        //setErrText(err);
     }
 
     private void setTextForConsole() {
@@ -317,23 +318,27 @@ public class UpdateConsoleActivity extends BaseActivity implements AdapterView.O
     public void update(Observable observable, Object data) {
         hideProgressBar();
         if(data!=null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                builder = new AlertDialog.Builder(UpdateConsoleActivity.this, android.R.style.Theme_Material_Light_Dialog_Alert);
+            if (data instanceof LoginError) {
+                setErrText((LoginError) data);
             } else {
-                builder = new AlertDialog.Builder(UpdateConsoleActivity.this);
-            }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(UpdateConsoleActivity.this, android.R.style.Theme_Material_Light_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(UpdateConsoleActivity.this);
+                }
 
-            builder.setTitle("Success!")
-                    .setMessage("Your " +console + " " + conId + " account has been linked to Crossroads.")
-                    .setPositiveButton("GOT IT", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // continue with finish activity
-                            dialog.dismiss();
-                            finish();
-                        }
-                    });
-            dialog = builder.create();
-            dialog.show();
+                builder.setTitle("Success!")
+                        .setMessage("Your " + console + " " + conId + " account has been linked to Crossroads.")
+                        .setPositiveButton("GOT IT", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with finish activity
+                                dialog.dismiss();
+                                finish();
+                            }
+                        });
+                dialog = builder.create();
+                dialog.show();
+            }
         }
     }
 

@@ -14,7 +14,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="261dp"
+        android:layout_height="wrap_content"
         android:id="@+id/background"
         android:background="@mipmap/img_top_hero_c_p"
         android:layout_alignParentTop="true"/>
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/navi_bottom"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="81dp"
+        android:layout_marginTop="148dp"
         android:background="@drawable/img_nav_gradient_bg"/>
 
     <RelativeLayout
@@ -62,8 +62,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/event_detail_top_frag"
         android:orientation="horizontal"
-        android:layout_above="@+id/viewpager_layout"
-        android:layout_marginBottom="50dp">
+        android:layout_below="@+id/eventdetail_top_layout"
+        android:layout_marginTop="35dp">
 
         <ImageView
             android:layout_width="40dp"
@@ -124,11 +124,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/event_tag_text"
-                android:background="#203236"
+                android:background="@color/choose_platform_color"
                 android:layout_below="@+id/checkpoint_date_layout"
                 android:textSize="11dp"
                 android:layout_marginTop="8dp"
-                android:textColor="#9ba8ad"
+                android:textColor="@color/traveller_login_hint_color"
                 android:visibility="gone"
                 android:gravity="center"
                 android:padding="6dp"/>
@@ -158,7 +158,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/leave_btn"
-            android:background="@color/activity_light_color"
+            android:background="@color/bright_sky_blue"
             android:text="@string/leave_event"
             android:fontFamily="sans-serif"
             android:textStyle="bold"

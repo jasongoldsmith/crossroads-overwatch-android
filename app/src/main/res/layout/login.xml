@@ -45,7 +45,7 @@
         android:textStyle="bold"
         android:textColor="@color/trimble_white"
         android:layout_centerHorizontal="true"
-        android:text="READY TO FIGHT THE DARKNESS?"
+        android:text="READY TO FIGHT TALON?"
         android:textSize="16sp"/>
 
     <LinearLayout

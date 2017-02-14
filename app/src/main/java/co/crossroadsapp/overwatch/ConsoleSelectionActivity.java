@@ -25,6 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import co.crossroadsapp.overwatch.data.ConsoleData;
+import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.utils.Constants;
 import co.crossroadsapp.overwatch.utils.Util;
 import com.loopj.android.http.RequestParams;
@@ -214,7 +215,7 @@ public class ConsoleSelectionActivity extends BaseActivity implements AdapterVie
     public void showError(String err) {
         hideProgressBar();
         next.setEnabled(true);
-        setErrText(err);
+        //setErrText(err);
     }
 
     @Override
@@ -256,31 +257,37 @@ public class ConsoleSelectionActivity extends BaseActivity implements AdapterVie
     @Override
     public void update(Observable observable, Object data) {
         hideProgressBar();
-        ConsoleData cdata = (ConsoleData) data;
-        Intent regIntent = new Intent(getApplicationContext(),
-                RegisterActivity.class);
-        if (cdata != null) {
-            String id = null;
-            String memId = null;
-            String cType = null;
-            if (cdata.getcId() != null) {
-                if (cdata.getMembershipId() != null) {
-                    if (cdata.getcType() != null) {
-                        id = cdata.getcId();
-                        Util.setDefaults("consoleId", id, getApplicationContext());
+        if (data != null) {
+            if(data instanceof ConsoleData) {
+                ConsoleData cdata = (ConsoleData) data;
+                Intent regIntent = new Intent(getApplicationContext(),
+                        RegisterActivity.class);
+                if (cdata != null) {
+                    String id = null;
+                    String memId = null;
+                    String cType = null;
+                    if (cdata.getcId() != null) {
+                        if (cdata.getMembershipId() != null) {
+                            if (cdata.getcType() != null) {
+                                id = cdata.getcId();
+                                Util.setDefaults("consoleId", id, getApplicationContext());
 
-                        memId = cdata.getMembershipId();
-                        Util.setDefaults("membershipId", memId, getApplicationContext());
+                                memId = cdata.getMembershipId();
+                                Util.setDefaults("membershipId", memId, getApplicationContext());
 
-                        cType = cdata.getcType();
-                        Util.setDefaults("consoleType", cType, getApplicationContext());
+                                cType = cdata.getcType();
+                                Util.setDefaults("consoleType", cType, getApplicationContext());
 
-                        startActivity(regIntent);
-                        finish();
+                                startActivity(regIntent);
+                                finish();
+                            }
+                        }
                     }
                 }
+            } else if(data instanceof LoginError) {
+                setErrText((LoginError) data);
             }
-        }
+    }
     }
 
     @Override

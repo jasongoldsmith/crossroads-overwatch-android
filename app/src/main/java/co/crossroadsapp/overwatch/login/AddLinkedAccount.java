@@ -3,6 +3,7 @@ package co.crossroadsapp.overwatch.login;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -155,7 +158,9 @@ public class AddLinkedAccount extends AbstractTravellerLoginFragment {
                             public void run() {
                                 String selectedItem = (String) _spinner.getSelectedItem();
                                 if (_platformKeys != null && _platformKeys.containsKey(selectedItem)) {
-                                    addLinkedConsole(activity, _platformKeys.get(selectedItem), _battle_tag_input.getText().toString());
+                                    if(checkGamertagValidity(_battle_tag_input.getText().toString(), _platformKeys.get(selectedItem))) {
+                                        addLinkedConsole(activity, _platformKeys.get(selectedItem), _battle_tag_input.getText().toString());
+                                    }
                                 }
                             }
                         });
@@ -163,6 +168,46 @@ public class AddLinkedAccount extends AbstractTravellerLoginFragment {
                 });
             }
         }
+    }
+
+    private boolean checkGamertagValidity(String tag, String console) {
+        if(console.equalsIgnoreCase("ps4")) {
+            if(tag.matches(".*[^a-z^0-9^A-Z\\_\\-].*") || tag.length()>16) {
+                showError();
+                return false;
+            }
+        } else if(console.equalsIgnoreCase("xboxone")) {
+            if(tag.matches(".*[^a-z^0-9^A-Z^ ].*") || tag.length()>16 || tag.length()<1 || tag.startsWith(" ") || tag.contains("  ") || Character.isDigit(tag.charAt(0))){
+                showError();
+                return false;
+            }
+        } else {
+            return true;
+        }
+        return false;
+    }
+
+    private void showError() {
+        final RelativeLayout error = (RelativeLayout) getActivity().findViewById(R.id.error_layout);
+        final TextView msg = (TextView) getActivity().findViewById(R.id.error_sub);
+        final TextView title = (TextView) getActivity().findViewById(R.id.error_text);
+        final ImageView close = (ImageView) getActivity().findViewById(R.id.err_close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                error.setVisibility(View.GONE);
+            }
+        });
+
+        final Handler handler = new Handler();
+
+        final Runnable r = new Runnable() {
+            public void run() {
+                Util.showErrorMsg(error, msg, title, "Please enter a valid gamertag.", "INVALID GAMERTAG");
+            }
+        };
+
+        handler.post(r);
     }
 
     private void addLinkedConsole(Activity activity, String consoleType, String consoleId) {

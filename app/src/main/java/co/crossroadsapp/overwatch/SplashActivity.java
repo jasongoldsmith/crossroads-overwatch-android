@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 
+import com.crashlytics.android.answers.Answers;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import co.crossroadsapp.overwatch.data.InvitationLoginData;
@@ -28,6 +29,8 @@ import java.util.Observer;
 
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by sharmha on 2/19/16.
@@ -45,9 +48,9 @@ public class SplashActivity extends BaseActivity implements Observer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //fabric
-        //Fabric.with(this, new Answers());
+        Fabric.with(this, new Answers());
         //crashlytics
-        //Fabric.with(this, new Crashlytics());
+        Fabric.with(this, new Crashlytics());
         //facebood sdk
         FacebookSdk.sdkInitialize(SplashActivity.this);
         AppEventsLogger.activateApp(SplashActivity.this);

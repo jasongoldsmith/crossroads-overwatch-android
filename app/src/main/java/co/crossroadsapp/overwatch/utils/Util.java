@@ -508,13 +508,17 @@ public class Util {
         }
     }
 
-    public static void showErrorMsg(final RelativeLayout errLayout, TextView errText, String errorText) {
+    public static void showErrorMsg(final RelativeLayout errLayout, TextView errText, TextView errTitle, String errorText, String errorTitle) {
         if (errLayout != null) {
             errLayout.setVisibility(View.GONE);
             errLayout.setVisibility(View.VISIBLE);
 
             if (errorText != null && errText != null) {
                 errText.setText(errorText);
+            }
+
+            if(errorTitle!=null && errTitle!=null) {
+                errTitle.setText(errorTitle);
             }
 
             //put timer to make the error message gone after 5 seconds
@@ -641,8 +645,8 @@ public class Util {
         if (mContext != null) {
             GradientDrawable gd = new GradientDrawable();
             gd.setCornerRadius(5);
-            gd.setStroke(2, 0xFF203236);
-            gd.setColor(mContext.getResources().getColor(R.color.tag_background));
+            gd.setStroke(2, 0xFF52648b);
+            gd.setColor(mContext.getResources().getColor(R.color.choose_platform_color));
             textView.setBackgroundDrawable(gd);
         }
     }

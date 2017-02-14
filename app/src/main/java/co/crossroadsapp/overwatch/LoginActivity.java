@@ -350,7 +350,7 @@ public class LoginActivity extends BaseActivity implements Observer {
                         "back and join us!", "OK", null, Constants.GENERAL_ERROR, null, false);
             }
         } else {
-            setErrText(err);
+            //setErrText(err);
         }
     }
 

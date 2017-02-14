@@ -156,7 +156,7 @@ public class MainActivity extends BaseActivity implements Observer {
                     Util.clearDefaults(getApplicationContext());
                 }
             } else {
-                setErrText(err);
+                //setErrText(err);
                 //hideWebviews();
             }
 
@@ -176,7 +176,7 @@ public class MainActivity extends BaseActivity implements Observer {
 //                //forwardAfterVersionCheck();
 //            }
         } else {
-            setErrText(getString(R.string.server_error_tryagain));
+            //setErrText(getString(R.string.server_error_tryagain));
         }
     }
 

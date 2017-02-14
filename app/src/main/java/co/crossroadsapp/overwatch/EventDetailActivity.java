@@ -43,6 +43,7 @@ import com.firebase.client.ValueEventListener;
 import co.crossroadsapp.overwatch.data.CurrentEventDataHolder;
 import co.crossroadsapp.overwatch.data.EventData;
 import co.crossroadsapp.overwatch.data.GroupData;
+import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.PlayerData;
 import co.crossroadsapp.overwatch.data.PushNotification;
 import co.crossroadsapp.overwatch.data.UserData;
@@ -387,7 +388,7 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
         inviteLeaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showGenericError("CAN’T MAKE IT?", "If you turn down this invite, another Guardian will take your spot. Are you sure you want to leave?", "YES, I WANT TO LEAVE", "No, I want to stay", Constants.GENERAL_LEAVE, null, false);
+                showGenericError("CAN’T MAKE IT?", "If you turn down this invite, another Agent will take your spot. Are you sure you want to leave?", "YES, I WANT TO LEAVE", "No, I want to stay", Constants.GENERAL_LEAVE, null, false);
                 //leaveEvent();
             }
         });
@@ -809,25 +810,25 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
             if (checkUserIsPlayer()) {
                 deepLinkTitle = "Join My Fireteam";
                 if (currEvent.getLaunchEventStatus().equalsIgnoreCase("upcoming")) {
-                    deepLinkMsg = getDeepLinkConsoleType() + ": I need " + reqPlayer + " more for " + actName + " on " + upcomingDate + " in the " + grpName + " group";
+                    deepLinkMsg = getDeepLinkConsoleType() + ": I need " + reqPlayer + " more for " + actName + " on " + upcomingDate + " in the " + grpName + " region";
                 }else {
-                    deepLinkMsg = getDeepLinkConsoleType() + ": I need " + reqPlayer + " more for " + actName + " in the " + grpName + " group";
+                    deepLinkMsg = getDeepLinkConsoleType() + ": I need " + reqPlayer + " more for " + actName + " in the " + grpName + " region";
                 }
             } else {
-                deepLinkTitle = "Searching for Guardians";
+                deepLinkTitle = "Searching for Agents";
                 if (currEvent.getLaunchEventStatus().equalsIgnoreCase("upcoming")) {
-                    deepLinkMsg = console + ": This fireteam needs " + reqPlayer + " more for " + actName + " on " + upcomingDate + " in the " + grpName + " group";
+                    deepLinkMsg = console + ": This team needs " + reqPlayer + " more for " + actName + " on " + upcomingDate + " in the " + grpName + " region";
                 }else {
-                    deepLinkMsg = console + ": This fireteam needs " + reqPlayer + " more for " + actName + " in the " + grpName + " group";
+                    deepLinkMsg = console + ": This team needs " + reqPlayer + " more for " + actName + " in the " + grpName + " region";
                 }
             }
 
             if (reqPlayer == 0) {
                 deepLinkTitle = currEvent.getActivityData().getActivitySubtype();
                 if (currEvent.getLaunchEventStatus().equalsIgnoreCase("Upcoming")) {
-                    deepLinkMsg = console + ": Check out this " + actName + " on " + upcomingDate + " in the " + grpName + " group";
+                    deepLinkMsg = console + ": Check out this " + actName + " on " + upcomingDate + " in the " + grpName + " region";
                 } else {
-                    deepLinkMsg = console + ": Check out this " + actName + " in the " + grpName + " group";
+                    deepLinkMsg = console + ": Check out this " + actName + " in the " + grpName + " region";
                 }
             }
 
@@ -1319,6 +1320,12 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
                 if(data!=null) {
                     sendInviteBungieMsg((JSONObject) data);
                 }
+            } else if(data instanceof LoginError) {
+                if(inviteLayout!=null && inviteLayout.getVisibility()== View.VISIBLE) {
+                    hideAnimatedInviteView();
+                    hideKeyboard();
+                }
+                setErrText((LoginError) data);
             }
     }
 
@@ -1409,7 +1416,7 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
         }
 //        errLayout.setVisibility(View.VISIBLE);
 //        errText.setText(err);
-        setErrText(err);
+        //setErrText(err);
     }
 
     private void registerUserFirebase() {

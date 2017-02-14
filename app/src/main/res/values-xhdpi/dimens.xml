@@ -2,5 +2,5 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="selection_left_drawable_width">44dp</dimen>
     <dimen name="selection_left_drawable_height">40dp</dimen>
-    <dimen name="contact_us_user_message_height">150dp</dimen>
+    <dimen name="contact_us_user_message_height">120dp</dimen>
 </resources>

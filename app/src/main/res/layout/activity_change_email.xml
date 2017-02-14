@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:conversation="http://schemas.android.com/apk/res-auto"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:background="@mipmap/img_background_signin">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/img_b_g_s_i_g_n_i_n_2"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/back"
+            android:src="@drawable/icon_back_arrow"
+            android:padding="6dp"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/change_email_text"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/back"
+            android:layout_marginTop="31dp"
+            android:textAllCaps="true"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:text="@string/change_email"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/current_email_text"
+            android:layout_below="@+id/change_email_text"
+            android:text="Current email address:"
+            android:textColor="@color/trimble_white"
+            android:textSize="14sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/current_email"
+            android:layout_below="@+id/current_email_text"
+            android:id="@+id/current_email"
+            android:layout_marginTop="2dp"
+            android:layout_centerHorizontal="true"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/email_new_layout"
+            android:layout_marginTop="17dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/edittext_corner_bg"
+            android:layout_below="@+id/current_email">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/email_icon"
+                android:src="@mipmap/img_icon_email"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="22dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/email_edit_new"
+                android:textColorHint="@color/traveller_login_hint_color"
+                android:hint="@string/enter_new_email"
+                android:textColor="@android:color/white"
+                android:textCursorDrawable="@drawable/cursor_draw"
+                android:background="@null"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
+                android:inputType="textVisiblePassword"
+                android:nextFocusDown="@+id/send_change_pswrd"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="63dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/pswrd_current_layout"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/edittext_corner_bg"
+            android:layout_below="@+id/email_new_layout">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/pswrd_icon"
+                android:src="@drawable/img_icon_password"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="22dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/pswrd_edit"
+                android:hint="@string/enter_current_pswd"
+                android:textColorHint="@color/traveller_login_hint_color"
+                android:textColor="@android:color/white"
+                android:textCursorDrawable="@drawable/cursor_draw"
+                android:background="@null"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:password="true"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="63dp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/show_pswd_old"
+                android:src="@mipmap/group_527"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="4dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/send_change_email"
+            android:background="@color/login_color"
+            android:text="@string/save"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="42dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+    <include layout="@layout/activity_base" />
+
+</RelativeLayout>

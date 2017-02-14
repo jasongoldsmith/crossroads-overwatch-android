@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import co.crossroadsapp.overwatch.data.EventData;
+import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.PushNotification;
 import co.crossroadsapp.overwatch.utils.CircularImageView;
 import co.crossroadsapp.overwatch.utils.Constants;
@@ -37,6 +38,7 @@ public class BaseActivity extends FragmentActivity {
 
     protected RelativeLayout errLayout;
     protected TextView errText;
+    protected TextView errTitle;
     private RelativeLayout progress;
     private RelativeLayout deeplinkError;
     private ControlManager mManager = ControlManager.getmInstance();
@@ -84,18 +86,41 @@ public class BaseActivity extends FragmentActivity {
         unregisterReceiver(ReceivefromService);
     }
 
-    protected void setErrText(String errorText) {
+    protected void setErrText(LoginError errorText) {
+        String error = null;
+        String errorTitle=null;
+        if(errorText!=null) {
+            if (errorText.getGeneralServerError() != null && errorText.getGeneralServerError().getErrorDetails() != null && errorText.getGeneralServerError().getErrorDetails().getMessage() != null) {
+                error = errorText.getGeneralServerError().getErrorDetails().getMessage().toString();
+                if(errorText.getGeneralServerError().getErrorDetails().getTitle()!=null) {
+                    errorTitle = errorText.getGeneralServerError().getErrorDetails().getTitle();
+                }
+            }
+        }
+
+        if(errorTitle==null) {
+            errorTitle = "ERROR";
+        }
+
+        if(error==null) {
+            error = "Try again";
+        }
+
         if(errText==null ){
             errText = (TextView) findViewById(R.id.error_sub);
         }
 
+        if(errTitle==null) {
+            errTitle = (TextView) findViewById(R.id.error_text);
+        }
+
         if (errLayout==null) {
-            errLayout = (RelativeLayout) findViewById(R.id.parent_error_layout);
+            errLayout = (RelativeLayout) findViewById(R.id.error_layout);
         }
 
         // show timed error message
-        if(errorText!=null && !errorText.isEmpty()) {
-            Util.showErrorMsg(errLayout, errText, errorText);
+        if(error!=null && !error.isEmpty()) {
+            Util.showErrorMsg(errLayout, errText, errTitle, error, errorTitle);
         }
 
 //        if(errText!=null && errLayout!=null) {

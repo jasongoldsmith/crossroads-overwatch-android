@@ -53,9 +53,9 @@
     <string name="group_other_text">YOUR BUNGIE.NET GROUPS: (SELECT ONE)</string>
     <string name="change_password">Change Password</string>
     <string name="nogroup_text">It looks like you are not a member of any groups. Feel free to freelance with us or head to <![CDATA[<a href="http://www.bungie.net">Bungie.net</a>]]> to join a group and fully experience the Crossroads for Destiny app.</string>
-    <string name="copyright_string">&#169; Catalyst Foundry 2016</string>
+    <string name="copyright_string">&#169; Catalyst Foundry 2017</string>
 
-    <string name="terms_conditions">By signing in, I have read and agree to the Crossroads <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]> and <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>. &#169; Catalyst Foundry 2016</string>
+    <string name="terms_conditions">By signing in, I have read and agree to the Crossroads <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]> and <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>. &#169; Catalyst Foundry 2017</string>
     <string name="terms_string"><u>Terms of Service</u>  |</string>
     <string name="privacy_string">  <u>Privacy Policy</u> </string>
     <string name="license_string"> |  <u>Licenses</u></string>
@@ -77,7 +77,7 @@
     <string name="create_crossroads_accnt">CREATE NEW CROSSROADS ACCOUNT</string>
     <string name="animation_speed">400</string>
 
-    <string name="fireteam_ready">YOUR FIRETEAM IS READY</string>
+    <string name="fireteam_ready">YOUR TEAM IS READY</string>
 
     <!--<plurals name="grp_member">-->
     <!--<item quantity="one"> &#160;Member</item>-->
@@ -107,10 +107,10 @@
     <string name="console_selection_text">More than one console? You can add it later!</string>
     <string name="title_activity_add_final">AddFinalActivity</string>
 
-    <string name="facebook_app_id">855221411276321</string>
+    <string name="facebook_app_id">1779962922326489</string>
 
     <string name="mix_panel_token_old">23f27698695b0137adfef97f173b9f91</string>
-    <string name="mix_panel_token"> 36578d79d8accf79418b0b42b410aa17</string> <!--bb632ab8cea71f50d51a013d97a673ef</string>-->
+    <string name="mix_panel_token"> bf52f7f9a3484582648c8f3030e67288</string> <!--bb632ab8cea71f50d51a013d97a673ef</string>-->
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -144,9 +144,9 @@
     </plurals>
 
     <string name="banner_member_msg"> a friend request or message for a party invite.</string>
-    <string name="banner_leader_msg">Expect friend requests or messages from your Fireteam. You can start a party and invite everyone.</string>
+    <string name="banner_leader_msg">Expect friend requests or messages from your team. You can start a party and invite everyone.</string>
     <string name="invite">INVITE</string>
-    <string name="full_invitee">The maximum number of players for your Fireteam has been reached. Each invited player will have a reserved spot on your Fireteam.</string>
+    <string name="full_invitee">The maximum number of players for your team has been reached. Each invited player will have a reserved spot on your Fireteam.</string>
     <string name="incomplete_invite">Inviting players will send a message from you to them on Bungie.net.</string>
     <string name="invite_frnd">Invite Friends</string>
     <string name="legacy_error">In line with Rise of Iron, we now only support next-gen consoles. When you’ve upgraded your console, please come back and join us!</string>
@@ -188,6 +188,7 @@
     <string name="link_to_crossroads">link to crossroads</string>
     <string name="we_will_send_a_reset_password">We will send a reset password link to your email address. If you forgot the email address you signed up with, please contact us at <font color='#ffc300'>support@crossroadsapp.co</font></string>
     <string name="email_password_reset">EMAIL PASSWORD RESET</string>
+    <string name="change_email">Change Email</string>
 
     <string-array name="platform_array_keys">
         <item>PC</item>
@@ -200,4 +201,10 @@
         <item>ps4</item>
         <item>xboxone</item>
     </string-array>
+    <string name="title_activity_change_email">ChangeEmail</string>
+    <string name="save">SAVE</string>
+    <string name="enter_current_pswd">Enter current password</string>
+    <string name="enter_new_pswd">Enter new password</string>
+    <string name="enter_new_email">Enter new email address</string>
+    <string name="title_activity_base_fragment">BaseFragment</string>
 </resources>
