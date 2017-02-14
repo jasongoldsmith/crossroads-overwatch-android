@@ -53,6 +53,7 @@ import co.crossroadsapp.overwatch.data.CurrentEventDataHolder;
 import co.crossroadsapp.overwatch.data.EventData;
 import co.crossroadsapp.overwatch.data.EventList;
 import co.crossroadsapp.overwatch.data.GroupData;
+import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.PushNotification;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.network.ActivityListNetwork;
@@ -247,12 +248,12 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             @Override
             public void onClick(View v) {
                 if (user != null && user.getPsnVerify() != null) {
-                    if (!user.getPsnVerify().equalsIgnoreCase(Constants.PSN_VERIFIED)) {
-                        showUnverifiedUserMsg();
-                    } else {
+//                    if (!user.getPsnVerify().equalsIgnoreCase(Constants.PSN_VERIFIED)) {
+//                        showUnverifiedUserMsg();
+//                    } else {
                         findViewById(R.id.loadingImg).setVisibility(View.VISIBLE);
                         mManager.postHelmet(ListActivityFragment.this);
-                    }
+//                    }
                 }
             }
         });
@@ -1282,7 +1283,33 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             mManager.setDeepLinkEvent(null, null);
         } else {
             //show timed error message
-            setErrText(err);
+            //setErrText(err);
+        }
+
+//        errLayout.setVisibility(View.GONE);
+//        errLayout.setVisibility(View.VISIBLE);
+//        errText.setText(err);
+//        //timer for error msg visibility
+//        errLayout.postDelayed(new Runnable() {
+//            public void run() {
+//                if(errLayout!=null) {
+//                    errLayout.setVisibility(View.GONE);
+//                }
+//            }
+//        }, 5000);
+    }
+
+    public void showError(LoginError err) {
+        hideProgress();
+        findViewById(R.id.loadingImg).setVisibility(View.GONE);
+        closeProfileDrawer(Gravity.RIGHT);
+        closeProfileDrawer(Gravity.LEFT);
+        if (mManager != null && mManager.getDeepLinkEvent() != null) {
+            showDeeplinkError(Constants.EVENT_MISSING, mManager.getDeepLinkActivityName(), null, null);
+            mManager.setDeepLinkEvent(null, null);
+        } else {
+            //show timed error message
+            //setErrText(err);
         }
 
 //        errLayout.setVisibility(View.GONE);
@@ -1524,78 +1551,90 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
     public void update(Observable observable, Object data) {
         if (observable instanceof EventListNetwork) {
             if (data != null) {
-                //                   if(data instanceof EventListNetwork) {
-                //                       EventList eList = ((EventListNetwork) data).getEventList();
-                eData = new ArrayList<EventData>();
+                if(data instanceof LoginError) {
+                    showError((LoginError) data);
+                } else {
+                    //                   if(data instanceof EventListNetwork) {
+                    //                       EventList eList = ((EventListNetwork) data).getEventList();
+                    eData = new ArrayList<EventData>();
 
-                adActivityData = new ArrayList<ActivityData>();
+                    adActivityData = new ArrayList<ActivityData>();
 
-                eData = mManager.getEventListCurrent();
-                //                       ActivityList adList = ((EventListNetwork) data).getActList();
-                adActivityData = mManager.getAdsActivityList();
-                //                   }
+                    eData = mManager.getEventListCurrent();
+                    //                       ActivityList adList = ((EventListNetwork) data).getActList();
+                    adActivityData = mManager.getAdsActivityList();
+                    //                   }
 //                    eList = (EventList) data;
 //                    if (eData != null) {
 //                        eData.clear();
 //                    }
 //                    eData = eList.getEventList();
-                createUpcomingCurrentList(eData);
-                //Checking if current launch happened due to push notification click
-                checkEventIntent();
-                if (pushEventObject != null) {
-                    launchPushEventDetail();
-                    pushEventObject = null;
+                    createUpcomingCurrentList(eData);
+                    //Checking if current launch happened due to push notification click
+                    checkEventIntent();
+                    if (pushEventObject != null) {
+                        launchPushEventDetail();
+                        pushEventObject = null;
+                    }
+                    updateCurrentFrag();
                 }
-                updateCurrentFrag();
             }
         } else if (observable instanceof EventRelationshipHandlerNetwork) {
             if (data != null) {
-                EventData ed = new EventData();
-                ed = (EventData) data;
-                if (this.eData != null) {
-                    for (int i = 0; i < this.eData.size(); i++) {
-                        if (ed.getEventId().equalsIgnoreCase(this.eData.get(i).getEventId())) {
-                            if (ed.getMaxPlayer() > 0) {
-                                this.eData.remove(i);
-                                this.eData.add(i, ed);
-                            } else {
-                                this.eData.remove(i);
+                if (data instanceof LoginError) {
+                    showError((LoginError) data);
+                } else {
+                    EventData ed = new EventData();
+                    ed = (EventData) data;
+                    if (this.eData != null) {
+                        for (int i = 0; i < this.eData.size(); i++) {
+                            if (ed.getEventId().equalsIgnoreCase(this.eData.get(i).getEventId())) {
+                                if (ed.getMaxPlayer() > 0) {
+                                    this.eData.remove(i);
+                                    this.eData.add(i, ed);
+                                } else {
+                                    this.eData.remove(i);
+                                }
+                                createUpcomingCurrentList(eData);
+                                updateCurrentFrag();
+                                break;
                             }
-                            createUpcomingCurrentList(eData);
-                            updateCurrentFrag();
-                            break;
                         }
                     }
+                    hideProgress();
+                    //to update all lists in the background
+                    //mManager.getEventList(ListActivityFragment.this);
                 }
-                hideProgress();
-                //to update all lists in the background
-                //mManager.getEventList(ListActivityFragment.this);
             }
         } else if (observable instanceof GroupListNetwork) {
             hideProgress();
             if (data != null) {
-                setGroupImageUrl();
-                if (data instanceof UserData) {
-                    unregisterFirebase();
-                    registerFirbase();
-                    mManager.getEventList(this);
-                    hideProgress();
-                    closeProfileDrawer(Gravity.RIGHT);
-                    //mManager.getGroupList(this);
-                    //gpAct.setSelectedGroup();
-                } else if (data instanceof GroupData) {
-                    if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
-                        gpAct.updateGrpData(data);
-                    }
-                    //setGroupImageUrl();
+                if (data instanceof LoginError) {
+                    showError((LoginError) data);
                 } else {
-                    //setGroupImageUrl();
-                    if (gpAct != null) {
-                        gpAct.update(data);
-                    }
+                    setGroupImageUrl();
+                    if (data instanceof UserData) {
+                        unregisterFirebase();
+                        registerFirbase();
+                        mManager.getEventList(this);
+                        hideProgress();
+                        closeProfileDrawer(Gravity.RIGHT);
+                        //mManager.getGroupList(this);
+                        //gpAct.setSelectedGroup();
+                    } else if (data instanceof GroupData) {
+                        if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
+                            gpAct.updateGrpData(data);
+                        }
+                        //setGroupImageUrl();
+                    } else {
+                        //setGroupImageUrl();
+                        if (gpAct != null) {
+                            gpAct.update(data);
+                        }
 //                        if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
 //                            gpAct.update(data);
 //                        }
+                    }
                 }
             }
         } else if (observable instanceof ResendBungieVerification) {
@@ -1605,30 +1644,46 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
         } else if (observable instanceof EventByIdNetwork) {
             hideProgressBar();
             if (data != null) {
-                if (pushEventObject != null) {
-                    pushEventObject = new EventData();
-                    pushEventObject = (EventData) data;
-                    startEventDetail(pushEventObject);
-                    pushEventObject = null;
-                } else if (mManager.getDeepLinkEvent() != null && (!mManager.getDeepLinkEvent().isEmpty())) {
-                    updateExternalDeepLink((EventData) data);
+                if (data instanceof LoginError) {
+                    showError((LoginError) data);
                 } else {
-                    startEventDetail((EventData) data);
+                    if (pushEventObject != null) {
+                        pushEventObject = new EventData();
+                        pushEventObject = (EventData) data;
+                        startEventDetail(pushEventObject);
+                        pushEventObject = null;
+                    } else if (mManager.getDeepLinkEvent() != null && (!mManager.getDeepLinkEvent().isEmpty())) {
+                        updateExternalDeepLink((EventData) data);
+                    } else {
+                        startEventDetail((EventData) data);
+                    }
                 }
             }
         } else if (observable instanceof LogoutNetwork) {
-            afterLogout();
+            if(data instanceof LoginError) {
+                showError((LoginError) data);
+            } else {
+                afterLogout();
+            }
         } else if (observable instanceof HelmetUpdateNetwork) {
             findViewById(R.id.loadingImg).setVisibility(View.GONE);
             updateUserProfileImageBorder();
             if (data != null) {
-                updateUserProfileImage(data.toString());
-                //mManager.getEventList(this);
+                if(data instanceof LoginError) {
+                    showError((LoginError) data);
+                } else {
+                    updateUserProfileImage(data.toString());
+                    //mManager.getEventList(this);
+                }
             }
         } else if (observable instanceof ChangeCurrentConsoleNetwork) {
             hideProgressBar();
             if (data != null) {
-                user = mManager.getUserData();
+                if(data instanceof LoginError) {
+                    showError((LoginError) data);
+                } else {
+                    user = mManager.getUserData();
+                }
             }
             //changeUserProfileBorderColor();
             updateUserProfileImageBorder();

@@ -92,7 +92,7 @@
     <color name="trimble_white">#ffffffff</color>
     <color name="game_mode_button_bg">#a035415b</color>
     <color name="traveller_login_hint_color">#bcc5e1</color>
-    <color name="traveller_login_email_input_bg">#35415b</color>
+    <color name="traveller_login_email_input_bg">#8035415b</color>
     <color name="traveller_login_email_input_bg_fifty">#8035415b</color>
     <color name="choose_platform_color">#52648b</color>
     <color name="profile_name_color">#2e3b56</color>

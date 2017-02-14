@@ -5,6 +5,7 @@ import android.content.Context;
 import co.crossroadsapp.overwatch.ControlManager;
 import co.crossroadsapp.overwatch.R;
 import co.crossroadsapp.overwatch.utils.Constants;
+import co.crossroadsapp.overwatch.utils.TravellerLog;
 import co.crossroadsapp.overwatch.utils.Util;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -49,15 +50,17 @@ public class ConfigNetwork extends Observable {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                    try {
-                        mManager.showErrorDialogue(Util.getErrorMessage(errorResponse.getJSONObject(0)));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    TravellerLog.w(this, "onFailure errorResponse: " + errorResponse);
+//                    try {
+//                        mManager.showErrorDialogue(Util.getErrorMessage(errorResponse.getJSONObject(0)));
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                    TravellerLog.w(this, "onFailure errorResponse: " + errorResponse);
                     //mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
 
                     setChanged();

@@ -206,4 +206,5 @@
     <string name="enter_current_pswd">Enter current password</string>
     <string name="enter_new_pswd">Enter new password</string>
     <string name="enter_new_email">Enter new email address</string>
+    <string name="title_activity_base_fragment">BaseFragment</string>
 </resources>

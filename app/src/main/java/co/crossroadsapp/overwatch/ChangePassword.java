@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.utils.Util;
 import com.loopj.android.http.RequestParams;
@@ -134,42 +135,47 @@ public class ChangePassword extends BaseActivity implements Observer {
         setPswrd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (userId != null) {
+//                if (userId != null) {
                     v.setEnabled(false);
                     String oldP = oldPswrd.getText().toString();
                     newP = newPswrd.getText().toString();
                     if (oldP != null && newP != null) {
                         if (newP.length() > 4 && oldP.length() > 4) {
                             RequestParams params = new RequestParams();
-                            params.put("oldPassWord", oldP);
-                            params.put("newPassWord", newP);
-                            params.put("id", userId);
-                            dialog.show();
-                            dialog.setCancelable(false);
-                            dialog.setCanceledOnTouchOutside(false);
+                            params.put("oldPassword", oldP);
+                            params.put("newPassword", newP);
+                            //params.put("id", userId);
+                            showProgressBar();
                             mManager.postChangePassword(ChangePassword.this, params);
                         } else {
                             showError(getResources().getString(R.string.password_short));
                         }
                     }
-                }
+//                }
             }
         });
     }
 
     public void showError(String err) {
-        dialog.dismiss();
+        hideProgressBar();
         setPswrd.setEnabled(true);
-        setErrText(err);
+        //setErrText(err);
     }
 
     @Override
     public void update(Observable observable, Object data) {
-        dialog.dismiss();
-        if(newP!=null && (!newP.isEmpty())) {
-            Util.setDefaults("password", newP, getApplicationContext());
+        hideProgressBar();
+        setPswrd.setEnabled(true);
+        if(data!=null) {
+            if(data instanceof LoginError) {
+                setErrText((LoginError) data);
+            }
+        } else {
+            if (newP != null && (!newP.isEmpty())) {
+                Util.setDefaults("password", newP, getApplicationContext());
+            }
+            finish();
         }
-        finish();
     }
 
     @Override

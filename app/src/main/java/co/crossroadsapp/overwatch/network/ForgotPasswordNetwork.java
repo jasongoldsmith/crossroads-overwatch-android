@@ -3,6 +3,14 @@ package co.crossroadsapp.overwatch.network;
 import android.content.Context;
 
 import co.crossroadsapp.overwatch.ControlManager;
+import co.crossroadsapp.overwatch.core.BattletagAlreadyTakenException;
+import co.crossroadsapp.overwatch.core.InvalidEmailProvided;
+import co.crossroadsapp.overwatch.core.NoUserFoundException;
+import co.crossroadsapp.overwatch.core.OverwatchLoginException;
+import co.crossroadsapp.overwatch.core.TrimbleException;
+import co.crossroadsapp.overwatch.data.GeneralServerError;
+import co.crossroadsapp.overwatch.data.LoginError;
+import co.crossroadsapp.overwatch.utils.TravellerLog;
 import co.crossroadsapp.overwatch.utils.Util;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -63,12 +71,20 @@ public class ForgotPasswordNetwork extends Observable {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                    mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
+                    TravellerLog.w(this, "onFailure errorResponse: " + errorResponse);
+                    dispatchError(errorResponse);
                 }
             });
         }else {
             Util.createNoNetworkDialogue(mContext);
         }
+    }
+
+    private void dispatchError(JSONObject errorResponse) {
+        LoginError error = new LoginError();
+        error.toJson(errorResponse);
+        setChanged();
+        notifyObservers(error);
     }
 
     public void doChangeEmail(RequestParams params) throws JSONException {
@@ -82,7 +98,9 @@ public class ForgotPasswordNetwork extends Observable {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                    mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
+                    //mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
+                    TravellerLog.w(this, "onFailure errorResponse: " + errorResponse);
+                    dispatchError(errorResponse);
                 }
             });
         }else {

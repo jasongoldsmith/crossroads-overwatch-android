@@ -540,6 +540,8 @@ public class ControlManager implements Observer {
                     ((AddFinalActivity) mCurrentAct).showError(err);
                 } else if (mCurrentAct instanceof CrashReport) {
                     ((CrashReport) mCurrentAct).showError(err);
+                } else if (mCurrentAct instanceof ChangeEmail) {
+                    ((ChangeEmail) mCurrentAct).showError(err);
                 }
             }
         //}

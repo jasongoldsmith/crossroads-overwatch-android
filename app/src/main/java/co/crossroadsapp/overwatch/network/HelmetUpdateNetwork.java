@@ -3,6 +3,8 @@ package co.crossroadsapp.overwatch.network;
 import android.content.Context;
 
 import co.crossroadsapp.overwatch.ControlManager;
+import co.crossroadsapp.overwatch.data.LoginError;
+import co.crossroadsapp.overwatch.utils.TravellerLog;
 import co.crossroadsapp.overwatch.utils.Util;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -62,11 +64,19 @@ public class HelmetUpdateNetwork extends Observable {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                    mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
+                    TravellerLog.w(this, "onFailure errorResponse: " + errorResponse);
+                    dispatchError(errorResponse);
                 }
             });
         }else {
             Util.createNoNetworkDialogue(mContext);
         }
+    }
+
+    private void dispatchError(JSONObject errorResponse) {
+        LoginError error = new LoginError();
+        error.toJson(errorResponse);
+        setChanged();
+        notifyObservers(error);
     }
 }

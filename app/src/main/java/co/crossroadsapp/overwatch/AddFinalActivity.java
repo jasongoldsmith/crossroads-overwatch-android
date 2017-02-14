@@ -41,6 +41,7 @@ import java.util.Random;
 import co.crossroadsapp.overwatch.data.ActivityData;
 import co.crossroadsapp.overwatch.data.CurrentEventDataHolder;
 import co.crossroadsapp.overwatch.data.EventData;
+import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.utils.Constants;
 import co.crossroadsapp.overwatch.utils.Util;
@@ -1035,7 +1036,7 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
 
     public void showError(String err) {
         hideProgressBar();
-        setErrText(err);
+        //setErrText(err);
     }
 
     public void setFinalAct(int position) {
@@ -1049,7 +1050,11 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
     public void update(Observable observable, Object data) {
         hideProgressBar();
         if (data != null) {
-            launchListActivityAndFinish((EventData) data);
+            if(data instanceof LoginError) {
+                setErrText((LoginError) data);
+            }else if (data instanceof EventData) {
+                launchListActivityAndFinish((EventData) data);
+            }
         }
     }
 

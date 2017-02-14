@@ -285,7 +285,7 @@ public class RegisterActivity extends BaseActivity implements Observer {
     public void showError(String err) {
         dialog.dismiss();
         signup_btn.setEnabled(true);
-        setErrText(err);
+        //setErrText(err);
     }
 
     private void enableSubmitIfReady() {

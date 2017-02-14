@@ -20,6 +20,7 @@ import com.loopj.android.http.RequestParams;
 import java.util.Observable;
 import java.util.Observer;
 
+import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.utils.Util;
 
@@ -105,16 +106,15 @@ public class ChangeEmail extends BaseActivity implements Observer {
             userId = ud.getUserId();
         }
 
-        String em = Util.getDefaults("user", ChangeEmail.this);
-        if(em!=null && !em.isEmpty()) {
-            oldEmail.setText(em);
+        if(ud!=null && ud.getEmail()!=null) {
+            oldEmail.setText(ud.getEmail());
             oldEmail.setKeyListener(null);
         }
 
         setPswrd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (userId != null) {
+//                if (userId != null) {
                     v.setEnabled(false);
                     String oldP = oldPswrd.getText().toString();
                     String oldE = oldEmail.getText().toString();
@@ -131,7 +131,7 @@ public class ChangeEmail extends BaseActivity implements Observer {
                             showError("Please enter your email/password");
                         }
                     }
-                }
+//                }
             }
         });
     }
@@ -140,17 +140,25 @@ public class ChangeEmail extends BaseActivity implements Observer {
         //dialog.dismiss();
         hideProgressBar();
         setPswrd.setEnabled(true);
-        setErrText(err);
+        //setErrText(err);
     }
 
     @Override
     public void update(Observable observable, Object data) {
         //dialog.dismiss();
         hideProgressBar();
-        if (newE != null && (!newE.isEmpty())) {
-            Util.setDefaults("user", newE, getApplicationContext());
+        if(data!=null) {
+            if(data instanceof LoginError) {
+                if(((LoginError) data).getGeneralServerError().getErrorDetails().getMessage()!=null) {
+                    setErrText((LoginError) data);
+                }
+            }
+        } else {
+            if (newE != null && (!newE.isEmpty())) {
+                Util.setDefaults("user", newE, getApplicationContext());
+            }
+            finish();
         }
-        finish();
     }
 
     @Override

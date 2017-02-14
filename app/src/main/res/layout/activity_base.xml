@@ -6,8 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/parent_error_layout"
-    android:visibility="gone"
-    android:background="@drawable/semi_transperant_overlay"
     tools:context=".BaseActivity">
 
     <RelativeLayout
@@ -15,26 +13,29 @@
         android:layout_height="wrap_content"
         android:id="@+id/error_layout"
         android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
         android:visibility="gone"
-        android:background="@drawable/semi_transperant_overlay">
+        android:background="@drawable/error_mode_bg">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/error"
             android:src="@drawable/icon_error"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="22dp"/>
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="12dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/error_text"
-            android:text="MISADVENTURE"
-            android:textSize="12sp"
-            android:textColor="#ff0000"
+            android:text="ERROR"
+            android:textSize="16sp"
+            android:textColor="@color/trimble_white"
             android:layout_toRightOf="@+id/error"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="13dp"/>
+            android:layout_marginLeft="19dp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,14 +48,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/error_sub"
-            android:textSize="12sp"
+            android:textSize="16sp"
             android:lines="3"
             android:textColor="@color/trimble_white"
             android:layout_toRightOf="@+id/error"
             android:layout_toLeftOf="@+id/err_close"
             android:layout_below="@+id/error_text"
             android:layout_marginBottom="14dp"
-            android:layout_marginLeft="13dp"
+            android:layout_marginLeft="19dp"
             android:layout_marginRight="30dp"/>
 
     </RelativeLayout>

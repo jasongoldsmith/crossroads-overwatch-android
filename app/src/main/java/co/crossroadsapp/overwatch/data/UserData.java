@@ -27,6 +27,7 @@ public class UserData {
     private String clanTag=null;
     private boolean maxReported = false;
     private int commentsReported;
+    private String email=null;
 
     public UserData() {
         consoles = new ArrayList<ConsoleData>();
@@ -153,6 +154,14 @@ public class UserData {
         return this.consoles;
     }
 
+    public void setEmail(String em) {
+        email = em;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
     public void toJson(JSONObject json) {
         try {
             if (json.has("value") && !json.isNull("value")) {
@@ -166,6 +175,10 @@ public class UserData {
                     String memid = jsonData.getString("bungieMemberShipId");
                     setMembershipId(memid);
                 }
+                    if (jsonData.has("email") && !jsonData.isNull("email")) {
+                        String email = jsonData.getString("email");
+                        setEmail(email);
+                    }
 
                     if (jsonData.has("commentsReported") && !jsonData.isNull("commentsReported")) {
                         int num = jsonData.getInt("commentsReported");

@@ -3,74 +3,84 @@
     xmlns:conversation="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/crash_text"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/contact_us"
-        android:textColor="@color/trimble_white"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+    android:layout_height="match_parent"
+    android:background="@mipmap/img_background_signin">
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/img_b_g_s_i_g_n_i_n_2" />
+
+    <ImageView
+        android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/back"
-        android:src="@drawable/icon_back_arrow"
-        android:paddingTop="8dp"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/icon_back_arrow" />
 
     <TextView
+        android:id="@+id/crash_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/traveller_login_margin_top"
+        android:gravity="center_horizontal"
+        android:text="@string/contact_us"
+        android:textAllCaps="true"
+        android:textColor="@color/trimble_white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/send_crash"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/send_crash"
-        android:background="#0086d0"
-        android:text="SEND"
-        android:fontFamily="sans-serif"
-        android:layout_marginTop="60dp"
-        android:textStyle="bold"
-        android:textColor="@color/trimble_white"
-        android:textSize="14sp"
         android:layout_alignParentBottom="true"
-        android:gravity="center"/>
+        android:background="@color/login_color"
+        android:gravity="center"
+        android:text="@string/send"
+        android:textAllCaps="true"
+        android:textColor="@color/trimble_white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="66dp"
         android:id="@+id/crash_email"
-        android:background="#4D000000"
-        android:hint="  Your Email (required)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/crash_text"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_corner_bg"
+        android:drawableLeft="@mipmap/img_icon_email"
+        android:drawablePadding="17dp"
         android:gravity="center_vertical"
-        android:nextFocusDown="@+id/crash_edittext"
+        android:hint="@string/enter_email_address_required"
+        android:paddingBottom="22dp"
+        android:paddingEnd="0dp"
+        android:paddingStart="15dp"
+        android:paddingTop="22dp"
         android:textColor="@color/trimble_white"
-        android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
-        android:textSize="18sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="33dp"
-        android:layout_below="@+id/crash_text"/>
+        android:textColorHint="@color/traveller_login_hint_color"
+        android:textSize="20sp"/>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
         android:id="@+id/crash_edittext"
-        android:background="#4D000000"
-        android:hint="  What would you like to tell us?"
-        android:gravity="top"
-        android:nextFocusDown="@+id/send_crash"
-        android:textColor="@color/trimble_white"
-        android:imeOptions="actionDone"
-        android:textSize="18sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/contact_us_user_message_height"
         android:layout_below="@+id/crash_email"
-        android:layout_marginBottom="13dp"/>
+        android:background="@drawable/edittext_corner_bg"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="4dp"
+        android:paddingStart="15dp"
+        android:paddingTop="15dp"
+        android:textColor="@color/trimble_white"
+        android:hint="@string/what_would_you_like_to_tell_us"
+        android:textColorHint="@color/traveller_login_hint_color"
+        android:gravity="top"/>
 
     <include layout="@layout/activity_base" />
 

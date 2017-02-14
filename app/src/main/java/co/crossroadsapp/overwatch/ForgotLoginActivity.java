@@ -203,7 +203,7 @@ public class ForgotLoginActivity extends BaseActivity implements Observer {
     public void showError(String err) {
         dialog.dismiss();
         resetPassword.setEnabled(true);
-        setErrText(err);
+        //setErrText(err);
     }
 
     @Override

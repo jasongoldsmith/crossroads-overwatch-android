@@ -156,7 +156,7 @@ public class AddNewActivity extends BaseActivity implements Observer {
 
     public void showError(String err) {
         hideProgressBar();
-        setErrText(err);
+        //setErrText(err);
     }
 
 

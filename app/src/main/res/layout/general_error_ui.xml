@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/error_layout"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="22dp"
+        android:background="@color/app_theme_color"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error"
+            android:src="@drawable/icon_error"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="22dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_text"
+            android:text="ERROR"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textColor="@color/trimble_white"
+            android:layout_toRightOf="@+id/error"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="13dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/err_close"
+            android:src="@drawable/icon_close_sm"
+            android:layout_alignParentRight="true"
+            android:onClick="closeView"
+            android:padding="9dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_sub"
+            android:textSize="16sp"
+            android:maxLines="3"
+            android:textColor="@color/trimble_white"
+            android:layout_toRightOf="@+id/error"
+            android:layout_toLeftOf="@+id/err_close"
+            android:layout_below="@+id/error_text"
+            android:layout_marginBottom="14dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="30dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
