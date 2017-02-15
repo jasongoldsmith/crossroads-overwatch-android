@@ -79,6 +79,10 @@ public class Util {
         return Constants.NETWORK_DEV_BASE_URL;
     }
 
+    public static String getMixpanelID(Activity activity) {
+        return Util.getDefaults("mixpanelToken", activity);
+    }
+
     public static int softNavigationPresent(Activity c) {
         int hasSoftwareKeys = 0;
         if (c != null) {
@@ -234,6 +238,17 @@ public class Util {
         editor.remove("password");
         editor.remove("csrf");
         editor.remove("cookie");
+        CookieManager.getInstance().removeAllCookie();
+//        CookieManager.getInstance().setCookie("https://www.bungie.net/", " ");
+//        CookieManager.getInstance().setCookie("https://www.bungie.net/", " ");
+        //editor.clear();
+        editor.commit();
+    }
+
+    public static void clearLogoutDefaults(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove("loggedin");
         CookieManager.getInstance().removeAllCookie();
 //        CookieManager.getInstance().setCookie("https://www.bungie.net/", " ");
 //        CookieManager.getInstance().setCookie("https://www.bungie.net/", " ");
@@ -755,9 +770,9 @@ public class Util {
 //                        continue;
                     }
                     if (cd.isPrimary()) {
-                        platforms.add(0, elem);
+                        platforms.add(0, devicePlatforms.get(i));
                     } else {
-                        platforms.add(elem);
+                        platforms.add(devicePlatforms.get(i));
                     }
                 }
             }

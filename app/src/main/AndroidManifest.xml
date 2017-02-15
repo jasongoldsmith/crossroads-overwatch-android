@@ -55,7 +55,7 @@
                     android:scheme="https" /> <!-- Test App link -->
             </intent-filter>
             <intent-filter>
-                <data android:scheme="androidforcecatalystcrossroadsoverwatch" />
+                <data android:scheme="forcecatalystcrossroadsoverwatch" />
 
                 <action android:name="android.intent.action.VIEW" />
 

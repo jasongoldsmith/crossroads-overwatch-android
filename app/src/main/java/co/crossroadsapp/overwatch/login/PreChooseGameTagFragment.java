@@ -34,6 +34,8 @@ public class PreChooseGameTagFragment extends Fragment implements Observer {
                 if (Util.ensureGameTag(user)) {
                     ControlManager.getmInstance().setUserdata(user);
                     Activity act = getActivity();
+                    //user logged in
+                    Util.setDefaults("loggedin", "true", act);
                     if (act == null || act.isFinishing()) {
                         return;
                     }
@@ -61,9 +63,6 @@ public class PreChooseGameTagFragment extends Fragment implements Observer {
                 }
             }
         } else {
-//            if(arg instanceof OverwatchLoginException) {
-//                ((BattletagAlreadyTakenException) arg).getMessage()
-//            }
             Activity act = getActivity();
             if (act == null || act.isFinishing()) {
                 return;

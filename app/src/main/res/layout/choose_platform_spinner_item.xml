@@ -25,11 +25,12 @@
     android:layout_height="wrap_content"
     android:paddingBottom="22dp"
     android:background="@color/traveller_login_email_input_bg"
-    android:paddingEnd="0dp"
+    android:paddingEnd="19dp"
     android:paddingStart="15dp"
     android:paddingTop="22dp"
     android:drawablePadding="17dp"
     android:textColor="@color/trimble_white"
     android:drawableLeft="@mipmap/img_icon_platform"
+    android:drawableRight="@drawable/icon_arrow_dwn"
     android:ellipsize="marquee"
     android:textAlignment="inherit"/>

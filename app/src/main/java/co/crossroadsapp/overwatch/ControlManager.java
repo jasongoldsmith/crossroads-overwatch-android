@@ -456,7 +456,7 @@ public class ControlManager implements Observer {
         try {
             forgotPasswordNetwork = new ForgotPasswordNetwork(activity);
             forgotPasswordNetwork.addObserver(activity);
-            forgotPasswordNetwork.doResetPassword(params);
+            //forgotPasswordNetwork.doResetPassword(params);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1084,11 +1084,11 @@ public class ControlManager implements Observer {
         return null;
     }
 
-    public void getConfig(MainActivity c) {
+    public void getConfig(SplashActivity act) {
         try {
-        getConfigNetwork = new ConfigNetwork(c);
-        getConfigNetwork.addObserver(c);
-        getConfigNetwork.getConfig();
+            getConfigNetwork = new ConfigNetwork(act);
+            getConfigNetwork.addObserver(act);
+            getConfigNetwork.getConfig();
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -1133,6 +1133,12 @@ public class ControlManager implements Observer {
                 if(!data.getString("xboxLoginURL").isEmpty()) {
                     xboxURL = data.getString("xboxLoginURL");
                     Util.setDefaults("xboxLoginURL", xboxURL, mCurrentAct);
+                }
+            }
+            if(data.has("mixpanelToken") && !data.isNull("mixpanelToken")) {
+                if(!data.getString("mixpanelToken").isEmpty()) {
+                    String token = data.getString("mixpanelToken");
+                    Util.setDefaults("mixpanelToken", token, mCurrentAct);
                 }
             }
 

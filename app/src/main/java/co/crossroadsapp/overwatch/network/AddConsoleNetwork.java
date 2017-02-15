@@ -75,7 +75,11 @@ public class AddConsoleNetwork extends Observable {
             exception.setUserTag(consoleId);
         }
         setChanged();
-        notifyObservers(exception);
+        if(exception!=null) {
+            notifyObservers(exception);
+        }else {
+            notifyObservers(error);
+        }
     }
 
     private void parseConsoleResponse(JSONObject response) {

@@ -2,20 +2,30 @@ package co.crossroadsapp.overwatch.login;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.json.JSONException;
+
+import java.io.UnsupportedEncodingException;
 import java.util.Observable;
 import java.util.Observer;
 
 import co.crossroadsapp.overwatch.R;
+import co.crossroadsapp.overwatch.data.LoginError;
+import co.crossroadsapp.overwatch.network.ForgotPasswordNetwork;
+import co.crossroadsapp.overwatch.utils.Util;
 
 /**
  * Created by karagdi on 2/3/17.
@@ -143,20 +153,74 @@ public class ForgotUsernameFragment extends Fragment implements Observer {
         }
     }
 
+    private void showError(final String titleText, final String msgText) {
+        final RelativeLayout error = (RelativeLayout) getActivity().findViewById(R.id.error_layout);
+        final TextView msg = (TextView) getActivity().findViewById(R.id.error_sub);
+        final TextView title = (TextView) getActivity().findViewById(R.id.error_text);
+        final ImageView close = (ImageView) getActivity().findViewById(R.id.err_close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                error.setVisibility(View.GONE);
+            }
+        });
+
+        final Handler handler = new Handler();
+
+        final Runnable r = new Runnable() {
+            public void run() {
+                Util.showErrorMsg(error, msg, title, titleText, msgText);
+            }
+        };
+
+        handler.post(r);
+    }
+
     protected void executeForgotUsername(Activity activity, String email) {
-        /*TravellerLoginNetwork loginNetwork = new TravellerLoginNetwork(activity);
-        loginNetwork.addObserver(this);
+        ForgotPasswordNetwork resetNetwork = new ForgotPasswordNetwork(activity);
+        resetNetwork.addObserver(this);
         try {
-            loginNetwork.doLogin(email, password);
+            try {
+                resetNetwork.doResetPassword(email);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         } catch (JSONException e) {
-            update(loginNetwork, null);
-        } catch (UnsupportedEncodingException e) {
-            update(loginNetwork, null);
-        }*/
+            update(resetNetwork, null);
+        }
     }
 
     @Override
     public void update(Observable o, Object arg) {
-
+        if (arg != null) {
+            if(arg instanceof LoginError) {
+                String msg = "Server error.";
+                String title = "ERROR";
+                if(((LoginError)arg).getGeneralServerError()!=null && ((LoginError)arg).getGeneralServerError().getErrorDetails()!=null) {
+                    if(((LoginError)arg).getGeneralServerError().getErrorDetails().getMessage()!=null) {
+                        msg = ((LoginError)arg).getGeneralServerError().getErrorDetails().getMessage();
+                    }
+                    if(((LoginError)arg).getGeneralServerError().getErrorDetails().getTitle()!=null) {
+                        title = ((LoginError)arg).getGeneralServerError().getErrorDetails().getTitle();
+                    }
+                    showError(title, msg);
+                }
+            }
+        } else {
+            final Activity activity = getActivity();
+            if (activity == null || activity.isFinishing()) {
+                return;
+            }
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    PasswordSent fragment = PasswordSent.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+                    transaction.replace(R.id.container, fragment, PasswordSent.class.getSimpleName());
+                    transaction.commit();
+                }
+            });
+        }
     }
 }

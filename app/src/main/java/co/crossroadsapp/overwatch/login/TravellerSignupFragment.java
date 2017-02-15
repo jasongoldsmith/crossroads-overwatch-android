@@ -66,6 +66,8 @@ public class TravellerSignupFragment extends AbstractTravellerLoginFragment impl
         if( arg instanceof UserData )
         {
             Activity act = getActivity();
+            //user logged in
+            Util.setDefaults("loggedin", "true", act);
             if( act == null || act.isFinishing() )
             {
                 return;

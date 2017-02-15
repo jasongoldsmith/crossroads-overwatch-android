@@ -176,8 +176,8 @@ public class GroupDrawerAdapter {
             int ge_num = selectedGroup.getEventCount();
             int gm_num = selectedGroup.getMemberCount();
             boolean mute = selectedGroup.getMuteNotification();
-            groupSelectedEventCount.setText(String.format(c.getResources().getString(R.string.grp_member), ge_num));
-            groupSelectedMemberCount.setText(String.format(c.getResources().getQuantityString(R.plurals.grp_event, gm_num), gm_num));
+            groupSelectedEventCount.setText(String.format(c.getResources().getQuantityString(R.plurals.grp_event, ge_num), ge_num));
+            groupSelectedMemberCount.setText(String.format(c.getResources().getString(R.string.grp_member), gm_num));
             if (ge_num > 0) {
                 groupSelectedEventCount.setTextColor(c.getResources().getColor(R.color.activity_light_color));
             }

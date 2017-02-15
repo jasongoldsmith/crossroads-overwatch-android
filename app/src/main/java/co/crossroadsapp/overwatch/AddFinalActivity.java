@@ -750,7 +750,7 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
         if (subD == null || charD == null) {
             card.setVisibility(View.VISIBLE);
             RelativeLayout cardLayout = (RelativeLayout) row.findViewById(R.id.activity_checkpoint_card_frag);
-            cardLayout.setBackgroundColor(getResources().getColor(R.color.consoleAddColor));
+            cardLayout.setBackgroundColor(getResources().getColor(R.color.choose_platform_color));
             card.setCardBackgroundColor(getResources().getColor(R.color.traveller_login_email_input_bg));
             TextView label = (TextView) row.findViewById(R.id.activity_checkpoint_text);
             if (adapterCheckpoint != null) {
@@ -759,8 +759,8 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
         } else {
             card.setVisibility(View.VISIBLE);
             RelativeLayout cardLayout = (RelativeLayout) row.findViewById(R.id.activity_checkpoint_card_frag);
-            cardLayout.setBackgroundColor(getResources().getColor(R.color.consoleAddColor));
-            card.setCardBackgroundColor(getResources().getColor(R.color.freelancer_background));
+            cardLayout.setBackgroundColor(getResources().getColor(R.color.choose_platform_color));
+            card.setCardBackgroundColor(getResources().getColor(R.color.traveller_login_email_input_bg));
             TextView label = (TextView) row.findViewById(R.id.activity_checkpoint_text);
             if (adapterCheckpoint != null) {
                 label.setText(adapterCheckpoint.get(position));
@@ -783,8 +783,8 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
         } else {
             card.setVisibility(View.VISIBLE);
             RelativeLayout cardLayout = (RelativeLayout) row.findViewById(R.id.activity_checkpoint_card_frag);
-            cardLayout.setBackgroundColor(getResources().getColor(R.color.consoleAddColor));
-            card.setCardBackgroundColor(getResources().getColor(R.color.freelancer_background));
+            cardLayout.setBackgroundColor(getResources().getColor(R.color.choose_platform_color));
+            card.setCardBackgroundColor(getResources().getColor(R.color.traveller_login_email_input_bg));
             TextView label = (TextView) row.findViewById(R.id.activity_checkpoint_text);
             if (adapterCheckpoint != null) {
                 label.setText(adapterCheckpoint.get(position));
@@ -807,8 +807,8 @@ public class AddFinalActivity extends BaseActivity implements Observer, AdapterV
         } else {
             card.setVisibility(View.VISIBLE);
             RelativeLayout cardLayout = (RelativeLayout) row.findViewById(R.id.activity_checkpoint_card_frag);
-            cardLayout.setBackgroundColor(getResources().getColor(R.color.consoleAddColor));
-            card.setCardBackgroundColor(getResources().getColor(R.color.freelancer_background));
+            cardLayout.setBackgroundColor(getResources().getColor(R.color.choose_platform_color));
+            card.setCardBackgroundColor(getResources().getColor(R.color.traveller_login_email_input_bg));
             TextView label = (TextView) row.findViewById(R.id.activity_checkpoint_text);
             if (adapterCheckpoint != null) {
                 label.setText(adapterCheckpoint.get(position));

@@ -31,6 +31,7 @@ import java.util.Observer;
 import co.crossroadsapp.overwatch.ControlManager;
 import co.crossroadsapp.overwatch.R;
 import co.crossroadsapp.overwatch.core.OverwatchLoginException;
+import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.network.AddConsoleNetwork;
 import co.crossroadsapp.overwatch.utils.TravellerLog;
@@ -159,17 +160,31 @@ public class ChooseYourPlatformFragment extends Fragment implements Observer {
                 public void run() {
                     Object exception = null;
                     String userTag = null;
-                    if( arg != null && arg instanceof OverwatchLoginException)
+                    if( arg != null)
                     {
-                        exception = ((OverwatchLoginException) arg).getCustomData();
-                        userTag = ((OverwatchLoginException) arg).getUserTag();
+                        if(arg instanceof OverwatchLoginException) {
+                            exception = ((OverwatchLoginException) arg).getCustomData();
+                            userTag = ((OverwatchLoginException) arg).getUserTag();
+                            GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception);
+                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+                            transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());
+                            transaction.addToBackStack(null);
+                            transaction.commit();
+                        } else if(arg instanceof LoginError) {
+                            String msg=null;
+                            String title = null;
+                            if(((LoginError)arg).getGeneralServerError()!=null && ((LoginError)arg).getGeneralServerError().getErrorDetails()!=null) {
+                                if(((LoginError)arg).getGeneralServerError().getErrorDetails().getMessage()!=null) {
+                                    msg = ((LoginError)arg).getGeneralServerError().getErrorDetails().getMessage();
+                                }
+                                if(((LoginError)arg).getGeneralServerError().getErrorDetails().getTitle()!=null) {
+                                    title = ((LoginError)arg).getGeneralServerError().getErrorDetails().getTitle();
+                                }
+                                showError(title, msg);
+                            }
+                        }
                     }
-                    GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception);
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
-                    transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());
-                    transaction.addToBackStack(null);
-                    transaction.commit();
                 }
             });
         }
@@ -215,21 +230,44 @@ public class ChooseYourPlatformFragment extends Fragment implements Observer {
     private boolean checkGamertagValidity(String tag, String console) {
         if(console.equalsIgnoreCase("ps4")) {
             if(tag.matches(".*[^a-z^0-9^A-Z\\_\\-].*") || tag.length()>16) {
-                showError();
+                showError("INVALID GAMERTAG", "Please enter a valid gamertag.");
                 return false;
             }
         } else if(console.equalsIgnoreCase("xboxone")) {
             if(tag.matches(".*[^a-z^0-9^A-Z^ ].*") || tag.length()>16 || tag.length()<1 || tag.startsWith(" ") || tag.contains("  ") || Character.isDigit(tag.charAt(0))){
-                showError();
+                showError("INVALID GAMERTAG", "Please enter a valid gamertag.");
                 return false;
             }
         } else {
             return true;
         }
-        return false;
+        return true;
     }
 
-    private void showError() {
+//    private void showError() {
+//        final RelativeLayout error = (RelativeLayout) getActivity().findViewById(R.id.error_layout);
+//        final TextView msg = (TextView) getActivity().findViewById(R.id.error_sub);
+//        final TextView title = (TextView) getActivity().findViewById(R.id.error_text);
+//        final ImageView close = (ImageView) getActivity().findViewById(R.id.err_close);
+//        close.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                error.setVisibility(View.GONE);
+//            }
+//        });
+//
+//        final Handler handler = new Handler();
+//
+//        final Runnable r = new Runnable() {
+//            public void run() {
+//                Util.showErrorMsg(error, msg, title, "Please enter a valid gamertag.", "INVALID GAMERTAG");
+//            }
+//        };
+//
+//        handler.post(r);
+//    }
+
+    private void showError(final String titleText, final String msgText) {
         final RelativeLayout error = (RelativeLayout) getActivity().findViewById(R.id.error_layout);
         final TextView msg = (TextView) getActivity().findViewById(R.id.error_sub);
         final TextView title = (TextView) getActivity().findViewById(R.id.error_text);
@@ -245,7 +283,7 @@ public class ChooseYourPlatformFragment extends Fragment implements Observer {
 
         final Runnable r = new Runnable() {
             public void run() {
-                Util.showErrorMsg(error, msg, title, "Please enter a valid gamertag.", "INVALID GAMERTAG");
+                Util.showErrorMsg(error, msg, title, titleText, msgText);
             }
         };
 

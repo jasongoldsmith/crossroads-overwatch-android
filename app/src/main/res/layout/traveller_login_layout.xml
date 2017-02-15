@@ -51,11 +51,11 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="20dp"
                 android:inputType="textAutoCorrect|textCapSentences|textEmailAddress"
-                android:imeOptions="actionDone"
                 android:background="@drawable/edittext_corner_bg"
                 android:drawableStart="@mipmap/img_icon_email"
                 android:drawablePadding="17dp"
-                android:maxLines="1"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
                 android:gravity="center_vertical"
                 android:hint="@string/enter_email_address"
                 android:paddingBottom="22dp"
@@ -74,8 +74,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="3dp"
+                android:singleLine="true"
                 android:imeOptions="actionDone"
-                android:maxLines="1"
                 android:background="@drawable/edittext_corner_bg"
                 android:drawableStart="@mipmap/img_icon_password"
                 android:drawablePadding="17dp"
@@ -126,5 +126,7 @@
         android:textColor="@color/trimble_white"
         android:textSize="16sp"
         android:textStyle="bold" />
+
+    <include layout="@layout/general_error_ui" />
 
 </RelativeLayout>

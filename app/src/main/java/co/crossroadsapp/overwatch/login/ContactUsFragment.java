@@ -3,6 +3,7 @@ package co.crossroadsapp.overwatch.login;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import org.json.JSONException;
 
@@ -21,6 +25,7 @@ import co.crossroadsapp.overwatch.ControlManager;
 import co.crossroadsapp.overwatch.R;
 import co.crossroadsapp.overwatch.core.OverwatchLoginException;
 import co.crossroadsapp.overwatch.data.GeneralServerError;
+import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.network.ReportCrashNetwork;
 import co.crossroadsapp.overwatch.utils.TravellerLog;
@@ -103,63 +108,46 @@ public class ContactUsFragment extends Fragment implements Observer {
     @Override
     public void update(Observable o, final Object arg) {
         TravellerLog.w(this, "update: arg: " + arg);
-        if (arg instanceof UserData) {
-            UserData user = (UserData) arg;
-            if (user != null) {
-                if (Util.ensureGameTag(user)) {
-                    ControlManager.getmInstance().setUserdata(user);
-                    Activity act = getActivity();
-                    if (act == null || act.isFinishing()) {
-                        return;
+        if (arg != null) {
+            if(arg instanceof LoginError) {
+                String msg = "Server error.";
+                String title = "ERROR";
+                if(((LoginError)arg).getGeneralServerError()!=null && ((LoginError)arg).getGeneralServerError().getErrorDetails()!=null) {
+                    if(((LoginError)arg).getGeneralServerError().getErrorDetails().getMessage()!=null) {
+                        msg = ((LoginError)arg).getGeneralServerError().getErrorDetails().getMessage();
                     }
-                    act.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            exitLoginPage();
-                        }
-                    });
-                } else {
-                    Activity act = getActivity();
-                    if (act == null || act.isFinishing()) {
-                        return;
+                    if(((LoginError)arg).getGeneralServerError().getErrorDetails().getTitle()!=null) {
+                        title = ((LoginError)arg).getGeneralServerError().getErrorDetails().getTitle();
                     }
-                    act.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ChooseYourPlatformFragment fragment = new ChooseYourPlatformFragment();
-                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                            transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
-                            transaction.replace(R.id.container, fragment);
-                            transaction.commit();
-                        }
-                    });
+                    showError(title, msg);
                 }
             }
         } else {
-            Activity act = getActivity();
-            if (act == null || act.isFinishing()) {
-                return;
-            }
-            act.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Object exception = null;
-                    String userTag = null;
-                    if( arg != null && arg instanceof OverwatchLoginException)
-                    {
-                        exception = ((OverwatchLoginException) arg).getCustomData();
-                        userTag = ((OverwatchLoginException) arg).getUserTag();
-                    }
-                    if (exception != null && exception instanceof GeneralServerError) {
-                        GeneralServerError error = (GeneralServerError) exception;
-
-                    }
-                    if (userTag != null && userTag.length() > 0) {
-
-                    }
-                }
-            });
+            exitLoginPage();
         }
+    }
+
+    private void showError(final String titleText, final String msgText) {
+        final RelativeLayout error = (RelativeLayout) getActivity().findViewById(R.id.error_layout);
+        final TextView msg = (TextView) getActivity().findViewById(R.id.error_sub);
+        final TextView title = (TextView) getActivity().findViewById(R.id.error_text);
+        final ImageView close = (ImageView) getActivity().findViewById(R.id.err_close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                error.setVisibility(View.GONE);
+            }
+        });
+
+        final Handler handler = new Handler();
+
+        final Runnable r = new Runnable() {
+            public void run() {
+                Util.showErrorMsg(error, msg, title, titleText, msgText);
+            }
+        };
+
+        handler.post(r);
     }
 
     protected void exitLoginPage() {

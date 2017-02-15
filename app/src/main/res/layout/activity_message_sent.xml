@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_b_g_message_sent"
+        android:src="@drawable/img_top_hero_c_p"
         android:adjustViewBounds="true"/>
 
     <ImageView

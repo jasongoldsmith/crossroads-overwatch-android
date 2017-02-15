@@ -342,8 +342,6 @@
             android:layout_centerHorizontal="true"
             android:text="@string/report_crash"
             android:textSize="14sp"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold"
             android:textColor="@android:color/white"
             android:layout_marginRight="37dp"
             android:layout_marginLeft="37dp"

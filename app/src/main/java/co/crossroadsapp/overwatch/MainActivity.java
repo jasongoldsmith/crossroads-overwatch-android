@@ -119,7 +119,13 @@ public class MainActivity extends BaseActivity implements Observer {
 
         //check android version for dev builds
         mManager.getAndroidVersion(this);
-        mManager.getConfig(MainActivity.this);
+        //mManager.getConfig(MainActivity.this);
+        String loggedin = Util.getDefaults("loggedin", this);
+        if(loggedin!=null) {
+            forwardAfterVersionCheck();
+        } else {
+            launchMainLayout();
+        }
         TravellerLog.w(this, "MainActivity.onCreate ends...");
     }
 
@@ -238,6 +244,9 @@ public class MainActivity extends BaseActivity implements Observer {
                         @Override
                         public void run() {
                             TravellerLog.w(this, "sign_in_btn.setOnClickListener");
+                            //tracking signup
+                            Map<String, String> json = new HashMap<String, String>();
+                            Util.postTracking(json, null, mManager, Constants.APP_SIGNUP);
                             Intent intent = new Intent(MainActivity.this, LoginScreen.class);
                             intent.putExtra(Constants.LOGIN_SIGNUP_SCREEN_KEY, Constants.SIGNUP_SCREEN_VALUE);
                             MainActivity.this.startActivityForResult(intent, 0);

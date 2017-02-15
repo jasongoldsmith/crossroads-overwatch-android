@@ -90,4 +90,6 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
+    <include layout="@layout/general_error_ui" />
+
 </RelativeLayout>

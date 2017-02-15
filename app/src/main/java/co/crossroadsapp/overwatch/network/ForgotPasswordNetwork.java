@@ -18,9 +18,11 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Observable;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.entity.StringEntity;
 
 /**
  * Created by sharmha on 5/13/16.
@@ -39,9 +41,12 @@ public class ForgotPasswordNetwork extends Observable {
         ntwrk = NetworkEngine.getmInstance(c);
     }
 
-    public void doResetPassword(RequestParams params) throws JSONException {
+    public void doResetPassword(String email) throws JSONException, UnsupportedEncodingException{
         if (Util.isNetworkAvailable(mContext)) {
-            ntwrk.post(url, params, new JsonHttpResponseHandler() {
+            JSONObject jsonParams = new JSONObject();
+            jsonParams.put("email", email);
+            StringEntity entity = new StringEntity(jsonParams.toString());
+            ntwrk.post(this.mContext, url, entity, "application/json", new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     setChanged();
@@ -52,7 +57,8 @@ public class ForgotPasswordNetwork extends Observable {
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
 //                    Toast.makeText(mContext, "Signup error from server  - " + statusCode,
 //                            Toast.LENGTH_LONG).show();
-                    mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
+                    //mManager.showErrorDialogue(Util.getErrorMessage(errorResponse));
+                    dispatchError(errorResponse);
                 }
             });
         }else {

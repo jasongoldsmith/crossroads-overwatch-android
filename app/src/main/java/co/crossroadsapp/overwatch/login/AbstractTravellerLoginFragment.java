@@ -1,6 +1,7 @@
 package co.crossroadsapp.overwatch.login;
 
 import android.app.Activity;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,9 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import co.crossroadsapp.overwatch.R;
+import co.crossroadsapp.overwatch.utils.Util;
 
 /**
  * Created by karagdi on 1/24/17.
@@ -38,7 +42,7 @@ public abstract class AbstractTravellerLoginFragment extends PreChooseGameTagFra
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        refreshSignInButton(validateCredentials());
+                        refreshSignInButton(true);
                     }
 
                     @Override
@@ -69,7 +73,8 @@ public abstract class AbstractTravellerLoginFragment extends PreChooseGameTagFra
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        refreshSignInButton(validateCredentials());
+                        //refreshSignInButton(validateCredentials());
+                        refreshSignInButton(true);
                     }
 
                     @Override
@@ -81,7 +86,7 @@ public abstract class AbstractTravellerLoginFragment extends PreChooseGameTagFra
                     @Override
                     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                         if (actionId == EditorInfo.IME_ACTION_DONE) {
-                            if (validateCredentials()) {
+                            if (validateUsername()) {
                                 executeLogin((Activity) v.getContext(), _email_input.getText().toString(), _password_input.getText().toString());
                                 return true;
                             }
@@ -122,11 +127,34 @@ public abstract class AbstractTravellerLoginFragment extends PreChooseGameTagFra
         }
     }
 
+    private void showError(final String titleText, final String msgText) {
+        final RelativeLayout error = (RelativeLayout) getActivity().findViewById(R.id.error_layout);
+        final TextView msg = (TextView) getActivity().findViewById(R.id.error_sub);
+        final TextView title = (TextView) getActivity().findViewById(R.id.error_text);
+        final ImageView close = (ImageView) getActivity().findViewById(R.id.err_close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                error.setVisibility(View.GONE);
+            }
+        });
+
+        final Handler handler = new Handler();
+
+        final Runnable r = new Runnable() {
+            public void run() {
+                Util.showErrorMsg(error, msg, title, titleText, msgText);
+            }
+        };
+
+        handler.post(r);
+    }
+
     private boolean validatePassword() {
         String pass = this._password_input.getText().toString();
-        if (pass.length() < 4) {
-            return false;
-        }
+//        if (pass.length() < 4) {
+//            return false;
+//        }
         return true;
     }
 
@@ -135,6 +163,7 @@ public abstract class AbstractTravellerLoginFragment extends PreChooseGameTagFra
         if (user.contains("@") || user.contains(".")) {
             return true;
         }
+        showError("ERROR", "Please enter a valid email address");
         return false;
     }
 
@@ -169,7 +198,9 @@ public abstract class AbstractTravellerLoginFragment extends PreChooseGameTagFra
                 sign_in_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        executeLogin((Activity) v.getContext(), _email_input.getText().toString(), _password_input.getText().toString());
+                        if(validateUsername()) {
+                            executeLogin((Activity) v.getContext(), _email_input.getText().toString(), _password_input.getText().toString());
+                        }
                     }
                 });
             }

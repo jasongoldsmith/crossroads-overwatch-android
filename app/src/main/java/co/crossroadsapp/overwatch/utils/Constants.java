@@ -59,7 +59,7 @@ public class Constants {
     public static final int PROD = 0;
     public static final int STAGING = 1;
     public static final int DEV = 2;
-    public static final int ENVIRONMENT = DEV;
+    public static final int ENVIRONMENT = PROD;
     //public static final String PROD_DOMAIN = "overwatch-live.herokuapp.com";
     public static final String PROD_DOMAIN = "owlive.crossroadsapp.co";
     public static final String STAGING_DOMAIN = "overwatch-staging.herokuapp.com";
@@ -133,7 +133,7 @@ public class Constants {
     public static String APP_SHOWPASSWORD = "showPassword";
 
     //urls
-    public static String DEEP_LINK_IMAGE = "http://w3.crossroadsapp.co/bungie/share/branch/v1/";
+    public static String DEEP_LINK_IMAGE = "http://w3.crossroadsapp.co/overwatch/share/branch/v1/";
     public static String BUNGIE_ERROR = "BungieLoginError";
     public static String BUNGIE_CONNECT_ERROR = "BungieConnectError";
     public static String BUNGIE_LEGACY_ERROR = "BungieLegacyConsoleError";
@@ -149,7 +149,7 @@ public class Constants {
     public static int GENERAL_LEAVE = 5;
     public static int GENERAL_KICK = 4;
 
-    public static final String CONFIG_TOKEN = "003c2fff-9d24-4dbe-be76-6ab21574e2d9";
+    public static final String CONFIG_TOKEN = "003c2fff-9d24-4dbe-be76-6ab21574e2d9";//dev - "123"
     public static final String CONFIG_TOKEN_KEY = "config_token";
 
     //getCurrentUser bungie

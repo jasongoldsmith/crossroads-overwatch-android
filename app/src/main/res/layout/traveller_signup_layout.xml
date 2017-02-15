@@ -59,6 +59,7 @@
                 android:gravity="center_vertical"
                 android:hint="@string/enter_email_address"
                 android:paddingBottom="22dp"
+                android:singleLine="true"
                 android:paddingEnd="0dp"
                 android:paddingStart="15dp"
                 android:paddingTop="22dp"
@@ -79,6 +80,8 @@
                 android:drawablePadding="17dp"
                 android:gravity="center_vertical"
                 android:hint="@string/enter_password"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
                 android:inputType="textAutoCorrect|textCapSentences|textPassword"
                 android:paddingBottom="22dp"
                 android:paddingEnd="0dp"
@@ -125,5 +128,7 @@
         android:textColor="@color/trimble_white"
         android:textSize="16sp"
         android:textStyle="bold" />
+
+    <include layout="@layout/general_error_ui" />
 
 </RelativeLayout>

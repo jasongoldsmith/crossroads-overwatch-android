@@ -27,6 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/traveller_login_margin_top"
         android:gravity="center_horizontal"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
         android:text="@string/contact_us"
         android:textAllCaps="true"
         android:textColor="@color/trimble_white"

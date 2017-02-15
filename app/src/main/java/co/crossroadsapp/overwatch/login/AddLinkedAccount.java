@@ -29,6 +29,7 @@ import java.util.Observable;
 import co.crossroadsapp.overwatch.ControlManager;
 import co.crossroadsapp.overwatch.R;
 import co.crossroadsapp.overwatch.core.OverwatchLoginException;
+import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.network.AddConsoleNetwork;
 import co.crossroadsapp.overwatch.utils.TravellerLog;
@@ -184,7 +185,7 @@ public class AddLinkedAccount extends AbstractTravellerLoginFragment {
         } else {
             return true;
         }
-        return false;
+        return true;
     }
 
     private void showError() {
@@ -252,19 +253,57 @@ public class AddLinkedAccount extends AbstractTravellerLoginFragment {
                 public void run() {
                     Object exception = null;
                     String userTag = null;
-                    if (arg != null && arg instanceof OverwatchLoginException) {
-                        exception = ((OverwatchLoginException) arg).getCustomData();
-                        userTag = ((OverwatchLoginException) arg).getUserTag();
+                    if( arg != null)
+                    {
+                        if(arg instanceof OverwatchLoginException) {
+                            exception = ((OverwatchLoginException) arg).getCustomData();
+                            userTag = ((OverwatchLoginException) arg).getUserTag();
+                            GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception);
+                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+                            transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());
+                            transaction.addToBackStack(null);
+                            transaction.commit();
+                        } else if(arg instanceof LoginError) {
+                            String msg=null;
+                            String title = null;
+                            if(((LoginError)arg).getGeneralServerError()!=null && ((LoginError)arg).getGeneralServerError().getErrorDetails()!=null) {
+                                if(((LoginError)arg).getGeneralServerError().getErrorDetails().getMessage()!=null) {
+                                    msg = ((LoginError)arg).getGeneralServerError().getErrorDetails().getMessage();
+                                }
+                                if(((LoginError)arg).getGeneralServerError().getErrorDetails().getTitle()!=null) {
+                                    title = ((LoginError)arg).getGeneralServerError().getErrorDetails().getTitle();
+                                }
+                                showError(title, msg);
+                            }
+                        }
                     }
-                    GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception);
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
-                    transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());
-                    transaction.addToBackStack(null);
-                    transaction.commit();
                 }
             });
         }
+    }
+
+    private void showError(final String titleText, final String msgText) {
+        final RelativeLayout error = (RelativeLayout) getActivity().findViewById(R.id.error_layout);
+        final TextView msg = (TextView) getActivity().findViewById(R.id.error_sub);
+        final TextView title = (TextView) getActivity().findViewById(R.id.error_text);
+        final ImageView close = (ImageView) getActivity().findViewById(R.id.err_close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                error.setVisibility(View.GONE);
+            }
+        });
+
+        final Handler handler = new Handler();
+
+        final Runnable r = new Runnable() {
+            public void run() {
+                Util.showErrorMsg(error, msg, title, titleText, msgText);
+            }
+        };
+
+        handler.post(r);
     }
 
     public static Fragment newInstance() {

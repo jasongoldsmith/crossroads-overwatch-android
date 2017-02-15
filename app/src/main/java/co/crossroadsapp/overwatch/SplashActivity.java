@@ -14,6 +14,7 @@ import com.crashlytics.android.answers.Answers;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import co.crossroadsapp.overwatch.data.InvitationLoginData;
+import co.crossroadsapp.overwatch.network.ConfigNetwork;
 import co.crossroadsapp.overwatch.network.TrackingNetwork;
 import co.crossroadsapp.overwatch.utils.Constants;
 import co.crossroadsapp.overwatch.utils.Util;
@@ -59,8 +60,12 @@ public class SplashActivity extends BaseActivity implements Observer {
         cManager = ControlManager.getmInstance();
         cManager.setClient(SplashActivity.this);
         cManager.setCurrentActivity(SplashActivity.this);
+        cManager.getConfig(SplashActivity.this);
+    }
+
+    private void resumeAfterConfig() {
         //mixpanel token
-        String projectToken =  getResources().getString(R.string.mix_panel_token);
+        String projectToken =  Util.getDefaults("mixpanelToken", this); //getResources().getString(R.string.mix_panel_token);
         mixpanel = MixpanelAPI.getInstance(SplashActivity.this, projectToken);
         cManager.addClientHeader("x-mixpanelid", mixpanel.getDistinctId()!=null?mixpanel.getDistinctId():"");
         mLayout = (RelativeLayout) findViewById(R.id.splash_layout);
@@ -220,6 +225,13 @@ public class SplashActivity extends BaseActivity implements Observer {
                 branchInitializationAndInit();
                 launchNextActivity();
                 appInstallSuccess = true;
+            }
+        } else if(observable instanceof ConfigNetwork) {
+            if (data != null) {
+                if (cManager != null) {
+                    cManager.parseAndSaveConfigUrls((JSONObject) data);
+                }
+                resumeAfterConfig();
             }
         }
     }
