@@ -26,15 +26,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/event_top_layout"
-            android:background="@mipmap/img_header_bg"
             android:layout_alignParentTop="true">
 
-            <!--<ImageView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:src="@mipmap/img_header_bg"-->
-                <!--android:layout_alignParentTop="true"-->
-                <!--android:adjustViewBounds="true"/>-->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/img_header_bg"
+                android:adjustViewBounds="true"
+                android:layout_alignParentTop="true"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -72,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:background="@android:color/transparent"
-                android:elevation="0dp"
+                app:elevation="0dp"
                 app:tabTextColor="#d3d3d3"
                 app:tabIndicatorColor="@color/join_btn_color"
                 app:tabSelectedTextColor="@color/join_btn_color"

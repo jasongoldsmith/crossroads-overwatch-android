@@ -1309,7 +1309,7 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             mManager.setDeepLinkEvent(null, null);
         } else {
             //show timed error message
-            //setErrText(err);
+            setErrText(err);
         }
 
 //        errLayout.setVisibility(View.GONE);

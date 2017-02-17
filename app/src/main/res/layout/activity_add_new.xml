@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:scaleType="fitXY"
+        android:adjustViewBounds="true"
         android:src="@mipmap/img_top_hero"/>
     <ImageView
         android:id="@+id/icon_gamemode"

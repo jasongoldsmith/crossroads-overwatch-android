@@ -55,7 +55,7 @@
     <string name="nogroup_text">It looks like you are not a member of any groups. Feel free to freelance with us or head to <![CDATA[<a href="http://www.bungie.net">Bungie.net</a>]]> to join a group and fully experience the Crossroads for Destiny app.</string>
     <string name="copyright_string">&#169; Catalyst Foundry 2017</string>
 
-    <string name="terms_conditions">By signing in, I have read and agree to the Crossroads <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]> and <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>. &#169; Catalyst Foundry 2017</string>
+    <string name="terms_conditions">By signing in, I have read and agree to the Crossroads <![CDATA[<a href="http://w3.crossroadsapp.co/owterms">Terms of Service</a>]]> and <![CDATA[<a href="http://w3.crossroadsapp.co/owprivacy">Privacy Policy</a>]]>. &#169; Catalyst Foundry 2017</string>
     <string name="terms_string"><u>Terms of Service</u>  |</string>
     <string name="privacy_string">  <u>Privacy Policy</u> </string>
     <string name="license_string"> |  <u>Licenses</u></string>
@@ -100,9 +100,9 @@
     <string name="title_activity_update_console">UpdateConsoleActivity</string>
 
     <string name="deeplink_full_err">The maximum amount of players has been reached for this activity. Would you like to add one of your own?</string>
-    <string name="dialog_message">Our Terms of Service and Privacy Policy have changed.\n  By tapping the “OK” button, you agree to the updated <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]> and <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>.</string>
-    <string name="dialog_message_privacy">Our Privacy Policy has changed.\n  By tapping the “OK” button, you agree to the updated <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>.</string>
-    <string name="dialog_message_terms">Our Terms of Service have changed.\n  By tapping the “OK” button, you agree to the updated <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]>.</string>
+    <string name="dialog_message">Our Terms of Service and Privacy Policy have changed.\n  By tapping the “OK” button, you agree to the updated <![CDATA[<a href="http://w3.crossroadsapp.co/owterms">Terms of Service</a>]]> and <![CDATA[<a href="http://w3.crossroadsapp.co/owprivacy">Privacy Policy</a>]]>.</string>
+    <string name="dialog_message_privacy">Our Privacy Policy has changed.\n  By tapping the “OK” button, you agree to the updated <![CDATA[<a href="http://w3.crossroadsapp.co/owprivacy">Privacy Policy</a>]]>.</string>
+    <string name="dialog_message_terms">Our Terms of Service have changed.\n  By tapping the “OK” button, you agree to the updated <![CDATA[<a href="http://w3.crossroadsapp.co/owterms">Terms of Service</a>]]>.</string>
     <string name="dialog_title">Update</string>
     <string name="console_selection_text">More than one console? You can add it later!</string>
     <string name="title_activity_add_final">AddFinalActivity</string>
@@ -168,7 +168,7 @@
     <string name="forgot_login">Forgot Login?</string>
     <string name="enter_password">Enter password</string>
     <string name="log_in">log in</string>
-    <string name="sign_up_terms_privacy">By clicking the “Next” button below, I have read and agree to the Crossroads <![CDATA[<a href="https://www.crossroadsapp.co/terms">Terms of Service</a>]]> and <![CDATA[<a href="https://www.crossroadsapp.co/privacy">Privacy Policy</a>]]>.</string>
+    <string name="sign_up_terms_privacy">By clicking the “Next” button below, I have read and agree to the Crossroads <![CDATA[<a href="http://w3.crossroadsapp.co/owterms">Terms of Service</a>]]> and <![CDATA[<a href="http://w3.crossroadsapp.co/owprivacy">Privacy Policy</a>]]>.</string>
     <string name="next">next</string>
     <string name="choose_your_platform">choose your platform</string>
     <string name="link_your_overwatch_account_to_crossroads_you_ll_only_have_to_do_this_once">Link your Overwatch account to Crossroads \n(you’ll only have to do this once)</string>

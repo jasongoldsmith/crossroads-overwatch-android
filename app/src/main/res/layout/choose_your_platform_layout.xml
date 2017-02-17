@@ -88,7 +88,7 @@
                     android:gravity="center_vertical"
                     android:hint="@string/enter_gamertag"
                     android:paddingBottom="22dp"
-                    android:maxLines="1"
+                    android:singleLine="true"
                     android:imeOptions="actionDone"
                     android:nextFocusDown="@+id/join_crossroads"
                     android:paddingEnd="0dp"

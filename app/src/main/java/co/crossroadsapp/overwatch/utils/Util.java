@@ -495,7 +495,7 @@ public class Util {
             if (url != null) {
                 Picasso.with(c).load(url)
                         .resizeDimen(width, height)
-                        .centerCrop().placeholder(avatar)
+                        .placeholder(avatar)
                         .into(eventIcon, new Callback() {
                             @Override
                             public void onSuccess() {
@@ -518,7 +518,7 @@ public class Util {
             Picasso.with(c)
                     .load(url)
                     .placeholder(avatar)
-                    .fit().centerCrop()
+                    .noFade().fit()
                     .into(eventIcon);
         }
     }
@@ -770,9 +770,9 @@ public class Util {
 //                        continue;
                     }
                     if (cd.isPrimary()) {
-                        platforms.add(0, devicePlatforms.get(i));
+                        platforms.add(0, elem);
                     } else {
-                        platforms.add(devicePlatforms.get(i));
+                        platforms.add(elem);
                     }
                 }
             }

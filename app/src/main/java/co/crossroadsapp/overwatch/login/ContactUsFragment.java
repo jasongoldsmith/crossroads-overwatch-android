@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,10 +48,18 @@ public class ContactUsFragment extends Fragment implements Observer {
 
     private void setUpSendUs(View v) {
         if( v != null ) {
+            ControlManager cManager = ControlManager.getmInstance();
             View send_us_btn = v.findViewById(R.id.send_us_btn);
             final EditText email_input = (EditText) v.findViewById(R.id.email_input);
             final EditText comment_input = (EditText) v.findViewById(R.id.user_message);
 
+            if(cManager!=null && cManager.getUserData()!=null) {
+                UserData user = cManager.getUserData();
+                if(user.getEmail()!=null && !user.getEmail().isEmpty()) {
+                    email_input.setText(user.getEmail());
+                    email_input.setKeyListener(null);
+                }
+            }
             if( send_us_btn != null )
             {
                 send_us_btn.setOnClickListener(new View.OnClickListener() {
@@ -151,12 +160,18 @@ public class ContactUsFragment extends Fragment implements Observer {
     }
 
     protected void exitLoginPage() {
-        Activity activity = getActivity();
+        final Activity activity = getActivity();
         if (activity == null || activity.isFinishing()) {
             return;
         }
-        activity.setResult(Activity.RESULT_OK, new Intent());
-        activity.finish();
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+//        activity.setResult(Activity.RESULT_OK, new Intent());
+//        activity.finish();
     }
 
     void setUpBackButton(View v) {
@@ -176,7 +191,7 @@ public class ContactUsFragment extends Fragment implements Observer {
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                activity.onBackPressed();
+                                getActivity().getSupportFragmentManager().popBackStack();
                             }
                         });
                     }

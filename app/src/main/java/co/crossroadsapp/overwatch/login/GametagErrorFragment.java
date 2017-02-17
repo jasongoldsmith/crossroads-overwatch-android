@@ -141,7 +141,7 @@ public class GametagErrorFragment extends Fragment {
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                activity.onBackPressed();
+                                getActivity().getSupportFragmentManager().popBackStack();
                             }
                         });
                     }

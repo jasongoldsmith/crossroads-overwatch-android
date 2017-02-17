@@ -35,6 +35,8 @@
                 android:layout_marginTop="@dimen/traveller_login_margin_top"
                 android:gravity="center_horizontal"
                 android:text="@string/forgot_login"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
                 android:textAllCaps="true"
                 android:textColor="@color/trimble_white"
                 android:textSize="18sp" />

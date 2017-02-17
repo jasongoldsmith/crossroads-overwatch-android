@@ -64,7 +64,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/deeplink_error"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:background="@color/seventy_percent_couch_mark_bg">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

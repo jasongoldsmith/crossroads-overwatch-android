@@ -17,7 +17,9 @@ public class ErrorMessageType {
 
     public void toJson(JSONObject json) throws JSONException {
         if (json.has("type") && !json.isNull("type")) {
-            this._type = json.getString("title");
+            if(json.get("type") instanceof String) {
+                this._type = json.getString("title");
+            }
         }
     }
 }

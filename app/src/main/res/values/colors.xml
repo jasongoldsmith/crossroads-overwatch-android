@@ -39,6 +39,7 @@
     <color name="fifty_black">#80000000</color>
     <color name="hiden_text_bg">#434c4f</color>
     <color name="seventy_percent_couch_mark_bg">#b3000000</color>
+    <color name="eighty_percent_black">#cc000000</color>
     <color name="tour_skip_text_color">#3ea5d7</color>
     <color name="edit_text">#6DA2B1</color>
     <color name="profile_logout">#6DA2B1</color>

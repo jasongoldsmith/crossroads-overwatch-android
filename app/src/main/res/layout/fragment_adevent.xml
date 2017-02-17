@@ -42,6 +42,7 @@
                         android:layout_height="@dimen/activity_icon_hgt"
                         android:id="@+id/adevent_icon"
                         android:src="@mipmap/icon_notification"
+                        android:adjustViewBounds="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentBottom="true"/>
 

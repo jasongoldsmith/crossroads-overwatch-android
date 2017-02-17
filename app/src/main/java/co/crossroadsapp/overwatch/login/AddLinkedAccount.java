@@ -299,7 +299,7 @@ public class AddLinkedAccount extends AbstractTravellerLoginFragment {
 
         final Runnable r = new Runnable() {
             public void run() {
-                Util.showErrorMsg(error, msg, title, titleText, msgText);
+                Util.showErrorMsg(error, msg, title, msgText, titleText);
             }
         };
 

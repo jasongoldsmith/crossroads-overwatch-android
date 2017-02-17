@@ -95,14 +95,12 @@ public class BaseActivity extends FragmentActivity {
                 if(errorText.getGeneralServerError().getErrorDetails().getTitle()!=null) {
                     errorTitle = errorText.getGeneralServerError().getErrorDetails().getTitle();
                 }
-            }
-        }
 
-        if(errorTitle==null) {
+        if(errorTitle==null || errorTitle.isEmpty()) {
             errorTitle = "ERROR";
         }
 
-        if(error==null) {
+        if(error==null || error.isEmpty()) {
             error = "Try again";
         }
 
@@ -121,6 +119,8 @@ public class BaseActivity extends FragmentActivity {
         // show timed error message
         if(error!=null && !error.isEmpty()) {
             Util.showErrorMsg(errLayout, errText, errTitle, error, errorTitle);
+        }
+            }
         }
 
 //        if(errText!=null && errLayout!=null) {

@@ -266,9 +266,10 @@ public class ControlManager implements Observer {
 
     public void postMuteNoti(ListActivityFragment act, RequestParams params) {
         try{
-            if(groupListNtwrk==null) {
-                groupListNtwrk = new GroupListNetwork(act);
-            }
+//            if(groupListNtwrk==null) {
+//                groupListNtwrk = new GroupListNetwork(act);
+//            }
+            groupListNtwrk = new GroupListNetwork(act);
             groupListNtwrk.addObserver(act);
             groupListNtwrk.postMuteNotification(params);
         } catch (JSONException e) {

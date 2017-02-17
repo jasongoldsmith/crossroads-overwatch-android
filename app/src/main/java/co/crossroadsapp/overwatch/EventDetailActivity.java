@@ -808,7 +808,7 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
             String deepLinkMsg = " ";
             String console = getDeepLinkConsoleType();
             if (checkUserIsPlayer()) {
-                deepLinkTitle = "Join My team";
+                deepLinkTitle = "Join My Team";
                 if (currEvent.getLaunchEventStatus().equalsIgnoreCase("upcoming")) {
                     deepLinkMsg = getDeepLinkConsoleType() + ": I need " + reqPlayer + " more for " + actName + " on " + upcomingDate + " in the " + grpName + " region";
                 }else {

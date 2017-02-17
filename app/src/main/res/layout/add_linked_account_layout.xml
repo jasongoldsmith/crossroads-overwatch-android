@@ -88,6 +88,7 @@
                     android:drawablePadding="17dp"
                     android:gravity="center_vertical"
                     android:hint="@string/enter_gamertag"
+                    android:singleLine="true"
                     android:imeOptions="actionDone"
                     android:nextFocusDown="@+id/link_to_crossroads"
                     android:paddingBottom="22dp"

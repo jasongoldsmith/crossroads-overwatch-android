@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -70,6 +72,7 @@ public class LoginFragment extends PreChooseGameTagFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.login_layout_fragment, container, false);
         this._activity = getActivity();
         launchWebView(v);
@@ -121,6 +124,7 @@ public class LoginFragment extends PreChooseGameTagFragment {
                     String cookies = CookieManager.getInstance().getCookie(Constants.DOMAIN);
                     headerMap.put("Cookie", "connect.sid=s%3AuOpOgpSshFoKf0oKqP5ot7Yat1aC443-.kl32Vp65Sjc3WaEh7%2Fv38ISGBLfTGMwVUNrkoj77tB8; domain=overwatch-staging.herokuapp.com");
                     wv.loadUrl(finalInfoUrl);
+
                 }
             });
         }
@@ -137,7 +141,6 @@ public class LoginFragment extends PreChooseGameTagFragment {
         List<Cookie> cookies = NetworkEngine.getmInstance(wv.getContext()).getAllCookies();
 
         cookieManager.removeAllCookie();
-
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 String cookieString = cookie.getName() + "=" + cookie.getValue() + "; domain=" + cookie.getDomain();

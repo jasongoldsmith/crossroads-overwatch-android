@@ -1,6 +1,7 @@
 package co.crossroadsapp.overwatch.login;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -64,6 +65,7 @@ public abstract class AbstractTravellerLoginFragment extends PreChooseGameTagFra
     protected void setUpPasswordInput(View v) {
         if (v != null) {
             this._password_input = (EditText) v.findViewById(R.id.password_input);
+            _password_input.setTypeface(Typeface.DEFAULT);
             if (this._password_input != null) {
                 this._password_input.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -106,6 +108,7 @@ public abstract class AbstractTravellerLoginFragment extends PreChooseGameTagFra
                     @Override
                     public void onClick(View view) {
                         EditText password_input = (EditText) v.findViewById(R.id.password_input);
+                        password_input.setTypeface(Typeface.DEFAULT);
                         if (password_input != null) {
                             if (isPasswordInputType(password_input.getInputType())) {
                                 password_input.setInputType(EditorInfo.TYPE_CLASS_TEXT);
@@ -143,7 +146,7 @@ public abstract class AbstractTravellerLoginFragment extends PreChooseGameTagFra
 
         final Runnable r = new Runnable() {
             public void run() {
-                Util.showErrorMsg(error, msg, title, titleText, msgText);
+                Util.showErrorMsg(error, msg, title, msgText, titleText);
             }
         };
 

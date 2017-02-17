@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/eventdetail_commentcard"
         android:layout_marginTop="1dp"
-        conversation:cardBackgroundColor="@color/event_detail_fireteam_cardbackground"
+        conversation:cardBackgroundColor="@color/traveller_login_email_input_bg_fifty"
         conversation:cardElevation="0dp"
         conversation:cardUseCompatPadding="false" >
 

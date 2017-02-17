@@ -473,9 +473,9 @@ public class EventDetailsFragments extends Fragment {
     }
 
     private boolean decideLeaderTag(int position, String playerId) {
-        if (currentEvent != null && currentEvent.getEventStatus() != null && currentEvent.getEventStatus().equalsIgnoreCase(Constants.STATUS_FULL)) {
-            if (playerId != null) {
-                if (currentEvent.getCreatorData() != null && currentEvent.getCreatorData().getPsnId() != null && currentEvent.getCreatorData().getPsnId().equalsIgnoreCase(playerId)) {
+        if(currentEvent!=null && currentEvent.getEventStatus()!=null) {
+            if(playerId!=null) {
+                if(currentEvent.getCreatorData()!=null && currentEvent.getCreatorData().getPsnId()!=null && currentEvent.getCreatorData().getPsnId().equalsIgnoreCase(playerId)) {
                     return true;
                 }
             }

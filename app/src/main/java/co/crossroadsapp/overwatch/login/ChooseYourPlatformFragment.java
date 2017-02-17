@@ -283,7 +283,7 @@ public class ChooseYourPlatformFragment extends Fragment implements Observer {
 
         final Runnable r = new Runnable() {
             public void run() {
-                Util.showErrorMsg(error, msg, title, titleText, msgText);
+                Util.showErrorMsg(error, msg, title, msgText, titleText);
             }
         };
 
@@ -298,26 +298,30 @@ public class ChooseYourPlatformFragment extends Fragment implements Observer {
                 this._sign_with_battlenet.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Activity activity = (Activity) v.getContext();
-                        if( activity == null || activity.isFinishing() )
-                        {
-                            return;
-                        }
-                        activity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                LoginFragment fragment = LoginFragment.newInstance();
-                                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
-                                transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());
-                                transaction.addToBackStack(null);
-                                transaction.commit();
-                            }
-                        });
+                        openWebview(v);
                     }
                 });
             }
         }
+    }
+
+    private void openWebview(View v) {
+        Activity activity = (Activity) v.getContext();
+        if( activity == null || activity.isFinishing() )
+        {
+            return;
+        }
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                LoginFragment fragment = LoginFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+                transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
     }
 
     private void setUpBattleTagInput(View v) {

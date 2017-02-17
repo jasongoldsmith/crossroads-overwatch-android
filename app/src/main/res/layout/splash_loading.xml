@@ -7,12 +7,19 @@
     android:background="@mipmap/img_background_signin">
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/img_b_g_top_hero" />
+
+    <ImageView
+        android:id="@+id/traveller_bdg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/traveller_bdg"
-        android:src="@mipmap/img_c_r_brand"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="159dp"/>
+        android:layout_marginTop="129dp"
+        android:src="@mipmap/img_c_r_brand" />
 
     <!--<TextView-->
         <!--android:layout_width="wrap_content"-->

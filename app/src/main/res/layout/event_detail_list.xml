@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/background"
-        android:background="@mipmap/img_top_hero_c_p"
+        android:src="@mipmap/img_top_hero_c_p"
+        android:adjustViewBounds="true"
         android:layout_alignParentTop="true"/>
     <ImageView
         android:layout_width="match_parent"

@@ -39,16 +39,20 @@ public class LoginError {
                     }
                 }
             }
-            if (json.has("message") && !json.isNull("message")) {
-                int message = json.getInt("message");
-            }
-            if (json.has("responseType") && !json.isNull("responseType")) {
-                this._responseType = json.getString("responseType");
-            }
-            if (json.has("message") && !json.isNull("message")) {
-                JSONObject jsonError = json.optJSONObject("message");
-                this._messageType = new ErrorMessageType();
-                this._messageType.toJson(jsonError);
+            if(this._error!=null && _error.getCode()>=0) {
+                if (json.has("message") && !json.isNull("message")) {
+                    if (json.get("message") instanceof Integer) {
+                        int message = json.getInt("message");
+                    }
+                }
+                if (json.has("responseType") && !json.isNull("responseType")) {
+                    this._responseType = json.getString("responseType");
+                }
+                if (json.has("message") && !json.isNull("message")) {
+                    JSONObject jsonError = json.optJSONObject("message");
+                    this._messageType = new ErrorMessageType();
+                    this._messageType.toJson(jsonError);
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
