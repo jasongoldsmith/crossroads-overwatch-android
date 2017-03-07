@@ -49,7 +49,7 @@ public class ContactUsFragment extends Fragment implements Observer {
     private void setUpSendUs(View v) {
         if( v != null ) {
             ControlManager cManager = ControlManager.getmInstance();
-            View send_us_btn = v.findViewById(R.id.send_us_btn);
+            final View send_us_btn = v.findViewById(R.id.send_us_btn);
             final EditText email_input = (EditText) v.findViewById(R.id.email_input);
             final EditText comment_input = (EditText) v.findViewById(R.id.user_message);
 
@@ -70,10 +70,11 @@ public class ContactUsFragment extends Fragment implements Observer {
                         {
                             return;
                         }
+                        send_us_btn.setEnabled(false);
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                postComment((Activity)v.getContext(), email_input.getText().toString(), comment_input.getText().toString());
+                                postComment((Activity)v.getContext(), email_input.getText().toString(), comment_input.getText().toString(), getSource(), getErrorCode());
                             }
                         });
                     }
@@ -96,12 +97,12 @@ public class ContactUsFragment extends Fragment implements Observer {
         return false;
     }
 
-    private void postComment(final Activity activity, String email, String userMsg) {
+    private void postComment(final Activity activity, String email, String userMsg, int source, int errorCode) {
         if(validateUsername(email) && validateMessage(userMsg)) {
             ReportCrashNetwork crashReportNetwork = new ReportCrashNetwork(activity);
             crashReportNetwork.addObserver(this);
             try {
-                crashReportNetwork.doCrashReport(email, userMsg);
+                crashReportNetwork.doCrashReport(email, userMsg, source, errorCode);
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (UnsupportedEncodingException e) {
@@ -110,8 +111,29 @@ public class ContactUsFragment extends Fragment implements Observer {
         }
     }
 
-    public static ContactUsFragment newInstance() {
-        return new ContactUsFragment();
+    public static ContactUsFragment newInstance(int source, int errorCode) {
+        ContactUsFragment fragment = new ContactUsFragment();
+        Bundle b = new Bundle();
+        b.putInt("source", source);
+        b.putInt("errorcode", errorCode);
+        fragment.setArguments(b);
+        return fragment;
+    }
+
+    public int getErrorCode() {
+        Bundle b = getArguments();
+        if (b != null && b.containsKey("errorcode")) {
+            return b.getInt("errorcode");
+        }
+        return 0;
+    }
+
+    public int getSource() {
+        Bundle b = getArguments();
+        if (b != null && b.containsKey("source")) {
+            return  b.getInt("source");
+        }
+        return 0;
     }
 
     @Override
@@ -132,7 +154,20 @@ public class ContactUsFragment extends Fragment implements Observer {
                 }
             }
         } else {
-            exitLoginPage();
+            final Activity activity = getActivity();
+            if (activity == null || activity.isFinishing()) {
+                return;
+            }
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    MessageSent fragment = MessageSent.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+                    transaction.replace(R.id.container, fragment, MessageSent.class.getSimpleName());
+                    transaction.commit();
+                }
+            });
         }
     }
 

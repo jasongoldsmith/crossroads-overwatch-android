@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,6 +35,7 @@ import co.crossroadsapp.overwatch.core.OverwatchLoginException;
 import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.network.AddConsoleNetwork;
+import co.crossroadsapp.overwatch.utils.Constants;
 import co.crossroadsapp.overwatch.utils.TravellerLog;
 import co.crossroadsapp.overwatch.utils.Util;
 
@@ -63,6 +65,13 @@ public class ChooseYourPlatformFragment extends Fragment implements Observer {
         setUpBackButton(v);
         this._activity = getActivity();
         return v;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
     }
 
     private void setUpDropDown(View v) {
@@ -165,7 +174,7 @@ public class ChooseYourPlatformFragment extends Fragment implements Observer {
                         if(arg instanceof OverwatchLoginException) {
                             exception = ((OverwatchLoginException) arg).getCustomData();
                             userTag = ((OverwatchLoginException) arg).getUserTag();
-                            GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception);
+                            GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception, Constants.ADDCONSOLE_ERROR);
                             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                             transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
                             transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());

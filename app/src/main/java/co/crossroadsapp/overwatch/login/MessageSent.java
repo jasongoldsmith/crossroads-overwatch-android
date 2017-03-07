@@ -1,6 +1,8 @@
 package co.crossroadsapp.overwatch.login;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,33 +16,26 @@ import co.crossroadsapp.overwatch.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PasswordSent OnFragmentInteractionListener} interface
+ * {@link MessageSent} interface
  * to handle interaction events.
- * Use the {@link PasswordSent#newInstance} factory method to
+ * Use the {@link MessageSent#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PasswordSent extends Fragment {
-    //private ImageView back;
-//
-//    public PasswordSent() {
-//        // Required empty public constructor
-//    }
+public class MessageSent extends Fragment {
+
+    public MessageSent() {
+        // Required empty public constructor
+    }
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment PasswordSent.
-     * @param s
+     * @return A new instance of fragment MessageSent.
      */
     // TODO: Rename and change types and number of parameters
-    public static PasswordSent newInstance(String s) {
-        PasswordSent fragment = new PasswordSent();
-        Bundle b = new Bundle();
-        if (s != null && s.length() > 0) {
-            b.putString("user_tag", s);
-        }
-        fragment.setArguments(b);
+    public static MessageSent newInstance() {
+        MessageSent fragment = new MessageSent();
         return fragment;
     }
 
@@ -49,9 +44,8 @@ public class PasswordSent extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View v = inflater.inflate(R.layout.fragment_password_sent, container, false);
+        final View v = inflater.inflate(R.layout.activity_message_sent, container, false);
         setupBackButton(v);
-        setuptextMsg(v);
         return v;
     }
 
@@ -77,18 +71,6 @@ public class PasswordSent extends Fragment {
                         });
                     }
                 });
-            }
-        }
-    }
-
-    private void setuptextMsg(View v) {
-        if(v!=null) {
-            TextView emailText = (TextView) v.findViewById(R.id.text);
-            if(emailText!=null) {
-                Bundle b = getArguments();
-                if (b != null && b.containsKey("user_tag")) {
-                    emailText.setText("Check your email address at:\n" + b.getString("user_tag") + "\nfor a reset password link.");
-                }
             }
         }
     }

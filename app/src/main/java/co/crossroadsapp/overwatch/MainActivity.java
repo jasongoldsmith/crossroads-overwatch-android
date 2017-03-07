@@ -145,7 +145,7 @@ public class MainActivity extends BaseActivity implements Observer {
                     Intent intent = new Intent(getApplicationContext(),
                             MissingUser.class);
                     //intent.putExtra("id", username);
-                    String errT = "We were unable to connect to your Bungie.net account via " + console + ". Please try again.";
+                    String errT = "We were unable to connect to your account via " + console + ". Please try again.";
                     intent.putExtra("error", errT);
                     startActivity(intent);
                 } else if (errorType.equalsIgnoreCase(Constants.BUNGIE_LEGACY_ERROR)) {
@@ -200,7 +200,7 @@ public class MainActivity extends BaseActivity implements Observer {
         //if (u != null && p!= null && console!=null && !u.isEmpty() && !p.isEmpty() && !console.isEmpty()) {
         String isCookieValid = Util.getDefaults(Constants.COOKIE_VALID_KEY, getApplicationContext());
         if (cookies == null && p != null) {
-            showGenericError("CHANGES TO SIGN IN", "Good news! You can now sign in using your Xbox or PlayStation account (the same one you use for Bungie.net)", "OK", null, Constants.GENERAL_ERROR, null, false);
+            showGenericError("CHANGES TO SIGN IN", "Good news! You can now sign in using your Xbox or PlayStation account", "OK", null, Constants.GENERAL_ERROR, null, false);
         }
         if (u != null && !u.isEmpty()) {
             // continue with delete

@@ -12,43 +12,49 @@ public class CreatorData extends PlayerData {
         super();
     }
 
-    public void toJson(JSONObject creator) {
-        try {
-            if(creator!=null) {
-                if (creator.has("_id") && !creator.isNull("_id")) {
-                    setPlayerId(creator.getString("_id"));
-                }
-                if (creator.has("userName") && !creator.isNull("userName")) {
-                    setUsername(creator.getString("userName"));
-                }
-                if (creator.has("consoles") && !creator.isNull("consoles")) {
-                    JSONArray conArray = creator.optJSONArray("consoles");
-                    if (conArray != null) {
-                        for (int i = 0; i < conArray.length(); i++) {
-                            JSONObject conData = (JSONObject) conArray.get(i);
-                            if (conData.has("isPrimary")) {
-                                if (conData.getBoolean("isPrimary")) {
-                                    if (conData.has("consoleId") && !conData.isNull("consoleId")) {
-                                        String id = conData.getString("consoleId");
-                                        setPsnId(id);
-                                    }
-                                    if (conData.has("clanTag") && !conData.isNull("clanTag")) {
-                                        String clanTag = conData.getString("clanTag");
-                                        setClanTag(clanTag);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                //setPsnId(creator.getString("psnId"));
-                if (creator.has("imageUrl") && !creator.isNull("imageUrl")) {
-                    setPlayerImageUrl(creator.getString("imageUrl"));
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void toJson(JSONObject creator) {
+//        try {
+//            if(creator!=null) {
+//                if (creator.has("_id") && !creator.isNull("_id")) {
+//                    setPlayerId(creator.getString("_id"));
+//                }
+//                if (creator.has("userName") && !creator.isNull("userName")) {
+//                    setUsername(creator.getString("userName"));
+//                }
+//                if (creator.has("consoles") && !creator.isNull("consoles")) {
+//                    JSONArray conArray = creator.optJSONArray("consoles");
+//                    if (conArray != null) {
+//                        for (int i = 0; i < conArray.length(); i++) {
+//                            JSONObject conData = (JSONObject) conArray.get(i);
+//                            if (conData.has("isPrimary")) {
+//                                if (conData.getBoolean("isPrimary")) {
+//                                    if (conData.has("consoleId") && !conData.isNull("consoleId")) {
+//                                        String id = conData.getString("consoleId");
+//                                        setPsnId(id);
+//                                    }
+//                                    if (conData.has("clanTag") && !conData.isNull("clanTag")) {
+//                                        String clanTag = conData.getString("clanTag");
+//                                        setClanTag(clanTag);
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                //setPsnId(creator.getString("psnId"));
+//                if (creator.has("imageUrl") && !creator.isNull("imageUrl")) {
+//                    setPlayerImageUrl(creator.getString("imageUrl"));
+//                }
+//                if (creator.has("consoleId") && !creator.isNull("consoleId")) {
+//                    setPsnId(creator.getString("consoleId"));
+//                }
+//                if (creator.has("clanTag") && !creator.isNull("clanTag")) {
+//                    setClanTag(creator.getString("clanTag"));
+//                }
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_top_hero_c_p"
+        android:src="@mipmap/img_b_g_s_i_g_n_i_n_2"
         android:adjustViewBounds="true"/>
 
     <ImageView
@@ -29,8 +29,16 @@
         android:fontFamily="sans-serif-medium"
         android:textStyle="normal"
         android:textColor="@color/trimble_white"
-        android:layout_marginTop="142dp"
+        android:layout_marginTop="97dp"
         android:gravity="center"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_text"
+        android:layout_marginTop="13dp"
+        android:src="@drawable/icon_email_sent"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -40,7 +48,7 @@
         android:textSize="16sp"
         android:text="Thank you! Your message has been sent to support@crossroadsapp.co and we will email you if we need additional details."
         android:textColor="@color/trimble_white"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="92dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:gravity="center"/>

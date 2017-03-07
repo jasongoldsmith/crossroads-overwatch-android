@@ -2,9 +2,13 @@ package co.crossroadsapp.overwatch.login;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -12,9 +16,12 @@ import java.util.Observer;
 import co.crossroadsapp.overwatch.ControlManager;
 import co.crossroadsapp.overwatch.R;
 import co.crossroadsapp.overwatch.core.BattletagAlreadyTakenException;
+import co.crossroadsapp.overwatch.core.GeneralErrorException;
 import co.crossroadsapp.overwatch.core.OverwatchLoginException;
 import co.crossroadsapp.overwatch.core.TrimbleException;
+import co.crossroadsapp.overwatch.data.GeneralServerError;
 import co.crossroadsapp.overwatch.data.UserData;
+import co.crossroadsapp.overwatch.utils.Constants;
 import co.crossroadsapp.overwatch.utils.TravellerLog;
 import co.crossroadsapp.overwatch.utils.Util;
 
@@ -36,6 +43,7 @@ public class PreChooseGameTagFragment extends Fragment implements Observer {
                     Activity act = getActivity();
                     //user logged in
                     Util.setDefaults("loggedin", "true", act);
+                    Util.setDefaults("opendrawer", "true", act);
                     if (act == null || act.isFinishing()) {
                         return;
                     }
@@ -63,7 +71,7 @@ public class PreChooseGameTagFragment extends Fragment implements Observer {
                 }
             }
         } else {
-            Activity act = getActivity();
+            final Activity act = getActivity();
             if (act == null || act.isFinishing()) {
                 return;
             }
@@ -77,15 +85,46 @@ public class PreChooseGameTagFragment extends Fragment implements Observer {
                         exception = ((OverwatchLoginException) arg).getCustomData();
                         userTag = ((OverwatchLoginException) arg).getUserTag();
                     }
-                    GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception);
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
-                    transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    if(arg instanceof GeneralErrorException) {
+                        if (exception != null && exception instanceof GeneralServerError) {
+                            GeneralServerError error = (GeneralServerError) exception;
+                            showError(error.getErrorDetails().getTitle(), error.getErrorDetails().getMessage());
+                        }
+                    } else {
+
+                        GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception, Constants.LOGIN_ERROR);
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+                        transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                    }
                 }
             });
         }
+    }
+
+    public void showError(final String titleText, final String msgText) {
+        final RelativeLayout error = (RelativeLayout) getActivity().findViewById(R.id.error_layout);
+        final TextView msg = (TextView) getActivity().findViewById(R.id.error_sub);
+        final TextView title = (TextView) getActivity().findViewById(R.id.error_text);
+        final ImageView close = (ImageView) getActivity().findViewById(R.id.err_close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                error.setVisibility(View.GONE);
+            }
+        });
+
+        final Handler handler = new Handler();
+
+        final Runnable r = new Runnable() {
+            public void run() {
+                Util.showErrorMsg(error, msg, title, msgText, titleText);
+            }
+        };
+
+        handler.post(r);
     }
 
     protected void exitLoginPage(Activity activity) {

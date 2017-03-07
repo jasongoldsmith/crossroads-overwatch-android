@@ -152,7 +152,7 @@
                 android:layout_height="36dp"
                 android:layout_marginLeft="50dp"
                 app:border="true"
-                app:borderColor="#979797"
+                app:borderColor="@color/traveller_login_hint_color"
                 app:circularBorderWidth="1dp"
                 app:shadow="false"/>
 
@@ -164,7 +164,7 @@
                 android:layout_toRightOf="@+id/player_picture_1"
                 android:layout_marginLeft="6dp"
                 app:border="true"
-                app:borderColor="#979797"
+                app:borderColor="@color/traveller_login_hint_color"
                 app:circularBorderWidth="1dp"
                 android:padding="6dp"
                 app:shadow="false"
@@ -185,8 +185,8 @@
                     android:layout_height="36dp"
                     android:layout_centerInParent="true"
                     app:border="true"
-                    app:borderColor="#979797"
                     app:circularBorderWidth="1dp"
+                    app:borderColor="@color/traveller_login_hint_color"
                     app:shadow="false"
                     android:visibility="gone"/>
 

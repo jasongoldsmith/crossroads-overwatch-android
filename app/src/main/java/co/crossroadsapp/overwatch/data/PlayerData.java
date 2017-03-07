@@ -161,6 +161,12 @@ public class PlayerData {
                 if (jsonobject.has("imageUrl") && !jsonobject.isNull("imageUrl")) {
                     setPlayerImageUrl(jsonobject.getString("imageUrl"));
                 }
+                if (jsonobject.has("consoleId") && !jsonobject.isNull("consoleId")) {
+                    setPsnId(jsonobject.getString("consoleId"));
+                }
+                if (jsonobject.has("clanTag") && !jsonobject.isNull("clanTag")) {
+                    setClanTag(jsonobject.getString("clanTag"));
+                }
                 if (jsonobject.has("commentsReported") && !jsonobject.isNull("commentsReported")) {
                     int num = jsonobject.getInt("commentsReported");
                     setCommentsReported(num);

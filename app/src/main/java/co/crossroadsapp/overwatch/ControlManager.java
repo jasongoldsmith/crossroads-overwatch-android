@@ -133,6 +133,7 @@ public class ControlManager implements Observer {
     private String psnURL;
     private String xboxURL;
     private BungieMessageNetwork bungieMsgNtwrk;
+    private boolean appInBackground;
 
     public ControlManager() {
     }
@@ -1206,5 +1207,13 @@ public class ControlManager implements Observer {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    protected void setAppBackground(boolean value) {
+        this.appInBackground = value;
+    }
+
+    protected boolean getAppBackground() {
+        return appInBackground;
     }
 }

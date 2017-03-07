@@ -314,6 +314,9 @@ public class EventDetailsFragments extends Fragment {
 
                         if (playerLocal.get(position).getPsnId() != null && playerLocal.get(position).getUserId() != null) {
                             String name = playerLocal.get(position).getPsnId();
+                            if (playerLocal.get(position).getClanTag() != null && !playerLocal.get(position).getClanTag().isEmpty()) {
+                                name = name + " [" + playerLocal.get(position).getClanTag() + "]";
+                            }
                             String userId = playerLocal.get(position).getUserId();
                             if (holder.playerProfile != null) {
                                 String picUrl = playerLocal.get(position).getPlayerImageUrl();
@@ -374,7 +377,7 @@ public class EventDetailsFragments extends Fragment {
                                         } else if (kickCancelBtnText.equalsIgnoreCase("Kick")) {
                                             // call kick api
                                             if (kickCancelReqPrams != null) {
-                                                ((EventDetailActivity) getActivity()).showGenericError("KICK FOR INACTIVITY?", "Removing this PLAYER will allow another to join instead.", "KICK", "Cancel", Constants.GENERAL_KICK, kickCancelReqPrams, false);
+                                                ((EventDetailActivity) getActivity()).showGenericError("KICK FOR INACTIVITY?", "Removing this player will allow another to join instead.", "KICK", "Cancel", Constants.GENERAL_KICK, kickCancelReqPrams, false);
                                             }
                                         }
                                     }
@@ -558,7 +561,7 @@ public class EventDetailsFragments extends Fragment {
                         });
                         if (commentsLocal.get(position).getPsnId() != null) {
                             String name = commentsLocal.get(position).getPsnId();
-                            if (commentsLocal.get(position).getClanTag() != null) {
+                            if (commentsLocal.get(position).getClanTag() != null && !commentsLocal.get(position).getClanTag().isEmpty()) {
                                 name = name + " [" + commentsLocal.get(position).getClanTag() + "]";
                             }
                             if (commentsLocal.get(position).getPlayerImageUrl() != null && !commentsLocal.get(position).getPlayerImageUrl().isEmpty()) {
@@ -567,6 +570,11 @@ public class EventDetailsFragments extends Fragment {
                             }
                             holder.playerNameComment.setVisibility(View.VISIBLE);
                             holder.playerNameComment.setText(name);
+//                            if (!commentsLocal.get(position).getActive() && currentEvent.getLaunchEventStatus() != null && currentEvent.getLaunchEventStatus().equalsIgnoreCase(Constants.LAUNCH_STATUS_NOW)) {
+//                                holder.playerNameComment.setTextColor(getResources().getColor(R.color.invited_player_text));
+//                            } else {
+//                                holder.playerNameComment.setTextColor(getResources().getColor(R.color.activity_light_color));
+//                            }
                             holder.playerNameComment.setTextColor(getResources().getColor(R.color.activity_light_color));
 
                             if (decideLeaderTag(position, commentsLocal.get(position).getPsnId())) {
@@ -592,6 +600,9 @@ public class EventDetailsFragments extends Fragment {
                             Util.picassoLoadImageWithoutMeasurement(getActivity(), holder.playerProfileComment, null, R.drawable.img_profile_blank);
                             holder.playerCommentText.setTextColor(getResources().getColor(R.color.player_left_comment));
                         }
+                        if(currentEvent.getLaunchEventStatus()!=null && currentEvent.getLaunchEventStatus().equalsIgnoreCase(Constants.LAUNCH_STATUS_NOW) && (!checkPlayerisActive(commentsLocal.get(position).getPlayerId()))) {
+                            holder.playerNameComment.setTextColor(getResources().getColor(R.color.player_left_comment));
+                        }
                     }
 
                     if (commentsLocal.get(position).getCreated() != null) {
@@ -605,6 +616,19 @@ public class EventDetailsFragments extends Fragment {
             holder.playerProfileComment.invalidate();
             holder.playerCommentText.invalidate();
             holder.playerNameComment.invalidate();
+        }
+
+        private boolean checkPlayerisActive(String id) {
+            if(id!=null) {
+                if(currentEvent!=null && currentEvent.getPlayerData()!=null) {
+                    for(int i=0; i<currentEvent.getPlayerData().size();i++) {
+                        if (id.equalsIgnoreCase(currentEvent.getPlayerData().get(i).getPlayerId())) {
+                            return currentEvent.getPlayerData().get(i).getActive();
+                        }
+                    }
+                }
+            }
+            return false;
         }
 
         @Override

@@ -78,7 +78,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="4dp"
         android:paddingStart="15dp"
-        android:inputType="textVisiblePassword"
+        android:inputType="textVisiblePassword|textMultiLine"
         android:paddingTop="15dp"
         android:textColor="@color/trimble_white"
         android:hint="@string/what_would_you_like_to_tell_us"

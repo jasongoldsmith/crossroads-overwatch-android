@@ -26,8 +26,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.android.gms.iid.InstanceID;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.loopj.android.http.RequestParams;
 import com.squareup.picasso.Callback;
@@ -238,6 +236,7 @@ public class Util {
         editor.remove("password");
         editor.remove("csrf");
         editor.remove("cookie");
+        editor.remove("opendrawer");
         CookieManager.getInstance().removeAllCookie();
 //        CookieManager.getInstance().setCookie("https://www.bungie.net/", " ");
 //        CookieManager.getInstance().setCookie("https://www.bungie.net/", " ");
@@ -587,8 +586,9 @@ public class Util {
                 case "XBOX360":
                     console.add("Xbox 360");
                     break;
-                default:
-                    console.add("Console Missing");
+                case "PC":
+                    console.add("PC");
+                    break;
             }
         }
         return console;
@@ -756,8 +756,18 @@ public class Util {
     }
 
     public static List<String> extractSelectedPlatform(FragmentActivity activity) {
-        List<String> platforms = new ArrayList<>();
+        ArrayList<String> platforms = new ArrayList<>();
         List<String> devicePlatforms = getDevicePlatforms(activity);
+        HashMap<String, String> _platformKeys = new HashMap<>();
+        HashMap<String, String> platformKeyValues = new HashMap<>();
+        final String[] dataKey = activity.getResources().getStringArray(R.array.platform_array_values);
+        final String[] values = activity.getResources().getStringArray(R.array.platform_array_keys);
+        if (dataKey != null && dataKey.length >= values.length) {
+            for (int i = 0; i < dataKey.length; i++) {
+                _platformKeys.put(dataKey[i], values[i]);
+            }
+        }
+
         UserData data = ControlManager.getmInstance().getUserData();
         if (data != null) {
             List<ConsoleData> consoles = data.getConsoles();
@@ -769,6 +779,9 @@ public class Util {
                     if (elem == null || selectedConsole.equalsIgnoreCase(elem)) {
 //                        continue;
                     }
+                    if(_platformKeys.containsKey(elem.toLowerCase())) {
+                        platformKeyValues.put(elem.toLowerCase(), _platformKeys.get(elem.toLowerCase()));
+                    }
                     if (cd.isPrimary()) {
                         platforms.add(0, elem);
                     } else {
@@ -777,6 +790,7 @@ public class Util {
                 }
             }
         }
+        platforms = getCorrectConsoleName(platforms);
         if (devicePlatforms != null && devicePlatforms.size() > platforms.size()) {
             platforms.add("Linked Accounts");
         }

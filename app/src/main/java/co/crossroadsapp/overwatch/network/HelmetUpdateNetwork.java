@@ -4,6 +4,7 @@ import android.content.Context;
 
 import co.crossroadsapp.overwatch.ControlManager;
 import co.crossroadsapp.overwatch.data.LoginError;
+import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.utils.TravellerLog;
 import co.crossroadsapp.overwatch.utils.Util;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -38,18 +39,19 @@ public class HelmetUpdateNetwork extends Observable {
             ntwrk.post(url, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    try {
-                        String url = null;
-                        if (response != null) {
-                            if (response.has("helmetUrl")) {
-                                url = response.getString("helmetUrl");
-                            }
-                        }
-                        setChanged();
-                        notifyObservers(url);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    parseUserResponse(response);
+//                    try {
+//                        String url = null;
+//                        if (response != null) {
+//                            if (response.has("helmetUrl")) {
+//                                url = response.getString("helmetUrl");
+//                            }
+//                        }
+//                        setChanged();
+//                        notifyObservers(url);
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
                 }
 
                 @Override
@@ -71,6 +73,21 @@ public class HelmetUpdateNetwork extends Observable {
         }else {
             Util.createNoNetworkDialogue(mContext);
         }
+    }
+
+    private void parseUserResponse(JSONObject response) {
+        //parse response
+        UserData user = new UserData();
+        if(response!=null) {
+            user.toJson(response);
+        }
+        if(user!=null) {
+            if((user.getClanId()!=null) && (!user.getClanId().isEmpty())) {
+                mManager.setUserdata(user);
+            }
+        }
+        setChanged();
+        notifyObservers(user);
     }
 
     private void dispatchError(JSONObject errorResponse) {

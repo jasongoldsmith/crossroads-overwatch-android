@@ -15,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.Observable;
 
 import cz.msebera.android.httpclient.Header;
@@ -85,11 +86,15 @@ public class ReportCrashNetwork extends Observable {
         notifyObservers(error);
     }
 
-    public void doCrashReport(String email, String userMsg) throws JSONException, UnsupportedEncodingException {
+    public void doCrashReport(String email, String userMsg, int source, int error) throws JSONException, UnsupportedEncodingException {
         if (Util.isNetworkAvailable(this.mContext)) {
             JSONObject jsonParams = new JSONObject();
             jsonParams.put("email", email);
             jsonParams.put("description", userMsg);
+            HashMap<String, Integer> sourceValue = new HashMap<>();
+            sourceValue.put("sourceCode", source);
+            sourceValue.put("errorCode", error);
+            jsonParams.put("source", sourceValue);
             StringEntity entity = new StringEntity(jsonParams.toString());
 
             ntwrk.post(this.mContext, urlUnsigned, entity, "application/json", new JsonHttpResponseHandler() {

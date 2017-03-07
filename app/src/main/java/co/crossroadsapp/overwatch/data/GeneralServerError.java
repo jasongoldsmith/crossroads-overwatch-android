@@ -18,6 +18,7 @@ public class GeneralServerError implements Parcelable {
     public static final int INVALID_MAIL_PROVIDED = 2;
     public static final int NO_USER_FOUND_WITH_THE_EMAIL = 5;
     public static final int ALREADY_TAKEN = 11;
+    public static final int ALREADY_TAKEN_EMAIL = 4;
 
     public GeneralServerError(){
     }

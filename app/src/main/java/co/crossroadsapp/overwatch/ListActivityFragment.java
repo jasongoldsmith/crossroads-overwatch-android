@@ -643,6 +643,7 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
 
     private void setUpConsoleSpinner() {
         List<String> platforms = Util.extractSelectedPlatform(this);
+        final String[] data = getResources().getStringArray(R.array.platform_array_keys);
         if (down_arw_img != null) {
             down_arw_img.setVisibility(View.VISIBLE);
         }
@@ -755,12 +756,27 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
         return false;
     }
 
+    private String getConsoleType(String item) {
+        String value=null;
+        switch (item) {
+            case "PlayStation 4":
+                value = Constants.CONSOLEPS4;
+                break;
+            case "Xbox One":
+                value = Constants.CONSOLEXBOXONE;
+                break;
+            default:
+        }
+        return value;
+    }
+
     //console selector spinner
     private View getCustomView(int position, View convertView, ViewGroup parent, final String item) {
         LayoutInflater inflater = getLayoutInflater();
         View row = inflater.inflate(R.layout.console_selction_view, parent, false);
         ImageView addSymbol = (ImageView) row.findViewById(R.id.console_img);
         CardView card = (CardView) row.findViewById(R.id.console_card);
+        final String itemValue = getConsoleType(item);
 
         if (position == 0) {
             row.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 0));
@@ -808,7 +824,7 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
                             public void run() {
                                 dropdown.onDetachedFromWindow();
                                 //start new activity for event
-                                changeToOtherConsole(item);
+                                changeToOtherConsole(itemValue!=null?itemValue:item);
                             }
                         });
                     }
@@ -1025,18 +1041,23 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
     }
 
     private void checkClanSet() {
-        if (user != null) {
-            if (user.getPsnVerify() != null) {
-                if (user.getPsnVerify().equalsIgnoreCase(Constants.PSN_VERIFIED)) {
-                    if (user.getClanId() != null) {
-                        if (user.getAuthenticationId() == Constants.REGISTER) {
-                            openProfileDrawer(Gravity.RIGHT);
-                        }
-                        setGroupImageUrl();
-                    }
-                }
-            }
+        String openD = Util.getDefaults("opendrawer", this);
+        if(openD!=null && openD.equalsIgnoreCase("true")) {
+            openProfileDrawer(Gravity.RIGHT);
+            Util.setDefaults("opendrawer", "false", this);
         }
+//        if (user != null) {
+//            if (user.getPsnVerify() != null) {
+//                if (user.getPsnVerify().equalsIgnoreCase(Constants.PSN_VERIFIED)) {
+//                    if (user.getClanId() != null) {
+//                        if (user.getAuthenticationId() == Constants.REGISTER) {
+//                            openProfileDrawer(Gravity.RIGHT);
+//                        }
+//                        setGroupImageUrl();
+//                    }
+//                }
+//            }
+//        }
     }
 
     private void setGroupImageUrl() {
@@ -1639,7 +1660,7 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             }
         } else if (observable instanceof ResendBungieVerification) {
             hideProgress();
-            Toast.makeText(this, "Verification Message Sent to Your Bungie.net Account",
+            Toast.makeText(this, "Verification Message Sent to Your Account",
                     Toast.LENGTH_LONG).show();
         } else if (observable instanceof EventByIdNetwork) {
             hideProgressBar();
@@ -1672,8 +1693,8 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
                 if(data instanceof LoginError) {
                     showError((LoginError) data);
                 } else {
-                    updateUserProfileImage(data.toString());
-                    //mManager.getEventList(this);
+                    user = mManager.getUserData();
+                    updateUserProfileImage(user.getImageUrl());
                 }
             }
         } else if (observable instanceof ChangeCurrentConsoleNetwork) {

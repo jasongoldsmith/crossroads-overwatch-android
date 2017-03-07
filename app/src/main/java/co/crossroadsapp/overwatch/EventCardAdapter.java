@@ -530,10 +530,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 }
                 break;
             case "full":
-                if (creatorIsPlayer) {
-                    holder.unjoinBtn.setVisibility(View.VISIBLE);
-                    holder.joinBtn.setImageResource(R.drawable.btn_o_w_n_e_r);
-                } else if (creatorIn) {
+                if (creatorIn) {
                     if (playerIsInvited) {
                         holder.unjoinBtn.setVisibility(View.VISIBLE);
                         holder.joinBtn.setImageResource(R.drawable.btn_i_n_v_i_t_e_d);

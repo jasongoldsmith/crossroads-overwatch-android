@@ -17,9 +17,12 @@ import java.util.Observable;
 import java.util.Observer;
 
 import co.crossroadsapp.overwatch.R;
+import co.crossroadsapp.overwatch.core.GeneralErrorException;
 import co.crossroadsapp.overwatch.core.OverwatchLoginException;
+import co.crossroadsapp.overwatch.data.GeneralServerError;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.network.TravellerSignUpNetwork;
+import co.crossroadsapp.overwatch.utils.Constants;
 import co.crossroadsapp.overwatch.utils.TravellerLog;
 import co.crossroadsapp.overwatch.utils.Util;
 
@@ -68,6 +71,7 @@ public class TravellerSignupFragment extends AbstractTravellerLoginFragment impl
             Activity act = getActivity();
             //user logged in
             Util.setDefaults("loggedin", "true", act);
+            Util.setDefaults("opendrawer", "true", act);
             if( act == null || act.isFinishing() )
             {
                 return;
@@ -99,12 +103,19 @@ public class TravellerSignupFragment extends AbstractTravellerLoginFragment impl
                         exception = ((OverwatchLoginException) arg).getCustomData();
                         userTag = ((OverwatchLoginException) arg).getUserTag();
                     }
-                    GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception);
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
-                    transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    if(arg instanceof GeneralErrorException) {
+                        if (exception != null && exception instanceof GeneralServerError) {
+                            GeneralServerError error = (GeneralServerError) exception;
+                            showError(error.getErrorDetails().getTitle(), error.getErrorDetails().getMessage());
+                        }
+                    } else {
+                        GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception, Constants.SIGNUP_ERROR);
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+                        transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                    }
                 }
             });
         }

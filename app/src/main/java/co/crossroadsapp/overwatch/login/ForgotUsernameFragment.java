@@ -214,7 +214,7 @@ public class ForgotUsernameFragment extends Fragment implements Observer {
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    PasswordSent fragment = PasswordSent.newInstance();
+                    PasswordSent fragment = PasswordSent.newInstance(_email_input.getText().toString());
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
                     transaction.replace(R.id.container, fragment, PasswordSent.class.getSimpleName());

@@ -82,6 +82,14 @@ public class CommentData extends PlayerData {
                 if(creator.has("imageUrl") && !creator.isNull("imageUrl")) {
                     setPlayerImageUrl(creator.getString("imageUrl"));
                 }
+                if (creator.has("consoleId")) {
+                    String id = creator.getString("consoleId");
+                    setPsnId(id);
+                }
+                if (creator.has("clanTag") && !creator.isNull("clanTag")) {
+                    String clanTag = creator.getString("clanTag");
+                    setClanTag(clanTag);
+                }
             }
             if(data.has("text") && !data.isNull("text")) {
                 setComment(data.getString("text"));

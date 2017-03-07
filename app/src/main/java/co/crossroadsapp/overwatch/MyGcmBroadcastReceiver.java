@@ -39,7 +39,8 @@ public class MyGcmBroadcastReceiver extends BroadcastReceiver {
                     alert = i.getString("message");
                     payload = i.getString("payload");
             }
-            if (isAppRunning(context)) {
+            ControlManager cm = ControlManager.getmInstance();
+            if (isAppRunning(context) && !cm.getAppBackground()) {
                 final Intent in = new Intent(context, NotificationService.class);
                 in.putExtra("payload", payload);
                 in.putExtra("message", alert);

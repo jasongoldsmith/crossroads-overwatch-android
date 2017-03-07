@@ -130,29 +130,6 @@ public abstract class AbstractTravellerLoginFragment extends PreChooseGameTagFra
         }
     }
 
-    private void showError(final String titleText, final String msgText) {
-        final RelativeLayout error = (RelativeLayout) getActivity().findViewById(R.id.error_layout);
-        final TextView msg = (TextView) getActivity().findViewById(R.id.error_sub);
-        final TextView title = (TextView) getActivity().findViewById(R.id.error_text);
-        final ImageView close = (ImageView) getActivity().findViewById(R.id.err_close);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                error.setVisibility(View.GONE);
-            }
-        });
-
-        final Handler handler = new Handler();
-
-        final Runnable r = new Runnable() {
-            public void run() {
-                Util.showErrorMsg(error, msg, title, msgText, titleText);
-            }
-        };
-
-        handler.post(r);
-    }
-
     private boolean validatePassword() {
         String pass = this._password_input.getText().toString();
 //        if (pass.length() < 4) {
@@ -209,6 +186,8 @@ public abstract class AbstractTravellerLoginFragment extends PreChooseGameTagFra
             }
         }
     }
+
+    //abstract void showError(String title, String msg);
 
     abstract void postLogin(Activity activity, String email, String password);
 }

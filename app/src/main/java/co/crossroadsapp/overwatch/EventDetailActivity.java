@@ -722,7 +722,7 @@ public class EventDetailActivity extends BaseActivity implements Observer, Token
 
     class PagerAdapter extends FragmentPagerAdapter {
 
-        String tabTitles[] = new String[] { "FIRETEAM", "COMMENTS" };
+        String tabTitles[] = new String[] { "TEAM", "COMMENTS" };
         Context context;
         SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
 

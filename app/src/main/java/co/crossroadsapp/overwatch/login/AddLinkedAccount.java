@@ -32,6 +32,7 @@ import co.crossroadsapp.overwatch.core.OverwatchLoginException;
 import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.network.AddConsoleNetwork;
+import co.crossroadsapp.overwatch.utils.Constants;
 import co.crossroadsapp.overwatch.utils.TravellerLog;
 import co.crossroadsapp.overwatch.utils.Util;
 
@@ -173,7 +174,7 @@ public class AddLinkedAccount extends AbstractTravellerLoginFragment {
 
     private boolean checkGamertagValidity(String tag, String console) {
         if(console.equalsIgnoreCase("ps4")) {
-            if(tag.matches(".*[^a-z^0-9^A-Z\\_\\-].*") || tag.length()>16) {
+            if(tag.matches(".*[^a-z^0-9^A-Z\\ \\-].*") || tag.length()>16) {
                 showError();
                 return false;
             }
@@ -258,7 +259,7 @@ public class AddLinkedAccount extends AbstractTravellerLoginFragment {
                         if(arg instanceof OverwatchLoginException) {
                             exception = ((OverwatchLoginException) arg).getCustomData();
                             userTag = ((OverwatchLoginException) arg).getUserTag();
-                            GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception);
+                            GametagErrorFragment fragment = GametagErrorFragment.newInstance(userTag, exception, Constants.ADDCONSOLE_ERROR);
                             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                             transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
                             transaction.replace(R.id.container, fragment, GametagErrorFragment.class.getSimpleName());
@@ -283,28 +284,28 @@ public class AddLinkedAccount extends AbstractTravellerLoginFragment {
         }
     }
 
-    private void showError(final String titleText, final String msgText) {
-        final RelativeLayout error = (RelativeLayout) getActivity().findViewById(R.id.error_layout);
-        final TextView msg = (TextView) getActivity().findViewById(R.id.error_sub);
-        final TextView title = (TextView) getActivity().findViewById(R.id.error_text);
-        final ImageView close = (ImageView) getActivity().findViewById(R.id.err_close);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                error.setVisibility(View.GONE);
-            }
-        });
-
-        final Handler handler = new Handler();
-
-        final Runnable r = new Runnable() {
-            public void run() {
-                Util.showErrorMsg(error, msg, title, msgText, titleText);
-            }
-        };
-
-        handler.post(r);
-    }
+//    private void showError(final String titleText, final String msgText) {
+//        final RelativeLayout error = (RelativeLayout) getActivity().findViewById(R.id.error_layout);
+//        final TextView msg = (TextView) getActivity().findViewById(R.id.error_sub);
+//        final TextView title = (TextView) getActivity().findViewById(R.id.error_text);
+//        final ImageView close = (ImageView) getActivity().findViewById(R.id.err_close);
+//        close.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                error.setVisibility(View.GONE);
+//            }
+//        });
+//
+//        final Handler handler = new Handler();
+//
+//        final Runnable r = new Runnable() {
+//            public void run() {
+//                Util.showErrorMsg(error, msg, title, msgText, titleText);
+//            }
+//        };
+//
+//        handler.post(r);
+//    }
 
     public static Fragment newInstance() {
         AddLinkedAccount fragment = new AddLinkedAccount();

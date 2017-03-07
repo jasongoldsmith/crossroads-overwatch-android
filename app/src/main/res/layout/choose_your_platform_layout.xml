@@ -110,6 +110,7 @@
                     android:textStyle="bold"
                     android:paddingBottom="22dp"
                     android:paddingTop="22dp"
+                    android:textSize="16sp"
                     android:text="@string/sign_in_with_battle_net"
                     android:textColor="@color/trimble_white" />
             </FrameLayout>

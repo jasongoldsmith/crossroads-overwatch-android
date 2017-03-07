@@ -12,6 +12,7 @@ import java.util.Observable;
 
 import co.crossroadsapp.overwatch.ControlManager;
 import co.crossroadsapp.overwatch.core.BattletagAlreadyTakenException;
+import co.crossroadsapp.overwatch.core.GeneralErrorException;
 import co.crossroadsapp.overwatch.core.InvalidEmailProvided;
 import co.crossroadsapp.overwatch.core.NoUserFoundException;
 import co.crossroadsapp.overwatch.core.OverwatchLoginException;
@@ -75,8 +76,10 @@ public class TravellerLoginNetwork extends Observable {
                 exception = new InvalidEmailProvided(statusCode, error.getDescription(), error.getGeneralServerError());
             } else if (er != null && er.getCode() == GeneralServerError.NO_USER_FOUND_WITH_THE_EMAIL) {
                 exception = new NoUserFoundException(statusCode, error.getDescription(), error.getGeneralServerError());
-            } else {
+            } else if (er != null && er.getCode() == GeneralServerError.ALREADY_TAKEN) {
                 exception = new BattletagAlreadyTakenException(statusCode, error.getDescription(), error.getGeneralServerError());
+            } else {
+                exception = new GeneralErrorException(statusCode, error.getDescription(), error.getGeneralServerError());
             }
             exception.setUserTag(email);
         }

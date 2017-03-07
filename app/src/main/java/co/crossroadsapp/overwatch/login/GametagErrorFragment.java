@@ -1,6 +1,7 @@
 package co.crossroadsapp.overwatch.login;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import co.crossroadsapp.overwatch.R;
@@ -17,7 +19,7 @@ import co.crossroadsapp.overwatch.data.GeneralServerError;
  * Created by karagdi on 1/26/17.
  */
 public class GametagErrorFragment extends Fragment {
-    public static GametagErrorFragment newInstance(String userTag, Object exception) {
+    public static GametagErrorFragment newInstance(String userTag, Object exception, int errorSource) {
         GametagErrorFragment fragment = new GametagErrorFragment();
         Bundle b = new Bundle();
         if (exception != null && exception instanceof GeneralServerError) {
@@ -27,8 +29,17 @@ public class GametagErrorFragment extends Fragment {
         if (userTag != null && userTag.length() > 0) {
             b.putString("user_tag", userTag);
         }
+        b.putInt("source", errorSource);
+
         fragment.setArguments(b);
         return fragment;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
     }
 
     @Nullable
@@ -73,6 +84,10 @@ public class GametagErrorFragment extends Fragment {
     private void setUpContactUs(View v) {
         if (v != null) {
             View contact_us = v.findViewById(R.id.contact_us);
+            Bundle b = getArguments();
+            if (b != null && b.containsKey("source")) {
+                final String source = b.getString("source");
+            }
             if (contact_us != null) {
                 contact_us.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -84,7 +99,7 @@ public class GametagErrorFragment extends Fragment {
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                ContactUsFragment fragment = ContactUsFragment.newInstance();
+                                ContactUsFragment fragment = ContactUsFragment.newInstance(getSource(), getErrorCode());
                                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                 transaction.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
                                 transaction.replace(R.id.container, fragment, ChooseYourPlatformFragment.class.getSimpleName());
@@ -106,6 +121,25 @@ public class GametagErrorFragment extends Fragment {
             }
         }
         return getString(R.string.already_taken);
+    }
+
+    public int getErrorCode() {
+        Bundle b = getArguments();
+        if (b != null && b.containsKey("login_error")) {
+            GeneralServerError error = b.getParcelable("login_error");
+            if (error != null) {
+                return error.getCode();
+            }
+        }
+        return 0;
+    }
+
+    public int getSource() {
+        Bundle b = getArguments();
+        if (b != null && b.containsKey("source")) {
+            return  b.getInt("source");
+        }
+        return 0;
     }
 
     public String getUserTag() {

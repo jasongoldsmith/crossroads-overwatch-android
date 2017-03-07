@@ -36,7 +36,10 @@ public class Constants {
     public static final String PLAYSTATION = "PlayStation";
     public static final String XBOX = "Xbox";
     public static final String COOKIE_VALID_KEY = "isCookieValid";
-
+    public static final int SIGNUP_ERROR = 1;
+    public static final int LOGIN_ERROR = 2;
+    public static final int INAPP = 3;
+    public static final int ADDCONSOLE_ERROR = 3;
 
     public static String NOTIFICATION_INTENT_CHANNEL = "com.example.sharmha.notificationintent";
     public static int INTENT_ID = 9999;
@@ -134,9 +137,9 @@ public class Constants {
 
     //urls
     public static String DEEP_LINK_IMAGE = "http://w3.crossroadsapp.co/overwatch/share/branch/v1/";
-    public static String BUNGIE_ERROR = "BungieLoginError";
-    public static String BUNGIE_CONNECT_ERROR = "BungieConnectError";
-    public static String BUNGIE_LEGACY_ERROR = "BungieLegacyConsoleError";
+    public static String BUNGIE_ERROR = "LoginError";
+    public static String BUNGIE_CONNECT_ERROR = "ConnectError";
+    public static String BUNGIE_LEGACY_ERROR = "ConsoleError";
 
     public static String LEGACY_ERROR_TITLE = "Legacy Consoles";
     public static String LEGACY_ERROR_MSG = "In line with Rise of Iron, we now only support next-gen consoles. When you’ve upgraded your console, please come\n" +
@@ -149,8 +152,10 @@ public class Constants {
     public static int GENERAL_LEAVE = 5;
     public static int GENERAL_KICK = 4;
 
-    public static final String CONFIG_TOKEN = "003c2fff-9d24-4dbe-be76-6ab21574e2d9";//dev - "123"
+    public static final String CONFIG_TOKEN_PROD = "003c2fff-9d24-4dbe-be76-6ab21574e2d9";//dev - "123"
+    public static final String CONFIG_TOKEN_DEV = "123";
     public static final String CONFIG_TOKEN_KEY = "config_token";
+    public static final String CONFIG_TOKEN = (ENVIRONMENT == PROD ? CONFIG_TOKEN_PROD : CONFIG_TOKEN_DEV);
 
     //getCurrentUser bungie
     public static String BUGIE_CURRENT_USER = "https://www.bungie.net/Platform/User/GetCurrentBungieAccount";

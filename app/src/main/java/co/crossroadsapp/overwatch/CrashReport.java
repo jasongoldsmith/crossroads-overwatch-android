@@ -80,17 +80,17 @@ public class CrashReport extends BaseActivity implements Observer {
             crash_text.setHint("  Description (required)");
         }
 
-        crash_text.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
-                    // the user is done typing.
-                    send_crash.requestFocus();
-                    send_crash.performClick();
-                }
-                return false;
-            }
-        });
+//        crash_text.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
+//                    // the user is done typing.
+//                    send_crash.requestFocus();
+//                    send_crash.performClick();
+//                }
+//                return false;
+//            }
+//        });
 
         send_crash.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +100,7 @@ public class CrashReport extends BaseActivity implements Observer {
                     hideKeyboard();
                     showProgressBar();
                     if(Util.isValidEmail(email.getText().toString())) {
+                        send_crash.setEnabled(false);
                         if(reportIssue) {
                             Map<String, String> json = new HashMap<String, String>();
                             json.put("email", email.getText().toString());
@@ -112,6 +113,9 @@ public class CrashReport extends BaseActivity implements Observer {
                             requestParams.put("email", email.getText().toString());
                             requestParams.put("description", crash_text.getText().toString());
                         }
+                        HashMap<String, Integer> sourceValue = new HashMap<>();
+                        sourceValue.put("sourceCode", Constants.INAPP);
+                        requestParams.put("source", sourceValue);
                         controlManager.postCrash(CrashReport.this, requestParams, reportIssue? Constants.REPORT_COMMENT_NEXT:Constants.GENERAL_ERROR);
                         //showToastAndClose();
                     } else {
@@ -124,6 +128,7 @@ public class CrashReport extends BaseActivity implements Observer {
 
     public void showError(String err) {
         hideProgressBar();
+        send_crash.setEnabled(true);
         //setErrText(err);
     }
 
@@ -160,6 +165,7 @@ public class CrashReport extends BaseActivity implements Observer {
     @Override
     public void update(Observable observable, Object data) {
         hideProgressBar();
+        send_crash.setEnabled(true);
         if(data!=null && data instanceof LoginError) {
             setErrText((LoginError) data);
         } else {

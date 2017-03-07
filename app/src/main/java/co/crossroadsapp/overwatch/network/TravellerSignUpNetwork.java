@@ -13,8 +13,10 @@ import java.util.Observable;
 
 import co.crossroadsapp.overwatch.ControlManager;
 import co.crossroadsapp.overwatch.core.BattletagAlreadyTakenException;
+import co.crossroadsapp.overwatch.core.GeneralErrorException;
 import co.crossroadsapp.overwatch.core.OverwatchLoginException;
 import co.crossroadsapp.overwatch.core.TrimbleException;
+import co.crossroadsapp.overwatch.data.GeneralServerError;
 import co.crossroadsapp.overwatch.data.LoginError;
 import co.crossroadsapp.overwatch.data.UserData;
 import co.crossroadsapp.overwatch.utils.Constants;
@@ -99,8 +101,13 @@ public class TravellerSignUpNetwork extends Observable {
         LoginError error = new LoginError();
         error.toJson(errorResponse);
         if (statusCode == TrimbleException.TRIMBLE_BAD_REQUEST) {
-            exception = new BattletagAlreadyTakenException(statusCode, error.getDescription(), error.getGeneralServerError());
-            exception.setUserTag(email);
+            GeneralServerError er = error.getGeneralServerError();
+            if (er != null && er.getCode() == GeneralServerError.ALREADY_TAKEN_EMAIL) {
+                exception = new BattletagAlreadyTakenException(statusCode, error.getDescription(), error.getGeneralServerError());
+                exception.setUserTag(email);
+            } else {
+                exception = new GeneralErrorException(statusCode, error.getDescription(), error.getGeneralServerError());
+            }
         }
         setChanged();
         notifyObservers(exception);
