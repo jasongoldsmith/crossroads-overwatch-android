@@ -13,8 +13,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
@@ -37,12 +35,9 @@ import co.crossroadsapp.overwatch.utils.Constants;
 import co.crossroadsapp.overwatch.utils.TravellerLog;
 import co.crossroadsapp.overwatch.utils.Util;
 import co.crossroadsapp.overwatch.utils.Version;
-
 import com.loopj.android.http.RequestParams;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -223,6 +218,21 @@ public class MainActivity extends BaseActivity implements Observer {
                 MainActivity.this.startActivityForResult(intent, 0);
             }
         });
+    }
+
+    private void launchTutorial() {
+        setContentView(R.layout.activity_tutorial);
+
+        RecyclerView horizontal_tutorial_view = (RecyclerView) findViewById(R.id.horizontal_tutorial_recycler_view);
+//        horizontalList = new ArrayList<EventData>();
+//        if (mManager.getEventListCurrent() != null) {
+//            horizontalList = mManager.getEventListCurrent();
+//        }
+        TutorialCardAdapter horizontalTutorialAdapter = new TutorialCardAdapter(MainActivity.this);
+        CenterZoomLayoutManager horizontalLayoutManagaerTutorial
+                = new CenterZoomLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        horizontal_tutorial_view.setLayoutManager(horizontalLayoutManagaerTutorial);
+        horizontal_tutorial_view.setAdapter(horizontalTutorialAdapter);
     }
 
     private void launchMainLayout() {

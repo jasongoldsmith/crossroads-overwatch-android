@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/o_w_onboarding_b_g">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/horizontal_tutorial_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:clipToPadding="false"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="40dp" />
+
+</LinearLayout>

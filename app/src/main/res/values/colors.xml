@@ -98,5 +98,6 @@
     <color name="choose_platform_color">#52648b</color>
     <color name="profile_name_color">#2e3b56</color>
     <color name="bright_sky_blue">#00c2ff</color>
+    <color name="green_tut">#00d3b4</color>
     <color name="link_color">#bcc5e1</color>
 </resources>

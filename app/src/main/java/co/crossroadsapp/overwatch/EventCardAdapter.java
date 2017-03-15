@@ -199,6 +199,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     String checkpoint = "";
                     String tag = "";
                     String clanT = "";
+
                     final EventData currEvent = elistLocal.get(position);
                     final String eId = this.elistLocal.get(position).getEventId();
                     String aType = this.elistLocal.get(position).getActivityData().getActivityType();
@@ -609,3 +610,4 @@ public class EventCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         super.onAttachedToRecyclerView(recyclerView);
     }
 }
+
