@@ -23,6 +23,7 @@ public class UserData {
     private String membershipId=null;
     private String consoleType=null;
     private int authenticationId;
+    private boolean hasCompletedOnBoarding;
     private ArrayList<ConsoleData> consoles;
     private String clanTag=null;
     private boolean maxReported = false;
@@ -142,6 +143,14 @@ public class UserData {
         return this.maxReported;
     }
 
+    public void setHasCompletedOnBoarding(boolean t) {
+        hasCompletedOnBoarding = t;
+    }
+
+    public boolean getHasCompletedOnBoarding() {
+        return this.hasCompletedOnBoarding;
+    }
+
     public void setAuthenticationId(int id) {
         authenticationId = id;
     }
@@ -171,15 +180,18 @@ public class UserData {
                         String n = jsonData.getString("userName");
                         setUser(n);
                     }
-                if (jsonData.has("bungieMemberShipId") && !jsonData.isNull("bungieMemberShipId")) {
-                    String memid = jsonData.getString("bungieMemberShipId");
-                    setMembershipId(memid);
-                }
+                    if (jsonData.has("bungieMemberShipId") && !jsonData.isNull("bungieMemberShipId")) {
+                        String memid = jsonData.getString("bungieMemberShipId");
+                        setMembershipId(memid);
+                    }
                     if (jsonData.has("email") && !jsonData.isNull("email")) {
                         String email = jsonData.getString("email");
                         setEmail(email);
                     }
-
+                    if (jsonData.has("hasCompletedOnBoarding") && !jsonData.isNull("hasCompletedOnBoarding")) {
+                        boolean t = jsonData.getBoolean("hasCompletedOnBoarding");
+                        setHasCompletedOnBoarding(t);
+                    }
                     if (jsonData.has("commentsReported") && !jsonData.isNull("commentsReported")) {
                         int num = jsonData.getInt("commentsReported");
                         setCommentsReported(num);

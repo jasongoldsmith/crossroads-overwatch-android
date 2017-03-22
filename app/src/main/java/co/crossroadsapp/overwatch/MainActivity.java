@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +21,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import co.crossroadsapp.overwatch.data.AppVersion;
 import co.crossroadsapp.overwatch.data.EventData;
@@ -223,16 +225,57 @@ public class MainActivity extends BaseActivity implements Observer {
     private void launchTutorial() {
         setContentView(R.layout.activity_tutorial);
 
-        RecyclerView horizontal_tutorial_view = (RecyclerView) findViewById(R.id.horizontal_tutorial_recycler_view);
+        final RecyclerView horizontal_tutorial_view = (RecyclerView) findViewById(R.id.horizontal_tutorial_recycler_view);
+
+        TextView doneWithTutorial = (TextView) findViewById(R.id.done_tutorial);
+        doneWithTutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchMainLayout();
+            }
+        });
+        ImageView skip = (ImageView) findViewById(R.id.skip_btn);
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchMainLayout();
+            }
+        });
 //        horizontalList = new ArrayList<EventData>();
 //        if (mManager.getEventListCurrent() != null) {
 //            horizontalList = mManager.getEventListCurrent();
 //        }
-        TutorialCardAdapter horizontalTutorialAdapter = new TutorialCardAdapter(MainActivity.this);
+        TutorialCardAdapter horizontalTutorialAdapter = new TutorialCardAdapter(MainActivity.this, mManager);
         CenterZoomLayoutManager horizontalLayoutManagaerTutorial
                 = new CenterZoomLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         horizontal_tutorial_view.setLayoutManager(horizontalLayoutManagaerTutorial);
         horizontal_tutorial_view.setAdapter(horizontalTutorialAdapter);
+
+//        final int[] count = {0};
+//        //swipe gestures for recyclerview
+//        horizontal_tutorial_view.setOnTouchListener(new OnSwipeTouchListener(this){
+//            @Override
+//            public void onSwipeDown() {
+//                Toast.makeText(MainActivity.this, "Down", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onSwipeLeft() {
+//                Toast.makeText(MainActivity.this, "Left", Toast.LENGTH_SHORT).show();
+//                horizontal_tutorial_view.scrollToPosition(count[0]++);
+//            }
+//
+//            @Override
+//            public void onSwipeUp() {
+//                Toast.makeText(MainActivity.this, "Up", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onSwipeRight() {
+//                Toast.makeText(MainActivity.this, "Right", Toast.LENGTH_SHORT).show();
+//                horizontal_tutorial_view.scrollToPosition(count[0]--);
+//            }
+//        });
     }
 
     private void launchMainLayout() {
@@ -244,6 +287,15 @@ public class MainActivity extends BaseActivity implements Observer {
         privacyTerms = (TextView) findViewById(R.id.privacy_terms);
 
         countText = (TextView) findViewById(R.id.player_count);
+
+        TextView startCarousel = (TextView) findViewById(R.id.start_tutorial);
+
+        startCarousel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchTutorial();
+            }
+        });
 
         TextView sign_up_btn = (TextView) findViewById(R.id.sign_up_btn);
         if (sign_up_btn != null) {

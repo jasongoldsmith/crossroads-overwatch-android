@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/traveller_bdg"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="19dp"
         android:gravity="center">
 
         <TextView
@@ -80,6 +80,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
         android:gravity="center"
         android:visibility="gone"
         android:text="@string/terms_conditions"
@@ -117,11 +118,22 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/watermark"
         android:layout_above="@+id/home_view_signup_login"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:text="@string/sign_battle_text"
         android:textColor="@color/trimble_white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/start_tutorial"
+        android:text="How Crossroads Works"
+        android:layout_marginTop="-5dp"
+        android:textColor="@color/trimble_white"
+        android:layout_below="@+id/horizontal_recycler_view"
+        android:gravity="center"/>
 
     <LinearLayout
         android:orientation="horizontal"

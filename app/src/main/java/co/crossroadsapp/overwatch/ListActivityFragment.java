@@ -180,6 +180,8 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
             showUnverifiedUserMsg();
             Util.setDefaults("showUnverifiedMsg", "true", mManager.getCurrentActivity());
         }
+
+        decidetoShowTutorial();
         //checkEventIntent();
 //        if(b.containsKey("eventIntent")){
 //            Intent localPushEventObj = (Intent)b.get("eventIntent");
@@ -576,6 +578,14 @@ public class ListActivityFragment extends BaseActivity implements Observer, Adap
         checkIfExternalDeepLinkPresent();
 
         setGroupImageUrl();
+    }
+
+    private void decidetoShowTutorial() {
+        if(user!=null && !user.getHasCompletedOnBoarding()) {
+            Intent regIntent = new Intent(this,
+                    TutorialActivity.class);
+            startActivity(regIntent);
+        }
     }
 
     private void checkPrivacyDialoge() {

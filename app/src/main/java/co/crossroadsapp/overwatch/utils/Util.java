@@ -514,11 +514,18 @@ public class Util {
 
     public static void picassoLoadImageWithoutMeasurement(Context c, ImageView eventIcon, String url, int avatar) {
         if (c != null && eventIcon != null) {
-            Picasso.with(c)
-                    .load(url)
-                    .placeholder(avatar)
-                    .noFade().fit()
-                    .into(eventIcon);
+            if(avatar==199) {
+                Picasso.with(c)
+                        .load(url)
+                        .noFade().fit()
+                        .into(eventIcon);
+            } else {
+                Picasso.with(c)
+                        .load(url)
+                        .placeholder(avatar)
+                        .noFade().fit()
+                        .into(eventIcon);
+            }
         }
     }
 

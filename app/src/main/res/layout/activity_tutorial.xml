@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/o_w_onboarding_b_g">
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/horizontal_tutorial_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@android:color/transparent"
-        android:clipToPadding="false"
+        android:clipToPadding="true"
         android:paddingBottom="0dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="40dp" />
-
-</LinearLayout>
+        android:paddingLeft="-5dp"
+        android:paddingRight="-7dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/done_tutorial"
+        android:text="OK, LET'S ROLL!"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textSize="14dp"
+        android:gravity="center"
+        android:background="@color/join_btn_color"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/trimble_white"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="27dp"
+        android:id="@+id/skip_btn"
+        android:src="@drawable/btn_skip"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="32dp"/>
+</RelativeLayout>

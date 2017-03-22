@@ -19,6 +19,7 @@ import android.util.DisplayMetrics;
 import co.crossroadsapp.overwatch.data.ActivityData;
 import co.crossroadsapp.overwatch.data.ActivityList;
 import co.crossroadsapp.overwatch.data.AppVersion;
+import co.crossroadsapp.overwatch.data.ConfigData;
 import co.crossroadsapp.overwatch.data.EventData;
 import co.crossroadsapp.overwatch.data.EventList;
 import co.crossroadsapp.overwatch.data.GroupData;
@@ -31,6 +32,7 @@ import co.crossroadsapp.overwatch.network.AddNewConsoleNetwork;
 import co.crossroadsapp.overwatch.network.BungieMessageNetwork;
 import co.crossroadsapp.overwatch.network.BungieUserNetwork;
 import co.crossroadsapp.overwatch.network.ChangeCurrentConsoleNetwork;
+import co.crossroadsapp.overwatch.network.CompletedOnBoardingNetwork;
 import co.crossroadsapp.overwatch.network.ConfigNetwork;
 import co.crossroadsapp.overwatch.network.EventByIdNetwork;
 import co.crossroadsapp.overwatch.network.EventListNetwork;
@@ -134,6 +136,7 @@ public class ControlManager implements Observer {
     private String xboxURL;
     private BungieMessageNetwork bungieMsgNtwrk;
     private boolean appInBackground;
+    private ConfigData mConfigData;
 
     public ControlManager() {
     }
@@ -1117,26 +1120,45 @@ public class ControlManager implements Observer {
         return Util.getDefaults("xboxLoginURL", mCurrentAct);
     }
 
+    public ConfigData getmConfigData() {
+        return mConfigData;
+    }
+
     public void parseAndSaveConfigUrls(JSONObject data) {
         try {
-            if(data.has("playerDetailsURL") && !data.isNull("playerDetailsURL")) {
-                if(!data.getString("playerDetailsURL").isEmpty()) {
-                    bungieCurrentUserUrl = data.getString("playerDetailsURL");
-                    Util.setDefaults("playerDetailsURL", bungieCurrentUserUrl, mCurrentAct);
-                }
-            }
-            if(data.has("psnLoginURL") && !data.isNull("psnLoginURL")) {
-                if(!data.getString("psnLoginURL").isEmpty()) {
-                    psnURL = data.getString("psnLoginURL");
-                    Util.setDefaults("psnLoginURL", psnURL, mCurrentAct);
-                }
-            }
-            if(data.has("xboxLoginURL") && !data.isNull("xboxLoginURL")) {
-                if(!data.getString("xboxLoginURL").isEmpty()) {
-                    xboxURL = data.getString("xboxLoginURL");
-                    Util.setDefaults("xboxLoginURL", xboxURL, mCurrentAct);
-                }
-            }
+            mConfigData = new ConfigData();
+            mConfigData.parseData(data);
+
+//            if(data.has("mixpanelToken") && !data.isNull("mixpanelToken")) {
+//                if(!data.getString("mixpanelToken").isEmpty()) {
+//                    String token = data.getString("mixpanelToken");
+//                    cd.setMixpanelToken(token);
+//                    Util.setDefaults("mixpanelToken", token, mCurrentAct);
+//                }
+//            }
+//            if(data.has("onBoardingScreens") && !data.isNull("onBoardingScreens")) {
+//                JSONObject bs = data.getJSONObject("onBoardingScreens");
+//
+//
+//            }
+//            if(data.has("playerDetailsURL") && !data.isNull("playerDetailsURL")) {
+//                if(!data.getString("playerDetailsURL").isEmpty()) {
+//                    bungieCurrentUserUrl = data.getString("playerDetailsURL");
+//                    Util.setDefaults("playerDetailsURL", bungieCurrentUserUrl, mCurrentAct);
+//                }
+//            }
+//            if(data.has("psnLoginURL") && !data.isNull("psnLoginURL")) {
+//                if(!data.getString("psnLoginURL").isEmpty()) {
+//                    psnURL = data.getString("psnLoginURL");
+//                    Util.setDefaults("psnLoginURL", psnURL, mCurrentAct);
+//                }
+//            }
+//            if(data.has("xboxLoginURL") && !data.isNull("xboxLoginURL")) {
+//                if(!data.getString("xboxLoginURL").isEmpty()) {
+//                    xboxURL = data.getString("xboxLoginURL");
+//                    Util.setDefaults("xboxLoginURL", xboxURL, mCurrentAct);
+//                }
+//            }
             if(data.has("mixpanelToken") && !data.isNull("mixpanelToken")) {
                 if(!data.getString("mixpanelToken").isEmpty()) {
                     String token = data.getString("mixpanelToken");
@@ -1215,5 +1237,18 @@ public class ControlManager implements Observer {
 
     protected boolean getAppBackground() {
         return appInBackground;
+    }
+
+    public void postTutorialDone(TutorialActivity activity) {
+        if(mConfigData!=null && mConfigData.getOnBoardingScreens()!=null && mConfigData.getOnBoardingScreens().getRequired()!=null && mConfigData.getOnBoardingScreens().getRequired().get(0)!=null && mConfigData.getOnBoardingScreens().getRequired().get(0).getLanguage()!=null) {
+            String lang = mConfigData.getOnBoardingScreens().getRequired().get(0).getLanguage();
+            if(!lang.isEmpty()) {
+                RequestParams params = new RequestParams();
+                params.put("lang_code", lang);
+                CompletedOnBoardingNetwork onBoardingNetwork = new CompletedOnBoardingNetwork(activity);
+                onBoardingNetwork.addObserver(activity);
+                onBoardingNetwork.postOnBoardingCompleted(params);
+            }
+        }
     }
 }

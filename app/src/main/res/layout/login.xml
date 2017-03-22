@@ -192,7 +192,7 @@
             android:singleLine="true"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:nextFocusDown="@id/signin"
+            android:nextFocusDown="@+id/signin"
             android:textSize="18sp"
             android:layout_toRightOf="@+id/pswrd_icon"
             android:gravity="center_vertical"
