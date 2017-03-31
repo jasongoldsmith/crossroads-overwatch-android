@@ -4,26 +4,41 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="280dp"
-        android:layout_height="261dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/top_background"
         android:layout_marginTop="150dp"
         android:layout_marginBottom="-5dp"
         android:layout_centerHorizontal="true"
+        android:foregroundGravity="center_horizontal"
         android:layout_alignParentTop="true"/>
+
     <ImageView
-        android:layout_width="375dp"
-        android:layout_height="408dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/hero"
         android:layout_alignBottom="@+id/top_background"
-        android:adjustViewBounds="true"
-        android:layout_centerHorizontal="true"/>
+        android:adjustViewBounds="true" />
+
     <ImageView
-        android:layout_width="280dp"
-        android:layout_height="163dp"
-        android:layout_marginTop="-27dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-24dp"
+        android:paddingBottom="2dp"
         android:id="@+id/bottom_background"
         android:layout_below="@+id/top_background"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:foregroundGravity="center_horizontal"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="27dp"
+        android:id="@+id/skip_btn"
+        android:visibility="gone"
+        android:src="@drawable/btn_skip"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="32dp"/>
 
 </RelativeLayout>

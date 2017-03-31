@@ -3,4 +3,9 @@
     <dimen name="selection_left_drawable_width">33dp</dimen>
     <dimen name="selection_left_drawable_height">30dp</dimen>
     <dimen name="contact_us_user_message_height">120dp</dimen>
+
+    <dimen name="hero_hgt">408dp</dimen>
+    <dimen name="hero_width">375dp</dimen>
+    <dimen name="hero_padding_left">-5dp</dimen>
+    <dimen name="hero_padding_right">-7dp</dimen>
 </resources>

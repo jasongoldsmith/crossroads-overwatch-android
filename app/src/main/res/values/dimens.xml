@@ -42,4 +42,5 @@
     <dimen name="traveller_choose_platform_subtitle_margin_top">8dp</dimen>
     <dimen name="contact_us_user_message_height">120dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="hero_width_padding">96dp</dimen>
 </resources>

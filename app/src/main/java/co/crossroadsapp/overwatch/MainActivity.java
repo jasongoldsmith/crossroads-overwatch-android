@@ -234,13 +234,13 @@ public class MainActivity extends BaseActivity implements Observer {
                 launchMainLayout();
             }
         });
-        ImageView skip = (ImageView) findViewById(R.id.skip_btn);
-        skip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchMainLayout();
-            }
-        });
+//        ImageView skip = (ImageView) findViewById(R.id.skip_btn);
+//        skip.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                launchMainLayout();
+//            }
+//        });
 //        horizontalList = new ArrayList<EventData>();
 //        if (mManager.getEventListCurrent() != null) {
 //            horizontalList = mManager.getEventListCurrent();
@@ -248,6 +248,12 @@ public class MainActivity extends BaseActivity implements Observer {
         TutorialCardAdapter horizontalTutorialAdapter = new TutorialCardAdapter(MainActivity.this, mManager);
         CenterZoomLayoutManager horizontalLayoutManagaerTutorial
                 = new CenterZoomLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+
+//        if(horizontalLayoutManagaerTutorial.findFirstCompletelyVisibleItemPosition()==3) {
+//            skip.setVisibility(View.VISIBLE);
+//        } else {
+//            skip.setVisibility(View.GONE);
+//        }
         horizontal_tutorial_view.setLayoutManager(horizontalLayoutManagaerTutorial);
         horizontal_tutorial_view.setAdapter(horizontalTutorialAdapter);
 
@@ -449,7 +455,6 @@ public class MainActivity extends BaseActivity implements Observer {
                 handler = new Handler();
                 runnable = new Runnable() {
                     int count = 0;
-
                     @Override
                     public void run() {
                         if (count < horizontalAdapter.elistLocal.size()) {
@@ -647,5 +652,9 @@ public class MainActivity extends BaseActivity implements Observer {
                 }
             });
         }
+    }
+
+    public void performSkip() {
+        launchMainLayout();
     }
 }

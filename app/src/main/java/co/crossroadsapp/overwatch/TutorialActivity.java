@@ -35,13 +35,13 @@ public class TutorialActivity extends AppCompatActivity implements Observer{
                 mManager.postTutorialDone(TutorialActivity.this);
             }
         });
-        ImageView skip = (ImageView) findViewById(R.id.skip_btn);
-        skip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mManager.postTutorialDone(TutorialActivity.this);
-            }
-        });
+//        ImageView skip = (ImageView) findViewById(R.id.skip_btn);
+//        skip.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                mManager.postTutorialDone(TutorialActivity.this);
+//            }
+//        });
 //        horizontalList = new ArrayList<EventData>();
 //        if (mManager.getEventListCurrent() != null) {
 //            horizontalList = mManager.getEventListCurrent();
@@ -82,5 +82,11 @@ public class TutorialActivity extends AppCompatActivity implements Observer{
     @Override
     public void update(Observable observable, Object o) {
         finish();
+    }
+
+    public void performSkip() {
+        if(mManager!=null) {
+            mManager.postTutorialDone(TutorialActivity.this);
+        }
     }
 }
